@@ -4,7 +4,7 @@
   "description": "this project making a best wishes project , for people to open events and for others to write thier own wishes to a specific event",
   "main": "App.js",
   "scripts": {
-    "start": "parcel assets/index.html -p 3001"
+    "start": "parcel index.html -p 3001"
   },
   "repository": {
     "type": "git",
