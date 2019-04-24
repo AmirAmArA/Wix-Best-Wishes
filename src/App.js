@@ -1,9 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import headerComponent from './component';
+import {NavComponent}  from './NavComponent';
+export class App extends React.Component{
+    render(){
+            return(
+                <NavComponent />
+            );
+    }
+} 
 
 ReactDOM.render(
-    <headerComponent />,
+    <App />,
     document.querySelector('#container')
 );
