@@ -10161,4 +10161,25 @@ background-color: #20060b4b;
 background-color: #8d304104;
 }
 
+.maxwidth18{
+  max-width: 18rem;
+}
+.colorblack{
+  color: black;
+}
+
+.eventcards{
+  background-color: #fdfdfd44;
+  border: 1px solid white ; 
+}
+.wishcard{
+  max-width: 18rem;
+   background-color: #55152213;
+}
+
+.overyscrol{
+  overflow-y: scroll; 
+  height:600px;
+}
+
 /*# sourceMappingURL=/App.f684dadd.css.map */
