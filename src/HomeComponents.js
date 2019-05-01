@@ -3,8 +3,10 @@ import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./general.css";
 import logo from "../assets/logo.PNG";
-
+import App from './App';
 export default class HomeComponent extends React.Component {
+  
+  
   render() {
     return (
       <>
@@ -20,15 +22,22 @@ export default class HomeComponent extends React.Component {
                   <div className="col-md-4">
                     <button
                       className="btn btn-outline-info my-2 my-sm-0"
-                      type="submit"
+                      
                     >
-                      Create event Box
+                    <a href="/AddEvent" >
+                    Create event Box
+                </a>
+                      
                     </button>
                     <button
                       className="btn btn-outline-info my-2 my-sm-0"
-                      type="submit"
+                      
                     >
-                      Add a best wish!!
+                    {/* should navigate to search event */}
+                    <a href="/addawish" >
+                    Add a best wish!!
+                </a>
+                      
                     </button>
                   </div>
                   <div className="col-md-4" />
