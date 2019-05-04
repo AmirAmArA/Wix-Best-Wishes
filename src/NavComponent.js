@@ -5,20 +5,44 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./general.css";
 import logo from "../assets/logo.PNG";
 import App from "./App";
+import ShowUserWishes from "./ShowUserWishes";
 
 export class NavComponent extends React.Component {
-    constructor(){
-      super();
-      this.state ={
-        loginFlag: false
-      };
-    }
- 
+  // Loginbtn  Registerbtn  hellousernameid
+  //  loginbtn= document.getElementById("#Loginbtn");
+  //  registerbtn= document.querySelector("#Registerbtn");
+  //  hellousernameid= document.querySelector("#hellousernameid");
+
+  constructor() {
+    super();
+
+    this.state = {
+      loginFlag: true,
+      username: "Majde"
+
+    };
+    console.log(localStorage.getItem("loginflag"));
+
+    this.checkIfLogedIn = this.checkIfLogedIn.bind(this);
+  }
+  checkIfLogedIn(flag) {
+    //check if the user is logged in
+    console.log(this.state.btn, this.state.divhellousername);
+
+  } //function
+
+  //inside render: if loggedin => run function that return the label , else run func. that retu. 2 buttons
   render() {
+    const style = this.state.loginFlag ? {display:'none'}:{};
+    const style1 = this.state.loginFlag ? {}:{display:'none'};
+
+    const isLoggedIn = localStorage.getItem("loginflag");
+
+    this.checkIfLogedIn(isLoggedIn);
     return (
       <Router>
         <nav className="navbar navbar-expand-lg navbar-dark navStyle">
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand">
             <img src={logo} className="logo" />
           </a>
           <button
@@ -46,7 +70,7 @@ export class NavComponent extends React.Component {
                 </a>
               </li>
               <li className="nav-item ">
-                <a className="nav-link" href="/MyWishes">
+                <a className="nav-link" href="/ShowUserWishes">
                   MyWishes
                 </a>
               </li>
@@ -62,27 +86,34 @@ export class NavComponent extends React.Component {
               </li>
             </ul>
             <form className="form-inline my-2 my-lg-0">
-              {/* here  i need to add label and to hide it for now  */}
               {/* <Link to="/Login"> */}
               <button
-                className="btn btn-outline-success my-2 my-sm-0"
-                
+                id="Loginbtn"
+                className= {this.state.btn} style={style}
+
+                /* "btn btn-outline-success my-2 my-sm-0"*/
               >
-              <a href="/Login" className="colorgreen">
-                SignIn
+                <a href="/Login" className="colorgreen">
+                  SignIn
                 </a>
               </button>
               {/* </Link> */}
               {/* <Link to="/Register"> */}
               <button
-                className="btn btn-outline-success my-2 my-sm-0"
+                id="Registerbtn"
+                className={this.state.btn} style={style}
                 
+                //"btn btn-outline-success my-2 my-sm-0" 
               >
-              <a href="/Register" className="colorgreen">
-              Register
+                <a href="/Register" className="colorgreen">
+                  Register
                 </a>
-                
               </button>
+              {/* "my-4 my-lg-0 displaynone"  */}
+
+              <div className={this.state.divhellousername} id="hellousernameid" style={style1}>
+                <span className="colorwhite ">Hi:{this.state.username}</span>
+              </div>
               {/* </Link> */}
             </form>
           </div>

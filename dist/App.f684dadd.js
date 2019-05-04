@@ -29834,25 +29834,23 @@ module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
 },{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/logo.PNG":[function(require,module,exports) {
 module.exports = "/logo.c8003ea4.PNG";
-},{}],"src/NavComponent.js":[function(require,module,exports) {
+},{}],"src/WishCard.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.NavComponent = void 0;
+exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _reactRouterDom = require("react-router-dom");
+var _reactDom = _interopRequireDefault(require("react-dom"));
 
 require("bootstrap/dist/css/bootstrap.css");
 
 require("./general.css");
 
 var _logo = _interopRequireDefault(require("../assets/logo.PNG"));
-
-var _App = _interopRequireDefault(require("./App"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29874,11 +29872,228 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+var WishCard =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(WishCard, _React$Component);
+
+  function WishCard() {
+    _classCallCheck(this, WishCard);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(WishCard).apply(this, arguments));
+  }
+
+  _createClass(WishCard, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+        className: "col-md-4"
+      }, _react.default.createElement("div", {
+        className: "card border-light mb-3  maxwidth18 colorblack"
+      }, _react.default.createElement("div", {
+        className: "card-header"
+      }, "Wish1"), _react.default.createElement("div", {
+        className: "card-body"
+      }, _react.default.createElement("img", {
+        src: _logo.default,
+        className: "card-img-top wishcard"
+      }), _react.default.createElement("p", {
+        className: "card-text"
+      }, "Some quick example text to build on the card title and make up the bulk of the card's content.")))));
+    }
+  }]);
+
+  return WishCard;
+}(_react.default.Component);
+
+exports.default = WishCard;
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG"}],"src/ShowUserWishes.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactDom = _interopRequireDefault(require("react-dom"));
+
+require("bootstrap/dist/css/bootstrap.css");
+
+require("./general.css");
+
+var _logo = _interopRequireDefault(require("../assets/logo.PNG"));
+
+var _WishCard = _interopRequireDefault(require("./WishCard"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var ShowUserWishes =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ShowUserWishes, _React$Component);
+
+  function ShowUserWishes() {
+    var _this;
+
+    _classCallCheck(this, ShowUserWishes);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ShowUserWishes).call(this));
+    _this.state = {
+      users: [{
+        id: 1,
+        name: 'Mustafa',
+        avatar: 'images/avatar.jpg',
+        score: 24,
+        description: 'Marhaba, I love Avatars...',
+        lastUpdateTime: new Date().toLocaleString('he-IL')
+      }, {
+        id: 2,
+        name: 'Suhir',
+        avatar: 'images/avatar.jpg',
+        score: 19,
+        description: 'Hello, I love Avatars...',
+        lastUpdateTime: new Date().toLocaleString('he-IL')
+      }, {
+        id: 3,
+        name: 'Shahar',
+        avatar: 'images/avatar2.png',
+        score: 11,
+        description: 'Shalom, I love Avatars...',
+        lastUpdateTime: new Date().toLocaleString('he-IL')
+      }, {
+        id: 4,
+        name: 'Muhamad',
+        avatar: 'images/avatar2.png',
+        score: 10,
+        description: 'Ahalan, I love Avatars...',
+        lastUpdateTime: new Date().toLocaleString('he-IL')
+      }]
+    };
+    _this.upVote = _this.upVote.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(ShowUserWishes, [{
+    key: "upVote",
+    value: function upVote(userId) {
+      // const user = this.state.users.find(user => user.id === userId);
+      this.setState({
+        users: this.state.users.map(function (user) {
+          if (user.id === userId) {
+            return _objectSpread({}, user, {
+              score: user.score + 1,
+              lastUpdateTime: new Date().toLocaleString('he-IL')
+            });
+          }
+
+          return user;
+        }).sort(function (user1, user2) {
+          return user2.score - user1.score;
+        })
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", null, _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("br", null), _react.default.createElement("br", null)), _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("div", {
+        className: "col-md-3"
+      }, _react.default.createElement("div", {
+        className: "card border-info mb-3 wishcard"
+      }, _react.default.createElement("div", {
+        className: "card-header border-info colorwhite"
+      }, "My Wishes"))), _react.default.createElement("div", {
+        className: "col-md-9 overyscrol "
+      }, _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement(_WishCard.default, null), _react.default.createElement(_WishCard.default, null), _react.default.createElement(_WishCard.default, null)), _react.default.createElement("div", {
+        className: "row"
+      })))));
+    }
+  }]);
+
+  return ShowUserWishes;
+}(_react.default.Component);
+
+exports.default = ShowUserWishes;
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./WishCard":"src/WishCard.js"}],"src/NavComponent.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.NavComponent = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
+
+require("bootstrap/dist/css/bootstrap.css");
+
+require("./general.css");
+
+var _logo = _interopRequireDefault(require("../assets/logo.PNG"));
+
+var _App = _interopRequireDefault(require("./App"));
+
+var _ShowUserWishes = _interopRequireDefault(require("./ShowUserWishes"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 var NavComponent =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(NavComponent, _React$Component);
 
+  // Loginbtn  Registerbtn  hellousernameid
+  //  loginbtn= document.getElementById("#Loginbtn");
+  //  registerbtn= document.querySelector("#Registerbtn");
+  //  hellousernameid= document.querySelector("#hellousernameid");
   function NavComponent() {
     var _this;
 
@@ -29886,19 +30101,37 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(NavComponent).call(this));
     _this.state = {
-      loginFlag: false
+      loginFlag: true,
+      username: "Majde"
     };
+    console.log(localStorage.getItem("loginflag"));
+    _this.checkIfLogedIn = _this.checkIfLogedIn.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(NavComponent, [{
+    key: "checkIfLogedIn",
+    value: function checkIfLogedIn(flag) {
+      //check if the user is logged in
+      console.log(this.state.btn, this.state.divhellousername);
+    } //function
+    //inside render: if loggedin => run function that return the label , else run func. that retu. 2 buttons
+
+  }, {
     key: "render",
     value: function render() {
+      var style = this.state.loginFlag ? {
+        display: 'none'
+      } : {};
+      var style1 = this.state.loginFlag ? {} : {
+        display: 'none'
+      };
+      var isLoggedIn = localStorage.getItem("loginflag");
+      this.checkIfLogedIn(isLoggedIn);
       return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement("nav", {
         className: "navbar navbar-expand-lg navbar-dark navStyle"
       }, _react.default.createElement("a", {
-        className: "navbar-brand",
-        href: "#"
+        className: "navbar-brand"
       }, _react.default.createElement("img", {
         src: _logo.default,
         className: "logo"
@@ -29931,7 +30164,7 @@ function (_React$Component) {
         className: "nav-item "
       }, _react.default.createElement("a", {
         className: "nav-link",
-        href: "/MyWishes"
+        href: "/ShowUserWishes"
       }, "MyWishes")), _react.default.createElement("li", {
         className: "nav-item"
       }, _react.default.createElement("a", {
@@ -29942,16 +30175,29 @@ function (_React$Component) {
       }, "About"))), _react.default.createElement("form", {
         className: "form-inline my-2 my-lg-0"
       }, _react.default.createElement("button", {
-        className: "btn btn-outline-success my-2 my-sm-0"
+        id: "Loginbtn",
+        className: this.state.btn,
+        style: style
+        /* "btn btn-outline-success my-2 my-sm-0"*/
+
       }, _react.default.createElement("a", {
         href: "/Login",
         className: "colorgreen"
       }, "SignIn")), _react.default.createElement("button", {
-        className: "btn btn-outline-success my-2 my-sm-0"
+        id: "Registerbtn",
+        className: this.state.btn,
+        style: style //"btn btn-outline-success my-2 my-sm-0" 
+
       }, _react.default.createElement("a", {
         href: "/Register",
         className: "colorgreen"
-      }, "Register"))))));
+      }, "Register")), _react.default.createElement("div", {
+        className: this.state.divhellousername,
+        id: "hellousernameid",
+        style: style1
+      }, _react.default.createElement("span", {
+        className: "colorwhite "
+      }, "Hi:", this.state.username))))));
     }
   }]);
 
@@ -29959,7 +30205,7 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.NavComponent = NavComponent;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./App":"src/App.js"}],"src/About.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./App":"src/App.js","./ShowUserWishes":"src/ShowUserWishes.js"}],"src/About.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30159,7 +30405,9 @@ function (_React$Component) {
         id: "searchEventbtn",
         type: "button",
         className: "btn btn-outline-warning"
-      }, "Add a wish"))));
+      }, _react.default.createElement("a", {
+        href: "/MyWishes"
+      }, "Add a wish")))));
     }
   }]);
 
@@ -30345,7 +30593,7 @@ function (_React$Component) {
       }, _react.default.createElement("input", {
         className: "form-control",
         type: "text",
-        placeholder: "where is your event??"
+        placeholder: "Type Event Location"
       })))), _react.default.createElement("div", {
         className: "col-md-4"
       })), _react.default.createElement("div", {
@@ -30357,18 +30605,16 @@ function (_React$Component) {
       }, _react.default.createElement("div", {
         className: "row"
       }, _react.default.createElement("div", {
-        className: "col-md-6"
+        className: "col-md-7"
+      }), _react.default.createElement("div", {
+        className: "col-md-5"
       }, _react.default.createElement("br", null), _react.default.createElement("button", {
         id: "searchEventbtn",
         type: "button",
         className: "btn btn-outline-info"
-      }, "My Events")), _react.default.createElement("div", {
-        className: "col-md-6"
-      }, _react.default.createElement("br", null), _react.default.createElement("button", {
-        id: "searchEventbtn",
-        type: "button",
-        className: "btn btn-outline-info"
-      }, "Create event box")))), _react.default.createElement("div", {
+      }, _react.default.createElement("a", {
+        href: "/MyWishes"
+      }, "Create event box"))))), _react.default.createElement("div", {
         className: "col-md-4"
       })))), _react.default.createElement("div", {
         className: "col-md-1"
@@ -30397,6 +30643,8 @@ require("bootstrap/dist/css/bootstrap.css");
 require("./general.css");
 
 var _logo = _interopRequireDefault(require("../assets/logo.PNG"));
+
+var _App = _interopRequireDefault(require("./App"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30452,7 +30700,15 @@ function (_React$Component) {
         id: "searchEventbtn",
         type: "button",
         className: "btn btn-outline-info"
-      }, "Edit"))));
+      }, " ", _react.default.createElement("a", {
+        href: "/EditEvent"
+      }, " Edit ")), _react.default.createElement("button", {
+        id: "searchEventbtn",
+        type: "button",
+        className: "btn btn-outline-info"
+      }, " ", _react.default.createElement("a", {
+        href: "/MyWishes"
+      }, " View Wishes ")))));
     }
   }]);
 
@@ -30460,7 +30716,245 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.default = EventCard;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG"}],"src/HomeComponents.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./App":"src/App.js"}],"src/EventCardToView.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactDom = _interopRequireDefault(require("react-dom"));
+
+require("bootstrap/dist/css/bootstrap.css");
+
+require("./general.css");
+
+var _logo = _interopRequireDefault(require("../assets/logo.PNG"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var EventCardToView =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(EventCardToView, _React$Component);
+
+  function EventCardToView() {
+    _classCallCheck(this, EventCardToView);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(EventCardToView).apply(this, arguments));
+  }
+
+  _createClass(EventCardToView, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+        className: "col-md-4"
+      }, _react.default.createElement("div", {
+        className: "card-body text-center  eventcards"
+      }, _react.default.createElement("p", null, _react.default.createElement("img", {
+        className: " img-fluid",
+        src: "https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_03.png",
+        alt: "card image"
+      })), _react.default.createElement("h4", {
+        className: "card-title"
+      }, "Sunlimetech"), _react.default.createElement("p", {
+        className: "card-text"
+      }, "This is basic card with image on top, title, description and button."), _react.default.createElement("button", {
+        id: "searchEventbtn",
+        type: "button",
+        className: "btn btn-outline-info"
+      }, " ", _react.default.createElement("a", {
+        href: "/MyWishes"
+      }, "Add A Wish"), " "))));
+    }
+  }]);
+
+  return EventCardToView;
+}(_react.default.Component);
+
+exports.default = EventCardToView;
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG"}],"src/SearchEvent.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactDom = _interopRequireDefault(require("react-dom"));
+
+var _EventCardToView = _interopRequireDefault(require("./EventCardToView"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var SearchEvent =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(SearchEvent, _React$Component);
+
+  function SearchEvent() {
+    _classCallCheck(this, SearchEvent);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(SearchEvent).apply(this, arguments));
+  }
+
+  _createClass(SearchEvent, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("div", {
+        className: "col-md-3"
+      }, _react.default.createElement("div", {
+        className: "card text-left cardBackground width18rem "
+      }, _react.default.createElement("div", {
+        className: "card-body"
+      }, _react.default.createElement("div", {
+        className: "btn-group btn-group-toggle",
+        "data-toggle": "buttons"
+      }, _react.default.createElement("label", {
+        className: "btn btn-outline-secondary  active"
+      }, _react.default.createElement("input", {
+        type: "radio",
+        name: "options",
+        id: "option1",
+        autoComplete: "off",
+        checked: true
+      }), " ", "Event ID"), _react.default.createElement("label", {
+        className: "btn btn-outline-secondary "
+      }, _react.default.createElement("input", {
+        type: "radio",
+        name: "options",
+        id: "option2",
+        autoComplete: "off"
+      }), " ", "Others")), _react.default.createElement("div", null, _react.default.createElement("br", null)), _react.default.createElement("input", {
+        className: "form-control",
+        type: "text",
+        placeholder: "Enter Event ID"
+      }), _react.default.createElement("br", null), _react.default.createElement("div", {
+        className: "btn-group  btn-group-md "
+      }, _react.default.createElement("button", {
+        type: "button",
+        className: " btn  btn-outline-light dropdown-toggle  ",
+        "data-toggle": "dropdown",
+        "aria-haspopup": "true",
+        "aria-expanded": "false"
+      }, "Choose Category"), _react.default.createElement("div", {
+        className: "dropdown-menu dropdown-menu-center"
+      }, _react.default.createElement("button", {
+        className: "dropdown-item",
+        type: "button"
+      }, "Birthday"), _react.default.createElement("button", {
+        className: "dropdown-item",
+        type: "button"
+      }, "Wedding"), _react.default.createElement("button", {
+        className: "dropdown-item",
+        type: "button"
+      }, "New Born"))), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("br", null)), _react.default.createElement("input", {
+        className: "form-control",
+        type: "date",
+        placeholder: "Start"
+      }), _react.default.createElement("br", null), _react.default.createElement("input", {
+        className: "form-control",
+        type: "date",
+        placeholder: "End"
+      }), _react.default.createElement("br", null), _react.default.createElement("input", {
+        className: "form-control",
+        type: "text",
+        placeholder: "Event Location"
+      }), _react.default.createElement("br", null), _react.default.createElement("button", {
+        type: "button",
+        class: "btn btn-outline-warning"
+      }, "Search Event")))), _react.default.createElement("div", {
+        className: "col-md-9"
+      }, _react.default.createElement("div", null, _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("br", null), _react.default.createElement("br", null)), _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("div", {
+        className: "col-md-1"
+      }, " "), _react.default.createElement("div", {
+        className: "col-md-10"
+      }, _react.default.createElement("h3", {
+        className: "colorWhite"
+      }, "Event List:")), _react.default.createElement("div", {
+        className: "col-md-1"
+      })), _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("div", {
+        className: "col-md-1"
+      }), _react.default.createElement("div", {
+        className: "col-md-10 colorWhite"
+      }, _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("div", {
+        className: "col-md-4"
+      })), _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement(_EventCardToView.default, null), _react.default.createElement(_EventCardToView.default, null)), _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement(_EventCardToView.default, null), _react.default.createElement(_EventCardToView.default, null), _react.default.createElement(_EventCardToView.default, null), _react.default.createElement(_EventCardToView.default, null), _react.default.createElement(_EventCardToView.default, null), _react.default.createElement(_EventCardToView.default, null)))), _react.default.createElement("div", {
+        className: "col-md-1"
+      })), _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("br", null), _react.default.createElement("br", null)), _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("div", {
+        className: "col-md-4"
+      }), _react.default.createElement("div", {
+        className: "col-md-4"
+      }), _react.default.createElement("div", {
+        className: "col-md-4"
+      })))));
+    }
+  }]);
+
+  return SearchEvent;
+}(_react.default.Component);
+
+exports.default = SearchEvent;
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./EventCardToView":"src/EventCardToView.js"}],"src/HomeComponents.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30479,6 +30973,8 @@ require("./general.css");
 var _logo = _interopRequireDefault(require("../assets/logo.PNG"));
 
 var _App = _interopRequireDefault(require("./App"));
+
+var _SearchEvent = _interopRequireDefault(require("./SearchEvent"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30540,7 +31036,7 @@ function (_React$Component) {
       }, "Create event Box")), _react.default.createElement("button", {
         className: "btn btn-outline-info my-2 my-sm-0"
       }, _react.default.createElement("a", {
-        href: "/addawish"
+        href: "/SearchEvent"
       }, "Add a best wish!!"))), _react.default.createElement("div", {
         className: "col-md-4"
       }))), _react.default.createElement("div", {
@@ -30553,7 +31049,7 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.default = HomeComponent;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./App":"src/App.js"}],"src/MyEvents.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./App":"src/App.js","./SearchEvent":"src/SearchEvent.js"}],"src/MyEvents.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30577,6 +31073,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -30585,9 +31085,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -30599,12 +31099,66 @@ function (_React$Component) {
   _inherits(MyWishes, _React$Component);
 
   function MyWishes() {
+    var _this;
+
     _classCallCheck(this, MyWishes);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(MyWishes).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MyWishes).call(this));
+    _this.state = {
+      users: [{
+        id: 1,
+        name: "Mustafa",
+        avatar: "images/avatar.jpg",
+        score: 24,
+        description: "Marhaba, I love Avatars...",
+        lastUpdateTime: new Date().toLocaleString("he-IL")
+      }, {
+        id: 2,
+        name: "Suhir",
+        avatar: "images/avatar.jpg",
+        score: 19,
+        description: "Hello, I love Avatars...",
+        lastUpdateTime: new Date().toLocaleString("he-IL")
+      }, {
+        id: 3,
+        name: "Shahar",
+        avatar: "images/avatar2.png",
+        score: 11,
+        description: "Shalom, I love Avatars...",
+        lastUpdateTime: new Date().toLocaleString("he-IL")
+      }, {
+        id: 4,
+        name: "Muhamad",
+        avatar: "images/avatar2.png",
+        score: 10,
+        description: "Ahalan, I love Avatars...",
+        lastUpdateTime: new Date().toLocaleString("he-IL")
+      }]
+    };
+    _this.upVote = _this.upVote.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(MyWishes, [{
+    key: "upVote",
+    value: function upVote(userId) {
+      // const user = this.state.users.find(user => user.id === userId);
+      this.setState({
+        users: this.state.users.map(function (user) {
+          if (user.id === userId) {
+            return _objectSpread({}, user, {
+              score: user.score + 1,
+              lastUpdateTime: new Date().toLocaleString("he-IL")
+            });
+          }
+
+          return user;
+        }).sort(function (user1, user2) {
+          return user2.score - user1.score;
+        })
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", null, _react.default.createElement("div", {
@@ -30631,7 +31185,7 @@ function (_React$Component) {
         className: "col-md-4"
       })), _react.default.createElement("div", {
         className: "row"
-      }, _react.default.createElement(_EventCard.default, null), _react.default.createElement(_EventCard.default, null), _react.default.createElement(_EventCard.default, null)), _react.default.createElement("div", {
+      }, _react.default.createElement(_EventCard.default, null), _react.default.createElement(_EventCard.default, null)), _react.default.createElement("div", {
         className: "row"
       }, _react.default.createElement(_EventCard.default, null), _react.default.createElement(_EventCard.default, null), _react.default.createElement(_EventCard.default, null), _react.default.createElement(_EventCard.default, null), _react.default.createElement(_EventCard.default, null), _react.default.createElement(_EventCard.default, null)))), _react.default.createElement("div", {
         className: "col-md-1"
@@ -30648,7 +31202,9 @@ function (_React$Component) {
       }, _react.default.createElement("button", {
         className: "btn btn-outline-info ",
         type: "submit"
-      }, "Add new event box"))));
+      }, _react.default.createElement("a", {
+        href: "/AddEvent"
+      }, "Add new event box")))));
     }
   }]);
 
@@ -30756,79 +31312,6 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.default = Login;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG"}],"src/WishCard.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _reactDom = _interopRequireDefault(require("react-dom"));
-
-require("bootstrap/dist/css/bootstrap.css");
-
-require("./general.css");
-
-var _logo = _interopRequireDefault(require("../assets/logo.PNG"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var WishCard =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(WishCard, _React$Component);
-
-  function WishCard() {
-    _classCallCheck(this, WishCard);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(WishCard).apply(this, arguments));
-  }
-
-  _createClass(WishCard, [{
-    key: "render",
-    value: function render() {
-      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-        className: "col-md-4"
-      }, _react.default.createElement("div", {
-        className: "card border-light mb-3  maxwidth18 colorblack"
-      }, _react.default.createElement("div", {
-        className: "card-header"
-      }, "Wish1"), _react.default.createElement("div", {
-        className: "card-body"
-      }, _react.default.createElement("img", {
-        src: _logo.default,
-        className: "card-img-top wishcard"
-      }), _react.default.createElement("p", {
-        className: "card-text"
-      }, "Some quick example text to build on the card title and make up the bulk of the card's content.")))));
-    }
-  }]);
-
-  return WishCard;
-}(_react.default.Component);
-
-exports.default = WishCard;
 },{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG"}],"src/MyWishes.js":[function(require,module,exports) {
 "use strict";
 
@@ -30887,32 +31370,32 @@ function (_React$Component) {
     _this.state = {
       users: [{
         id: 1,
-        name: 'Mustafa',
-        avatar: 'images/avatar.jpg',
+        name: "Mustafa",
+        avatar: "images/avatar.jpg",
         score: 24,
-        description: 'Marhaba, I love Avatars...',
-        lastUpdateTime: new Date().toLocaleString('he-IL')
+        description: "Marhaba, I love Avatars...",
+        lastUpdateTime: new Date().toLocaleString("he-IL")
       }, {
         id: 2,
-        name: 'Suhir',
-        avatar: 'images/avatar.jpg',
+        name: "Suhir",
+        avatar: "images/avatar.jpg",
         score: 19,
-        description: 'Hello, I love Avatars...',
-        lastUpdateTime: new Date().toLocaleString('he-IL')
+        description: "Hello, I love Avatars...",
+        lastUpdateTime: new Date().toLocaleString("he-IL")
       }, {
         id: 3,
-        name: 'Shahar',
-        avatar: 'images/avatar2.png',
+        name: "Shahar",
+        avatar: "images/avatar2.png",
         score: 11,
-        description: 'Shalom, I love Avatars...',
-        lastUpdateTime: new Date().toLocaleString('he-IL')
+        description: "Shalom, I love Avatars...",
+        lastUpdateTime: new Date().toLocaleString("he-IL")
       }, {
         id: 4,
-        name: 'Muhamad',
-        avatar: 'images/avatar2.png',
+        name: "Muhamad",
+        avatar: "images/avatar2.png",
         score: 10,
-        description: 'Ahalan, I love Avatars...',
-        lastUpdateTime: new Date().toLocaleString('he-IL')
+        description: "Ahalan, I love Avatars...",
+        lastUpdateTime: new Date().toLocaleString("he-IL")
       }]
     };
     _this.upVote = _this.upVote.bind(_assertThisInitialized(_this));
@@ -30928,7 +31411,7 @@ function (_React$Component) {
           if (user.id === userId) {
             return _objectSpread({}, user, {
               score: user.score + 1,
-              lastUpdateTime: new Date().toLocaleString('he-IL')
+              lastUpdateTime: new Date().toLocaleString("he-IL")
             });
           }
 
@@ -30978,7 +31461,10 @@ function (_React$Component) {
       }, _react.default.createElement("button", {
         type: "button",
         className: "btn btn-outline-warning"
-      }, "Add a Best Wish !!")))), _react.default.createElement("div", {
+      }, _react.default.createElement("a", {
+        className: "coloryellow",
+        href: "/AddAWish"
+      }, "Add a Best Wish !!"))))), _react.default.createElement("div", {
         className: "col-md-9 overyscrol "
       }, _react.default.createElement("div", {
         className: "row"
@@ -31022,6 +31508,8 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 require("bootstrap/dist/css/bootstrap.css");
 
 require("./general.css");
+
+var _Login = _interopRequireDefault(require("./Login"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31115,7 +31603,7 @@ function (_React$Component) {
       }, "Join Now"))), _react.default.createElement("div", {
         className: "text-center"
       }, "Already have an account? ", _react.default.createElement("a", {
-        href: "Login.html"
+        href: "/Login"
       }, "Sign in"))));
     }
   }]);
@@ -31124,7 +31612,218 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.default = Register;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css"}],"src/App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","./Login":"src/Login.js"}],"src/EditEvent.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactDom = _interopRequireDefault(require("react-dom"));
+
+require("bootstrap/dist/css/bootstrap.css");
+
+require("./general.css");
+
+var _logo = _interopRequireDefault(require("../assets/logo.PNG"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var EditEvent =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(EditEvent, _React$Component);
+
+  function EditEvent() {
+    _classCallCheck(this, EditEvent);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(EditEvent).apply(this, arguments));
+  }
+
+  _createClass(EditEvent, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("br", null), _react.default.createElement("br", null)), _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("div", {
+        className: "col-md-1"
+      }, " "), _react.default.createElement("div", {
+        className: "col-md-10"
+      }, _react.default.createElement("div", {
+        className: "card mb-3  background-20060b4b"
+      }, _react.default.createElement("div", {
+        className: "card-body"
+      }, _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("div", {
+        className: "col-md-4"
+      }, " "), _react.default.createElement("div", {
+        className: "col-md-4"
+      }, _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("div", {
+        className: "col-md-4"
+      }, _react.default.createElement("span", {
+        className: "colorWhite"
+      }, "Category")), _react.default.createElement("div", {
+        className: "col-md-8"
+      }, _react.default.createElement("div", {
+        className: "btn-group  btn-group-md "
+      }, _react.default.createElement("button", {
+        type: "button",
+        className: "btn btn-light  btn dropdown-toggle ",
+        "data-toggle": "dropdown",
+        "aria-haspopup": "true",
+        "aria-expanded": "false"
+      }, "Choose Category"), _react.default.createElement("div", {
+        className: "dropdown-menu dropdown-menu-center"
+      }, _react.default.createElement("button", {
+        className: "dropdown-item",
+        type: "button"
+      }, "Birthday"), _react.default.createElement("button", {
+        className: "dropdown-item",
+        type: "button"
+      }, "Wedding"), _react.default.createElement("button", {
+        className: "dropdown-item",
+        type: "button"
+      }, "New Born")))))), _react.default.createElement("div", {
+        className: "col-md-4"
+      })), _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("div", {
+        className: "col-md-4"
+      }), _react.default.createElement("div", {
+        className: "col-md-4"
+      }, _react.default.createElement("br", null), _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("div", {
+        className: "col-md-4"
+      }, _react.default.createElement("span", {
+        className: "colorWhite"
+      }, "Title")), _react.default.createElement("div", {
+        className: "col-md-8"
+      }, _react.default.createElement("div", {
+        className: "form-group"
+      }, _react.default.createElement("input", {
+        className: "form-control",
+        type: "text",
+        placeholder: "write event title"
+      }))))), _react.default.createElement("div", {
+        className: "col-md-4"
+      })), _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("div", {
+        className: "col-md-4"
+      }), _react.default.createElement("div", {
+        className: "col-md-4"
+      }, _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("div", {
+        className: "col-md-4"
+      }, _react.default.createElement("span", {
+        className: "colorWhite"
+      }, "Start Date ")), _react.default.createElement("div", {
+        className: "col-md-8"
+      }, _react.default.createElement("input", {
+        className: "form-control",
+        type: "date",
+        name: "date"
+      }), _react.default.createElement("br", null)))), _react.default.createElement("div", {
+        className: "col-md-4"
+      })), _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("div", {
+        className: "col-md-4"
+      }), _react.default.createElement("div", {
+        className: "col-md-4"
+      }, _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("div", {
+        className: "col-md-4"
+      }, _react.default.createElement("span", {
+        className: "colorWhite"
+      }, "End Date ")), _react.default.createElement("div", {
+        className: "col-md-8"
+      }, _react.default.createElement("input", {
+        className: "form-control",
+        type: "date",
+        name: "date"
+      }), _react.default.createElement("br", null)))), _react.default.createElement("div", {
+        className: "col-md-4"
+      })), _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("div", {
+        className: "col-md-4"
+      }), _react.default.createElement("div", {
+        className: "col-md-4"
+      }, _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("div", {
+        className: "col-md-4"
+      }, _react.default.createElement("span", {
+        className: "colorWhite"
+      }, "Where ")), _react.default.createElement("div", {
+        className: "col-md-8"
+      }, _react.default.createElement("input", {
+        className: "form-control",
+        type: "text",
+        placeholder: "Type Event Location"
+      })))), _react.default.createElement("div", {
+        className: "col-md-4"
+      })), _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("div", {
+        className: "col-md-4"
+      }), _react.default.createElement("div", {
+        className: "col-md-4"
+      }, _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("div", {
+        className: "col-md-7"
+      }), _react.default.createElement("div", {
+        className: "col-md-5"
+      }, _react.default.createElement("br", null), _react.default.createElement("button", {
+        id: "searchEventbtn",
+        type: "button",
+        className: "btn btn-outline-info"
+      }, _react.default.createElement("a", {
+        href: "/MyEvents"
+      }, "Save Changes"))))), _react.default.createElement("div", {
+        className: "col-md-4"
+      })))), _react.default.createElement("div", {
+        className: "col-md-1"
+      }))));
+    }
+  }]);
+
+  return EditEvent;
+}(_react.default.Component);
+
+exports.default = EditEvent;
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG"}],"src/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31160,6 +31859,12 @@ var _Register = _interopRequireDefault(require("./Register"));
 
 var _WishCard = _interopRequireDefault(require("./WishCard"));
 
+var _SearchEvent = _interopRequireDefault(require("./SearchEvent"));
+
+var _ShowUserWishes = _interopRequireDefault(require("./ShowUserWishes"));
+
+var _EditEvent = _interopRequireDefault(require("./EditEvent"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -31186,9 +31891,18 @@ function (_React$Component) {
   _inherits(App, _React$Component);
 
   function App() {
+    var _this;
+
     _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(App).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this));
+    _this.state = {
+      loginFlag: true,
+      username: "Visitor"
+    };
+    localStorage.setItem("loginflag", _this.state.loginFlag);
+    console.log(localStorage.getItem("loginflag"));
+    return _this;
   }
 
   _createClass(App, [{
@@ -31225,6 +31939,15 @@ function (_React$Component) {
       }), _react.default.createElement(_reactRouterDom.Route, {
         path: "/MyEvents",
         component: _MyEvents.default
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        path: "/SearchEvent",
+        component: _SearchEvent.default
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        path: "/ShowUserWishes",
+        component: _ShowUserWishes.default
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        path: "/EditEvent",
+        component: _EditEvent.default
       })));
     }
   }]);
@@ -31234,8 +31957,8 @@ function (_React$Component) {
 
 exports.App = App;
 
-_reactDom.default.render(_react.default.createElement(App, null), document.querySelector('#container'));
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./NavComponent":"src/NavComponent.js","./About":"src/About.js","./AddAWish":"src/AddAWish.js","./AddEvent":"src/AddEvent.js","./EventCard":"src/EventCard.js","./HomeComponents":"src/HomeComponents.js","./MyEvents":"src/MyEvents.js","./Login":"src/Login.js","./MyWishes":"src/MyWishes.js","./Register":"src/Register.js","./WishCard":"src/WishCard.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+_reactDom.default.render(_react.default.createElement(App, null), document.querySelector("#container"));
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./NavComponent":"src/NavComponent.js","./About":"src/About.js","./AddAWish":"src/AddAWish.js","./AddEvent":"src/AddEvent.js","./EventCard":"src/EventCard.js","./HomeComponents":"src/HomeComponents.js","./MyEvents":"src/MyEvents.js","./Login":"src/Login.js","./MyWishes":"src/MyWishes.js","./Register":"src/Register.js","./WishCard":"src/WishCard.js","./SearchEvent":"src/SearchEvent.js","./ShowUserWishes":"src/ShowUserWishes.js","./EditEvent":"src/EditEvent.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -31263,7 +31986,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53668" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53532" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

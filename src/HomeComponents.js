@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./general.css";
 import logo from "../assets/logo.PNG";
 import App from './App';
+import SearchEvent from './SearchEvent';
 export default class HomeComponent extends React.Component {
   
   
@@ -34,7 +35,8 @@ export default class HomeComponent extends React.Component {
                       
                     >
                     {/* should navigate to search event */}
-                    <a href="/addawish" >
+                    
+                    <a href="/SearchEvent" >
                     Add a best wish!!
                 </a>
                       
