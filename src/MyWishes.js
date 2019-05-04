@@ -128,9 +128,9 @@ export default class MyWishes extends React.Component {
                 </div>
               </div>
               <div className="row">
-                {/* <WishCard />
+                <WishCard />
           <WishCard />
-          <WishCard /> */}
+          <WishCard />
               </div>
               <div className="row">
                 {/* <WishCard />
