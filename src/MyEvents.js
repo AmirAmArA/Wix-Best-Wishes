@@ -9,10 +9,11 @@ export default class MyWishes extends React.Component {
   constructor() {
     super();
     this.state = {
-      users: [
+
+      events: [
         {
           id: 1,
-          name: "Mustafa",
+          name: "event1",
           avatar: "images/avatar.jpg",
           score: 24,
           description: "Marhaba, I love Avatars...",
@@ -20,7 +21,7 @@ export default class MyWishes extends React.Component {
         },
         {
           id: 2,
-          name: "Suhir",
+          name: "event2",
           avatar: "images/avatar.jpg",
           score: 19,
           description: "Hello, I love Avatars...",
@@ -28,7 +29,7 @@ export default class MyWishes extends React.Component {
         },
         {
           id: 3,
-          name: "Shahar",
+          name: "event3",
           avatar: "images/avatar2.png",
           score: 11,
           description: "Shalom, I love Avatars...",
@@ -36,7 +37,7 @@ export default class MyWishes extends React.Component {
         },
         {
           id: 4,
-          name: "Muhamad",
+          name: "event4",
           avatar: "images/avatar2.png",
           score: 10,
           description: "Ahalan, I love Avatars...",
@@ -44,27 +45,28 @@ export default class MyWishes extends React.Component {
         }
       ]
     };
-    this.upVote = this.upVote.bind(this);
+    this.updateEvents = this.updateEvents.bind(this);
   }
 
-  upVote(userId) {
+  updateEvents(eventsarr){
     // const user = this.state.users.find(user => user.id === userId);
 
     this.setState({
-      users: this.state.users
-        .map(user => {
-          if (user.id === userId) {
-            return {
-              ...user,
-              score: user.score + 1,
-              lastUpdateTime: new Date().toLocaleString("he-IL")
-            };
-          }
-          return user;
-        })
-        .sort((user1, user2) => user2.score - user1.score)
-    });
-  }
+      events: [this.state.events , ...eventsarr]                             
+                        //  .push(wish => {
+                        //     if(user.id === userId){
+                        //         return {
+                        //             ...user, 
+                        //             score: user.score+1,
+                        //             lastUpdateTime: new Date().toLocaleString('he-IL')
+                        //         }//return
+                        //     }//if
+                        //     return user;
+                        // })
+                        .sort((event1, event2) => event2.lastUpdateTime - event1.lastUpdateTime)
+    }
+    );
+}
 
   render() {
     return (
@@ -89,16 +91,18 @@ export default class MyWishes extends React.Component {
               </div>
               <div className="row">
                 {/* <EventCard  /> */}
-                <EventCard />
-                <EventCard />
+              {this.state.events.map(event => <EventCard {...event} key={event.id}  />)} 
+
+                {/* <EventCard />
+                <EventCard /> */}
               </div>
               <div className="row">
+                {/* <EventCard />
                 <EventCard />
                 <EventCard />
                 <EventCard />
                 <EventCard />
-                <EventCard />
-                <EventCard />
+                <EventCard /> */}
               </div>
             </div>
           </div>

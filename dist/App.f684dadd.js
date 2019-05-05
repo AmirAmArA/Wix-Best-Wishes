@@ -29892,14 +29892,14 @@ function (_React$Component) {
         className: "card border-light mb-3  maxwidth18 colorblack"
       }, _react.default.createElement("div", {
         className: "card-header"
-      }, "Wish1"), _react.default.createElement("div", {
+      }, this.props.name, " ", this.props.lastUpdateTime), _react.default.createElement("div", {
         className: "card-body"
       }, _react.default.createElement("img", {
         src: _logo.default,
         className: "card-img-top wishcard"
       }), _react.default.createElement("p", {
         className: "card-text"
-      }, "Some quick example text to build on the card title and make up the bulk of the card's content.")))));
+      }, this.props.description, " ", _react.default.createElement("br", null))))));
     }
   }]);
 
@@ -29931,9 +29931,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -29963,7 +29969,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ShowUserWishes).call(this));
     _this.state = {
-      users: [{
+      wishes: [{
         id: 1,
         name: 'Mustafa',
         avatar: 'images/avatar.jpg',
@@ -29984,35 +29990,29 @@ function (_React$Component) {
         score: 11,
         description: 'Shalom, I love Avatars...',
         lastUpdateTime: new Date().toLocaleString('he-IL')
-      }, {
-        id: 4,
-        name: 'Muhamad',
-        avatar: 'images/avatar2.png',
-        score: 10,
-        description: 'Ahalan, I love Avatars...',
-        lastUpdateTime: new Date().toLocaleString('he-IL')
       }]
     };
-    _this.upVote = _this.upVote.bind(_assertThisInitialized(_this));
+    _this.updateWishes = _this.updateWishes.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(ShowUserWishes, [{
-    key: "upVote",
-    value: function upVote(userId) {
+    key: "updateWishes",
+    value: function updateWishes(wishesarr) {
       // const user = this.state.users.find(user => user.id === userId);
       this.setState({
-        users: this.state.users.map(function (user) {
-          if (user.id === userId) {
-            return _objectSpread({}, user, {
-              score: user.score + 1,
-              lastUpdateTime: new Date().toLocaleString('he-IL')
-            });
-          }
-
-          return user;
-        }).sort(function (user1, user2) {
-          return user2.score - user1.score;
+        wishes: [this.state.wishes].concat(_toConsumableArray(wishesarr)) //  .push(wish => {
+        //     if(user.id === userId){
+        //         return {
+        //             ...user, 
+        //             score: user.score+1,
+        //             lastUpdateTime: new Date().toLocaleString('he-IL')
+        //         }//return
+        //     }//if
+        //     return user;
+        // })
+        .sort(function (wish1, wish2) {
+          return wish2.lastUpdateTime - wish1.lastUpdateTime;
         })
       });
     }
@@ -30033,9 +30033,11 @@ function (_React$Component) {
         className: "col-md-9 overyscrol "
       }, _react.default.createElement("div", {
         className: "row"
-      }, _react.default.createElement(_WishCard.default, null), _react.default.createElement(_WishCard.default, null), _react.default.createElement(_WishCard.default, null)), _react.default.createElement("div", {
-        className: "row"
-      })))));
+      }, this.state.wishes.map(function (wish) {
+        return _react.default.createElement(_WishCard.default, _extends({}, wish, {
+          key: wish.id
+        }));
+      }))))));
     }
   }]);
 
@@ -30100,6 +30102,7 @@ function (_React$Component) {
     _classCallCheck(this, NavComponent);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(NavComponent).call(this));
+    localStorage.clear();
     _this.state = {
       loginFlag: true,
       username: "Majde"
@@ -30120,89 +30123,145 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      localStorage.setItem("loginflag", this.state.loginFlag);
       var style = this.state.loginFlag ? {
         display: 'none'
       } : {};
       var style1 = this.state.loginFlag ? {} : {
         display: 'none'
-      };
-      var isLoggedIn = localStorage.getItem("loginflag");
-      this.checkIfLogedIn(isLoggedIn);
-      return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement("nav", {
-        className: "navbar navbar-expand-lg navbar-dark navStyle"
-      }, _react.default.createElement("a", {
-        className: "navbar-brand"
-      }, _react.default.createElement("img", {
-        src: _logo.default,
-        className: "logo"
-      })), _react.default.createElement("button", {
-        className: "navbar-toggler",
-        type: "button",
-        "data-toggle": "collapse",
-        "data-target": "#navbarSupportedContent",
-        "aria-controls": "navbarSupportedContent",
-        "aria-expanded": "false",
-        "aria-label": "Toggle navigation"
-      }, _react.default.createElement("span", {
-        className: "navbar-toggler-icon"
-      })), _react.default.createElement("div", {
-        className: "collapse navbar-collapse",
-        id: "navbarSupportedContent"
-      }, _react.default.createElement("ul", {
-        className: "navbar-nav mr-auto"
-      }, _react.default.createElement("li", {
-        className: "nav-item active"
-      }, _react.default.createElement("a", {
-        className: "nav-link",
-        href: "/"
-      }, "Home")), _react.default.createElement("li", {
-        className: "nav-item"
-      }, _react.default.createElement("a", {
-        className: "nav-link",
-        href: "/MyEvents"
-      }, "MyEvents")), _react.default.createElement("li", {
-        className: "nav-item "
-      }, _react.default.createElement("a", {
-        className: "nav-link",
-        href: "/ShowUserWishes"
-      }, "MyWishes")), _react.default.createElement("li", {
-        className: "nav-item"
-      }, _react.default.createElement("a", {
-        className: "nav-link ",
-        href: "/about",
-        tabIndex: "-1",
-        "aria-disabled": "true"
-      }, "About"))), _react.default.createElement("form", {
-        className: "form-inline my-2 my-lg-0"
-      }, _react.default.createElement("button", {
-        id: "Loginbtn",
-        className: this.state.btn,
-        style: style
-        /* "btn btn-outline-success my-2 my-sm-0"*/
+      }; // const isLoggedIn = localStorage.getItem("loginflag");
 
-      }, _react.default.createElement("a", {
-        href: "/Login",
-        className: "colorgreen"
-      }, "SignIn")), _react.default.createElement("button", {
-        id: "Registerbtn",
-        className: this.state.btn,
-        style: style //"btn btn-outline-success my-2 my-sm-0" 
+      if (this.state.loginFlag) {
+        console.log("user is logged in");
+        return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement("nav", {
+          className: "navbar navbar-expand-lg navbar-dark navStyle"
+        }, _react.default.createElement("a", {
+          className: "navbar-brand"
+        }, _react.default.createElement("img", {
+          src: _logo.default,
+          className: "logo"
+        })), _react.default.createElement("button", {
+          className: "navbar-toggler",
+          type: "button",
+          "data-toggle": "collapse",
+          "data-target": "#navbarSupportedContent",
+          "aria-controls": "navbarSupportedContent",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation"
+        }, _react.default.createElement("span", {
+          className: "navbar-toggler-icon"
+        })), _react.default.createElement("div", {
+          className: "collapse navbar-collapse",
+          id: "navbarSupportedContent"
+        }, _react.default.createElement("ul", {
+          className: "navbar-nav mr-auto"
+        }, _react.default.createElement("li", {
+          className: "nav-item active"
+        }, _react.default.createElement("a", {
+          className: "nav-link",
+          href: "/"
+        }, "Home")), _react.default.createElement("li", {
+          className: "nav-item"
+        }, _react.default.createElement("a", {
+          className: "nav-link",
+          href: "/MyEvents"
+        }, "MyEvents")), _react.default.createElement("li", {
+          className: "nav-item "
+        }, _react.default.createElement("a", {
+          className: "nav-link",
+          href: "/ShowUserWishes"
+        }, "MyWishes")), _react.default.createElement("li", {
+          className: "nav-item"
+        }, _react.default.createElement("a", {
+          className: "nav-link ",
+          href: "/about",
+          tabIndex: "-1",
+          "aria-disabled": "true"
+        }, "About"))), _react.default.createElement("form", {
+          className: "form-inline my-2 my-lg-0"
+        }, _react.default.createElement("div", {
+          className: this.state.divhellousername,
+          id: "hellousernameid",
+          style: style1
+        }, _react.default.createElement("span", {
+          className: "colorwhite "
+        }, "Hi:", this.state.username))))));
+      } else {
+        console.log("user is not logged in");
+        return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement("nav", {
+          className: "navbar navbar-expand-lg navbar-dark navStyle"
+        }, _react.default.createElement("a", {
+          className: "navbar-brand"
+        }, _react.default.createElement("img", {
+          src: _logo.default,
+          className: "logo"
+        })), _react.default.createElement("button", {
+          className: "navbar-toggler",
+          type: "button",
+          "data-toggle": "collapse",
+          "data-target": "#navbarSupportedContent",
+          "aria-controls": "navbarSupportedContent",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation"
+        }, _react.default.createElement("span", {
+          className: "navbar-toggler-icon"
+        })), _react.default.createElement("div", {
+          className: "collapse navbar-collapse",
+          id: "navbarSupportedContent"
+        }, _react.default.createElement("ul", {
+          className: "navbar-nav mr-auto"
+        }, _react.default.createElement("li", {
+          className: "nav-item active"
+        }, _react.default.createElement("a", {
+          className: "nav-link",
+          href: "/"
+        }, "Home")), _react.default.createElement("li", {
+          className: "nav-item"
+        }, _react.default.createElement("a", {
+          className: "nav-link",
+          href: "/MyEvents"
+        }, "MyEvents")), _react.default.createElement("li", {
+          className: "nav-item "
+        }, _react.default.createElement("a", {
+          className: "nav-link",
+          href: "/ShowUserWishes"
+        }, "MyWishes")), _react.default.createElement("li", {
+          className: "nav-item"
+        }, _react.default.createElement("a", {
+          className: "nav-link ",
+          href: "/about",
+          tabIndex: "-1",
+          "aria-disabled": "true"
+        }, "About"))), _react.default.createElement("form", {
+          className: "form-inline my-2 my-lg-0"
+        }, _react.default.createElement("button", {
+          id: "Loginbtn",
+          className: this.state.btn,
+          style: style
+          /* "btn btn-outline-success my-2 my-sm-0"*/
 
-      }, _react.default.createElement("a", {
-        href: "/Register",
-        className: "colorgreen"
-      }, "Register")), _react.default.createElement("div", {
-        className: this.state.divhellousername,
-        id: "hellousernameid",
-        style: style1
-      }, _react.default.createElement("span", {
-        className: "colorwhite "
-      }, "Hi:", this.state.username))))));
-    }
+        }, _react.default.createElement("a", {
+          href: "/Login",
+          className: "colorgreen"
+        }, "SignIn")), _react.default.createElement("button", {
+          id: "Registerbtn",
+          className: this.state.btn,
+          style: style //"btn btn-outline-success my-2 my-sm-0" 
+
+        }, _react.default.createElement("a", {
+          href: "/Register",
+          className: "colorgreen"
+        }, "Register"))))));
+      } //else
+      // this.checkIfLogedIn(isLoggedIn);
+
+    } //render
+
   }]);
 
   return NavComponent;
-}(_react.default.Component);
+}(_react.default.Component); //class
+
 
 exports.NavComponent = NavComponent;
 },{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./App":"src/App.js","./ShowUserWishes":"src/ShowUserWishes.js"}],"src/About.js":[function(require,module,exports) {
@@ -45782,9 +45841,9 @@ function (_React$Component) {
         alt: "card image"
       })), _react.default.createElement("h4", {
         className: "card-title"
-      }, "Sunlimetech"), _react.default.createElement("p", {
+      }, this.props.name, " ", _react.default.createElement("br", null), this.props.lastUpdateTime), _react.default.createElement("p", {
         className: "card-text"
-      }, "This is basic card with image on top, title, description and button."), _react.default.createElement("button", {
+      }, this.props.description), _react.default.createElement("button", {
         id: "searchEventbtn",
         type: "button",
         className: "btn btn-outline-info"
@@ -46094,51 +46153,99 @@ function (_React$Component) {
   _inherits(HomeComponent, _React$Component);
 
   function HomeComponent() {
+    var _this;
+
     _classCallCheck(this, HomeComponent);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(HomeComponent).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(HomeComponent).call(this));
+    _this.state = {
+      loginFlag: localStorage.getItem("loginflag")
+    };
+    return _this;
   }
 
   _createClass(HomeComponent, [{
     key: "render",
     value: function render() {
-      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-md-4"
-      }, " "), _react.default.createElement("div", {
-        className: "col-md-4"
-      }, _react.default.createElement("div", {
-        className: "card mb-3 cardBackground"
-      }, _react.default.createElement("img", {
-        src: _logo.default,
-        className: "card-img-top"
-      }), _react.default.createElement("div", {
-        className: "card-body"
-      }, _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-md-4"
-      }), _react.default.createElement("div", {
-        className: "col-md-4"
-      }, _react.default.createElement("button", {
-        className: "btn btn-outline-info my-2 my-sm-0"
-      }, _react.default.createElement("a", {
-        href: "/AddEvent"
-      }, "Create event Box")), _react.default.createElement("button", {
-        className: "btn btn-outline-info my-2 my-sm-0"
-      }, _react.default.createElement("a", {
-        href: "/SearchEvent"
-      }, "Add a best wish!!"))), _react.default.createElement("div", {
-        className: "col-md-4"
-      }))), _react.default.createElement("div", {
-        className: "col-md-4"
-      })))));
-    }
+      var isLoggedIn = localStorage.getItem("loginflag");
+      console.log("loginflag = ", isLoggedIn);
+
+      if (this.state.loginFlag === true) {
+        return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+          className: "row"
+        }, _react.default.createElement("div", {
+          className: "col-md-4"
+        }, " "), _react.default.createElement("div", {
+          className: "col-md-4"
+        }, _react.default.createElement("div", {
+          className: "card mb-3 cardBackground"
+        }, _react.default.createElement("img", {
+          src: _logo.default,
+          className: "card-img-top"
+        }), _react.default.createElement("div", {
+          className: "card-body"
+        }, _react.default.createElement("div", {
+          className: "row"
+        }, _react.default.createElement("div", {
+          className: "col-md-4"
+        }), _react.default.createElement("div", {
+          className: "col-md-4"
+        }, _react.default.createElement("button", {
+          className: "btn btn-outline-info my-2 my-sm-0"
+        }, _react.default.createElement("a", {
+          href: "/AddEvent"
+        }, "Create event Box")), _react.default.createElement("button", {
+          className: "btn btn-outline-info my-2 my-sm-0"
+        }, _react.default.createElement("a", {
+          href: "/SearchEvent"
+        }, "Add a best wish!!"))), _react.default.createElement("div", {
+          className: "col-md-4"
+        }))), _react.default.createElement("div", {
+          className: "col-md-4"
+        })))));
+      } //if
+      else {
+          return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+            className: "row"
+          }, _react.default.createElement("div", {
+            className: "col-md-4"
+          }, " "), _react.default.createElement("div", {
+            className: "col-md-4"
+          }, _react.default.createElement("div", {
+            className: "card mb-3 cardBackground"
+          }, _react.default.createElement("img", {
+            src: _logo.default,
+            className: "card-img-top"
+          }), _react.default.createElement("div", {
+            className: "card-body"
+          }, _react.default.createElement("div", {
+            className: "row"
+          }, _react.default.createElement("div", {
+            className: "col-md-4"
+          }), _react.default.createElement("div", {
+            className: "col-md-4"
+          }, _react.default.createElement("button", {
+            className: "btn btn-outline-info my-2 my-sm-0"
+          }, _react.default.createElement("a", {
+            href: "/Register"
+          }, "Create event Box")), _react.default.createElement("button", {
+            className: "btn btn-outline-info my-2 my-sm-0"
+          }, _react.default.createElement("a", {
+            href: "/SearchEvent"
+          }, "Add a best wish!!"))), _react.default.createElement("div", {
+            className: "col-md-4"
+          }))), _react.default.createElement("div", {
+            className: "col-md-4"
+          })))));
+        } //else
+
+    } //render
+
   }]);
 
   return HomeComponent;
-}(_react.default.Component);
+}(_react.default.Component); //class
+
 
 exports.default = HomeComponent;
 },{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./App":"src/App.js","./SearchEvent":"src/SearchEvent.js"}],"src/MyEvents.js":[function(require,module,exports) {
@@ -46165,9 +46272,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -46197,56 +46310,57 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(MyWishes).call(this));
     _this.state = {
-      users: [{
+      events: [{
         id: 1,
-        name: "Mustafa",
+        name: "event1",
         avatar: "images/avatar.jpg",
         score: 24,
         description: "Marhaba, I love Avatars...",
         lastUpdateTime: new Date().toLocaleString("he-IL")
       }, {
         id: 2,
-        name: "Suhir",
+        name: "event2",
         avatar: "images/avatar.jpg",
         score: 19,
         description: "Hello, I love Avatars...",
         lastUpdateTime: new Date().toLocaleString("he-IL")
       }, {
         id: 3,
-        name: "Shahar",
+        name: "event3",
         avatar: "images/avatar2.png",
         score: 11,
         description: "Shalom, I love Avatars...",
         lastUpdateTime: new Date().toLocaleString("he-IL")
       }, {
         id: 4,
-        name: "Muhamad",
+        name: "event4",
         avatar: "images/avatar2.png",
         score: 10,
         description: "Ahalan, I love Avatars...",
         lastUpdateTime: new Date().toLocaleString("he-IL")
       }]
     };
-    _this.upVote = _this.upVote.bind(_assertThisInitialized(_this));
+    _this.updateEvents = _this.updateEvents.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(MyWishes, [{
-    key: "upVote",
-    value: function upVote(userId) {
+    key: "updateEvents",
+    value: function updateEvents(eventsarr) {
       // const user = this.state.users.find(user => user.id === userId);
       this.setState({
-        users: this.state.users.map(function (user) {
-          if (user.id === userId) {
-            return _objectSpread({}, user, {
-              score: user.score + 1,
-              lastUpdateTime: new Date().toLocaleString("he-IL")
-            });
-          }
-
-          return user;
-        }).sort(function (user1, user2) {
-          return user2.score - user1.score;
+        events: [this.state.events].concat(_toConsumableArray(eventsarr)) //  .push(wish => {
+        //     if(user.id === userId){
+        //         return {
+        //             ...user, 
+        //             score: user.score+1,
+        //             lastUpdateTime: new Date().toLocaleString('he-IL')
+        //         }//return
+        //     }//if
+        //     return user;
+        // })
+        .sort(function (event1, event2) {
+          return event2.lastUpdateTime - event1.lastUpdateTime;
         })
       });
     }
@@ -46277,9 +46391,13 @@ function (_React$Component) {
         className: "col-md-4"
       })), _react.default.createElement("div", {
         className: "row"
-      }, _react.default.createElement(_EventCard.default, null), _react.default.createElement(_EventCard.default, null)), _react.default.createElement("div", {
+      }, this.state.events.map(function (event) {
+        return _react.default.createElement(_EventCard.default, _extends({}, event, {
+          key: event.id
+        }));
+      })), _react.default.createElement("div", {
         className: "row"
-      }, _react.default.createElement(_EventCard.default, null), _react.default.createElement(_EventCard.default, null), _react.default.createElement(_EventCard.default, null), _react.default.createElement(_EventCard.default, null), _react.default.createElement(_EventCard.default, null), _react.default.createElement(_EventCard.default, null)))), _react.default.createElement("div", {
+      }))), _react.default.createElement("div", {
         className: "col-md-1"
       })), _react.default.createElement("div", {
         className: "row"
@@ -46428,9 +46546,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -46460,7 +46584,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(MyWishes).call(this));
     _this.state = {
-      users: [{
+      wishes: [{
         id: 1,
         name: "Mustafa",
         avatar: "images/avatar.jpg",
@@ -46490,26 +46614,17 @@ function (_React$Component) {
         lastUpdateTime: new Date().toLocaleString("he-IL")
       }]
     };
-    _this.upVote = _this.upVote.bind(_assertThisInitialized(_this));
+    _this.updateWishes = _this.updateWishes.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(MyWishes, [{
-    key: "upVote",
-    value: function upVote(userId) {
+    key: "updateWishes",
+    value: function updateWishes(wishesarr) {
       // const user = this.state.users.find(user => user.id === userId);
       this.setState({
-        users: this.state.users.map(function (user) {
-          if (user.id === userId) {
-            return _objectSpread({}, user, {
-              score: user.score + 1,
-              lastUpdateTime: new Date().toLocaleString("he-IL")
-            });
-          }
-
-          return user;
-        }).sort(function (user1, user2) {
-          return user2.score - user1.score;
+        wishes: [this.state.wishes].concat(_toConsumableArray(wishesarr)).sort(function (wish1, wish2) {
+          return wish2.lastUpdateTime - wish1.lastUpdateTime;
         })
       });
     }
@@ -46560,22 +46675,13 @@ function (_React$Component) {
         className: "col-md-9 overyscrol "
       }, _react.default.createElement("div", {
         className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-md-4"
-      }, _react.default.createElement("div", {
-        className: "card border-light mb-3 maxwidth18"
-      }, _react.default.createElement("div", {
-        className: "card-header"
-      }, "Wish1"), _react.default.createElement("div", {
-        className: "card-body"
-      }, _react.default.createElement("img", {
-        src: "logo.PNG",
-        className: "card-img-top"
-      }), _react.default.createElement("p", {
-        className: "card-text"
-      }, "Some quick example text to build on the card title and make up the bulk of the card's content."))))), _react.default.createElement("div", {
+      }), _react.default.createElement("div", {
         className: "row"
-      }, _react.default.createElement(_WishCard.default, null), _react.default.createElement(_WishCard.default, null), _react.default.createElement(_WishCard.default, null)), _react.default.createElement("div", {
+      }, this.state.wishes.map(function (wish) {
+        return _react.default.createElement(_WishCard.default, _extends({}, wish, {
+          key: wish.id
+        }));
+      })), _react.default.createElement("div", {
         className: "row"
       })))));
     }
@@ -46989,11 +47095,11 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this));
     _this.state = {
-      loginFlag: true,
+      loginFlag: false,
       username: "Visitor"
-    };
-    localStorage.setItem("loginflag", _this.state.loginFlag);
-    console.log(localStorage.getItem("loginflag"));
+    }; // localStorage.setItem("loginflag", this.state.loginFlag);
+    // console.log(localStorage.getItem("loginflag"));
+
     return _this;
   }
 
@@ -47078,7 +47184,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53906" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60607" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

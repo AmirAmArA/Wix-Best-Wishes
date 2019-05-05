@@ -9,7 +9,7 @@ export default class MyWishes extends React.Component {
   constructor() {
     super();
     this.state = {
-      users: [
+      wishes: [
         {
           id: 1,
           name: "Mustafa",
@@ -44,25 +44,16 @@ export default class MyWishes extends React.Component {
         }
       ]
     };
-    this.upVote = this.upVote.bind(this);
+    this.updateWishes = this.updateWishes.bind(this);
   }
 
-  upVote(userId) {
+  updateWishes(wishesarr) {
     // const user = this.state.users.find(user => user.id === userId);
 
     this.setState({
-      users: this.state.users
-        .map(user => {
-          if (user.id === userId) {
-            return {
-              ...user,
-              score: user.score + 1,
-              lastUpdateTime: new Date().toLocaleString("he-IL")
-            };
-          }
-          return user;
-        })
-        .sort((user1, user2) => user2.score - user1.score)
+      wishes: [this.state.wishes, ...wishesarr].sort(
+        (wish1, wish2) => wish2.lastUpdateTime - wish1.lastUpdateTime
+      )
     });
   }
 
@@ -114,7 +105,7 @@ export default class MyWishes extends React.Component {
             </div>
             <div className="col-md-9 overyscrol ">
               <div className="row">
-                <div className="col-md-4">
+                {/* <div className="col-md-4">
                   <div className="card border-light mb-3 maxwidth18">
                     <div className="card-header">Wish1</div>
                     <div className="card-body">
@@ -125,12 +116,12 @@ export default class MyWishes extends React.Component {
                       </p>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
               <div className="row">
-                <WishCard />
-          <WishCard />
-          <WishCard />
+                {this.state.wishes.map(wish => (
+                  <WishCard {...wish} key={wish.id} />
+                ))}
               </div>
               <div className="row">
                 {/* <WishCard />

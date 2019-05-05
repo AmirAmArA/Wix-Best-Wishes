@@ -9,7 +9,8 @@ export default class ShowUserWishes extends React.Component {
   constructor(){
     super();
     this.state = {
-        users: [{
+
+        wishes: [{
             id: 1,
             name: 'Mustafa',
             avatar: 'images/avatar.jpg',
@@ -32,36 +33,29 @@ export default class ShowUserWishes extends React.Component {
             score: 11,
             description: 'Shalom, I love Avatars...',
             lastUpdateTime: new Date().toLocaleString('he-IL')
-        },
-        {
-            id: 4,
-            name: 'Muhamad',
-            avatar: 'images/avatar2.png',
-            score: 10,
-            description: 'Ahalan, I love Avatars...',
-            lastUpdateTime: new Date().toLocaleString('he-IL')
         }]
     }
-    this.upVote = this.upVote.bind(this);
+    this.updateWishes = this.updateWishes.bind(this);
 }
 
-upVote(userId){
+updateWishes(wishesarr){
     // const user = this.state.users.find(user => user.id === userId);
 
     this.setState({
-        users: this.state.users                             
-                         .map(user => {
-                            if(user.id === userId){
-                                return {
-                                    ...user, 
-                                    score: user.score+1,
-                                    lastUpdateTime: new Date().toLocaleString('he-IL')
-                                }
-                            }
-                            return user;
-                        })
-                        .sort((user1, user2) => user2.score - user1.score)
-    });
+        wishes: [this.state.wishes , ...wishesarr]                             
+                        //  .push(wish => {
+                        //     if(user.id === userId){
+                        //         return {
+                        //             ...user, 
+                        //             score: user.score+1,
+                        //             lastUpdateTime: new Date().toLocaleString('he-IL')
+                        //         }//return
+                        //     }//if
+                        //     return user;
+                        // })
+                        .sort((wish1, wish2) => wish2.lastUpdateTime - wish1.lastUpdateTime)
+    }
+    );
 }
 
   
@@ -84,15 +78,11 @@ upVote(userId){
         <div className="col-md-9 overyscrol " >
           
           <div className="row">
-          <WishCard />
-          <WishCard />
-          <WishCard />
+          {this.state.wishes.map(wish => <WishCard {...wish} key={wish.id}  />)}
+          {/* click={this.upVote} */}
+          
           </div>
-          <div className="row">
-          {/* <WishCard />
-          <WishCard />
-          <WishCard /> */}
-          </div>
+          
         </div>
       </div>
     </div>

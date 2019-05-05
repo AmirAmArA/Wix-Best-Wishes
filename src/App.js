@@ -22,11 +22,11 @@ export class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      loginFlag: true,
+      loginFlag: false,
       username:"Visitor"
     };
-    localStorage.setItem("loginflag", this.state.loginFlag);
-    console.log(localStorage.getItem("loginflag"));
+    // localStorage.setItem("loginflag", this.state.loginFlag);
+    // console.log(localStorage.getItem("loginflag"));
   }
 
   render() {
