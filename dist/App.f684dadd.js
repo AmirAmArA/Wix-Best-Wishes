@@ -29878,28 +29878,52 @@ function (_React$Component) {
   _inherits(WishCard, _React$Component);
 
   function WishCard() {
+    var _this;
+
     _classCallCheck(this, WishCard);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(WishCard).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(WishCard).call(this));
+    _this.state = {};
+    return _this;
   }
 
   _createClass(WishCard, [{
     key: "render",
     value: function render() {
-      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-        className: "col-md-4"
-      }, _react.default.createElement("div", {
-        className: "card border-light mb-3  maxwidth18 colorblack"
-      }, _react.default.createElement("div", {
-        className: "card-header"
-      }, this.props.name, " ", this.props.lastUpdateTime), _react.default.createElement("div", {
-        className: "card-body"
-      }, _react.default.createElement("img", {
-        src: _logo.default,
-        className: "card-img-top wishcard"
-      }), _react.default.createElement("p", {
-        className: "card-text"
-      }, this.props.description, " ", _react.default.createElement("br", null))))));
+      if (this.props.callercomp == "ShowUserWishes") {
+        // console.log("calling components is" ,this.props.callercomp)
+        console.log("calling components is : ShowUserWishes");
+        return _react.default.createElement("div", {
+          className: "col-md-4"
+        }, _react.default.createElement("div", {
+          className: "card border-light mb-3  maxwidth18 colorblack"
+        }, _react.default.createElement("div", {
+          className: "card-header"
+        }, this.props.name, " ", this.props.lastUpdateTime), _react.default.createElement("div", {
+          className: "card-body"
+        }, _react.default.createElement("img", {
+          src: _logo.default,
+          className: "card-img-top wishcard"
+        }), _react.default.createElement("p", {
+          className: "card-text"
+        }, this.props.description, " ", _react.default.createElement("br", null), _react.default.createElement("button", null, " edit"), _react.default.createElement("button", null, " delete")))));
+      } //if
+      else {
+          return _react.default.createElement("div", {
+            className: "col-md-4"
+          }, _react.default.createElement("div", {
+            className: "card border-light mb-3  maxwidth18 colorblack"
+          }, _react.default.createElement("div", {
+            className: "card-header"
+          }, this.props.name, " ", this.props.lastUpdateTime), _react.default.createElement("div", {
+            className: "card-body"
+          }, _react.default.createElement("img", {
+            src: _logo.default,
+            className: "card-img-top wishcard"
+          }), _react.default.createElement("p", {
+            className: "card-text"
+          }, this.props.description, " ", _react.default.createElement("br", null)))));
+        }
     }
   }]);
 
@@ -29975,21 +29999,24 @@ function (_React$Component) {
         avatar: 'images/avatar.jpg',
         score: 24,
         description: 'Marhaba, I love Avatars...',
-        lastUpdateTime: new Date().toLocaleString('he-IL')
+        lastUpdateTime: new Date().toLocaleString('he-IL'),
+        callercomp: "ShowUserWishes"
       }, {
         id: 2,
         name: 'Suhir',
         avatar: 'images/avatar.jpg',
         score: 19,
         description: 'Hello, I love Avatars...',
-        lastUpdateTime: new Date().toLocaleString('he-IL')
+        lastUpdateTime: new Date().toLocaleString('he-IL'),
+        callercomp: "ShowUserWishes"
       }, {
         id: 3,
         name: 'Shahar',
         avatar: 'images/avatar2.png',
         score: 11,
         description: 'Shalom, I love Avatars...',
-        lastUpdateTime: new Date().toLocaleString('he-IL')
+        lastUpdateTime: new Date().toLocaleString('he-IL'),
+        callercomp: "ShowUserWishes"
       }]
     };
     _this.updateWishes = _this.updateWishes.bind(_assertThisInitialized(_this));
@@ -30019,6 +30046,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      // console.log("calling components is" ,this.state.callercomp)
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", null, _react.default.createElement("div", {
         className: "row"
       }, _react.default.createElement("br", null), _react.default.createElement("br", null)), _react.default.createElement("div", {
@@ -30079,9 +30107,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -30106,21 +30134,14 @@ function (_React$Component) {
     _this.state = {
       loginFlag: true,
       username: "Majde"
-    };
-    console.log(localStorage.getItem("loginflag"));
-    _this.checkIfLogedIn = _this.checkIfLogedIn.bind(_assertThisInitialized(_this));
+    }; // console.log(localStorage.getItem("loginflag"));
+    // this.checkIfLogedIn = this.checkIfLogedIn.bind(this);
+
     return _this;
-  }
+  } //inside render: if loggedin => run function that return the label , else run func. that retu. 2 buttons
+
 
   _createClass(NavComponent, [{
-    key: "checkIfLogedIn",
-    value: function checkIfLogedIn(flag) {
-      //check if the user is logged in
-      console.log(this.state.btn, this.state.divhellousername);
-    } //function
-    //inside render: if loggedin => run function that return the label , else run func. that retu. 2 buttons
-
-  }, {
     key: "render",
     value: function render() {
       localStorage.setItem("loginflag", this.state.loginFlag);
@@ -46329,7 +46350,7 @@ function (_React$Component) {
         name: "event3",
         avatar: "images/avatar2.png",
         score: 11,
-        description: "Shalom, I love Avatars...",
+        description: "Shalom, I love Avatars.................................................................................................................................................................................................................................................................",
         lastUpdateTime: new Date().toLocaleString("he-IL")
       }, {
         id: 4,
@@ -47184,7 +47205,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60607" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50170" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

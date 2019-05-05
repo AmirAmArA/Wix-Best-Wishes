@@ -21,15 +21,11 @@ export class NavComponent extends React.Component {
       username: "Majde"
 
     };
-    console.log(localStorage.getItem("loginflag"));
+    // console.log(localStorage.getItem("loginflag"));
 
-    this.checkIfLogedIn = this.checkIfLogedIn.bind(this);
+    // this.checkIfLogedIn = this.checkIfLogedIn.bind(this);
   }
-  checkIfLogedIn(flag) {
-    //check if the user is logged in
-    console.log(this.state.btn, this.state.divhellousername);
-
-  } //function
+  
 
   //inside render: if loggedin => run function that return the label , else run func. that retu. 2 buttons
   render() {

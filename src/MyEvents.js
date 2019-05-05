@@ -32,7 +32,7 @@ export default class MyWishes extends React.Component {
           name: "event3",
           avatar: "images/avatar2.png",
           score: 11,
-          description: "Shalom, I love Avatars...",
+          description: "Shalom, I love Avatars.................................................................................................................................................................................................................................................................",
           lastUpdateTime: new Date().toLocaleString("he-IL")
         },
         {

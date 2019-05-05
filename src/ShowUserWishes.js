@@ -16,7 +16,8 @@ export default class ShowUserWishes extends React.Component {
             avatar: 'images/avatar.jpg',
             score: 24,
             description: 'Marhaba, I love Avatars...',
-            lastUpdateTime: new Date().toLocaleString('he-IL')
+            lastUpdateTime: new Date().toLocaleString('he-IL'),
+            callercomp: "ShowUserWishes"
         },
             {
             id: 2,
@@ -24,7 +25,8 @@ export default class ShowUserWishes extends React.Component {
             avatar: 'images/avatar.jpg',
             score: 19,
             description: 'Hello, I love Avatars...',
-            lastUpdateTime: new Date().toLocaleString('he-IL')
+            lastUpdateTime: new Date().toLocaleString('he-IL'),
+            callercomp: "ShowUserWishes"
         },
         {
             id: 3,
@@ -32,8 +34,10 @@ export default class ShowUserWishes extends React.Component {
             avatar: 'images/avatar2.png',
             score: 11,
             description: 'Shalom, I love Avatars...',
-            lastUpdateTime: new Date().toLocaleString('he-IL')
-        }]
+            lastUpdateTime: new Date().toLocaleString('he-IL'),
+            callercomp: "ShowUserWishes"
+        }],
+         
     }
     this.updateWishes = this.updateWishes.bind(this);
 }
@@ -54,13 +58,18 @@ updateWishes(wishesarr){
                         //     return user;
                         // })
                         .sort((wish1, wish2) => wish2.lastUpdateTime - wish1.lastUpdateTime)
-    }
+                        
+    
+                      }
+    
     );
 }
 
   
   
   render() {
+    
+    // console.log("calling components is" ,this.state.callercomp)
     return <>
         <div>
       <div className="row"><br /><br /></div>
@@ -78,8 +87,8 @@ updateWishes(wishesarr){
         <div className="col-md-9 overyscrol " >
           
           <div className="row">
-          {this.state.wishes.map(wish => <WishCard {...wish} key={wish.id}  />)}
-          {/* click={this.upVote} */}
+          {this.state.wishes.map(wish => <WishCard  {...wish  }  key={wish.id}  />) }
+          
           
           </div>
           
