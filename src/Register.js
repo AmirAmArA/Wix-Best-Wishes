@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./general.css";
+import Login from "./Login";
 
 export default class Register extends React.Component {
   render() {
@@ -73,7 +74,7 @@ export default class Register extends React.Component {
             </div>
           </form>
           <div className="text-center">
-            Already have an account? <a href="Login.html">Sign in</a>
+            Already have an account? <a href="/Login">Sign in</a>
           </div>
         </div>
       </>

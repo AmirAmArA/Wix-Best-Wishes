@@ -66,7 +66,9 @@ export default class AddAWish extends React.Component {
       <div className="col-md-4"></div>
       <div className="col-md-4">
         <button id="searchEventbtn" type="button" className="btn btn-outline-warning">
-          Add a wish
+          
+          <a href="/MyWishes">Add a wish</a>
+          
         </button>
       </div>
     </div>

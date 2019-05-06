@@ -3,9 +3,8 @@ import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./general.css";
 import logo from "../assets/logo.PNG";
-import App from "./App";
 
-export default class AddEvent extends React.Component {
+export default class EditEvent extends React.Component {
   render() {
     return (
       <>
@@ -149,7 +148,7 @@ export default class AddEvent extends React.Component {
                           type="button"
                           className="btn btn-outline-info"
                         >
-                        <a href="/MyEvents">Create event box</a>
+                        <a href="/MyEvents">Save Changes</a>
                           
                         </button>
                       </div>
