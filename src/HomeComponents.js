@@ -19,8 +19,8 @@ export default class HomeComponent extends React.Component {
   render() {
     const isLoggedIn = localStorage.getItem("loginflag");
     console.log("loginflag = ", isLoggedIn);
-
-    if (this.state.loginFlag === true) {
+    // 
+    if (this.state.loginFlag ) {
       return (
         <>
           <div className="row">

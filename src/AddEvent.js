@@ -5,6 +5,8 @@ import "./general.css";
 import logo from "../assets/logo.PNG";
 import App from "./App";
 
+import {Dropdown , DropdownItem} from 'react-bootstrap';
+
 export default class AddEvent extends React.Component {
   render() {
     return (
@@ -47,7 +49,19 @@ export default class AddEvent extends React.Component {
                             <button className="dropdown-item" type="button">
                               New Born
                             </button>
+
                           </div>
+                          <Dropdown>
+                            <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                              Dropdown Button
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                              <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                            </Dropdown.Menu>
+                          </Dropdown>
                         </div>
                       </div>
                     </div>
