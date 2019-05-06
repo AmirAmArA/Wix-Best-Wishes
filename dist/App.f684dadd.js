@@ -45950,9 +45950,9 @@ function (_React$Component) {
         alt: "card image"
       })), _react.default.createElement("h4", {
         className: "card-title"
-      }, "Sunlimetech"), _react.default.createElement("p", {
+      }, this.props.name, this.props.lastUpdateTime), _react.default.createElement("p", {
         className: "card-text"
-      }, "This is basic card with image on top, title, description and button."), _react.default.createElement("button", {
+      }, this.props.description), _react.default.createElement("button", {
         id: "searchEventbtn",
         type: "button",
         className: "btn btn-outline-info"
@@ -45984,6 +45984,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -45992,9 +46002,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -46006,12 +46016,63 @@ function (_React$Component) {
   _inherits(SearchEvent, _React$Component);
 
   function SearchEvent() {
+    var _this;
+
     _classCallCheck(this, SearchEvent);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(SearchEvent).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(SearchEvent).call(this));
+    _this.state = {
+      events: [{
+        id: 1,
+        name: 'Mustafa',
+        avatar: 'images/avatar.jpg',
+        score: 24,
+        description: 'Marhaba, I love Avatars...',
+        lastUpdateTime: new Date().toLocaleString('he-IL'),
+        callercomp: "ShowUserWishes"
+      }, {
+        id: 2,
+        name: 'Suhir',
+        avatar: 'images/avatar.jpg',
+        score: 19,
+        description: 'Hello, I love Avatars...',
+        lastUpdateTime: new Date().toLocaleString('he-IL'),
+        callercomp: "ShowUserWishes"
+      }, {
+        id: 3,
+        name: 'Shahar',
+        avatar: 'images/avatar2.png',
+        score: 11,
+        description: 'Shalom, I love Avatars...',
+        lastUpdateTime: new Date().toLocaleString('he-IL'),
+        callercomp: "ShowUserWishes"
+      }]
+    };
+    _this.updateEvents = _this.updateEvents.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(SearchEvent, [{
+    key: "updateEvents",
+    value: function updateEvents(eventsarr) {
+      // const user = this.state.users.find(user => user.id === userId);
+      this.setState({
+        events: [this.state.events].concat(_toConsumableArray(eventsarr)) //  .push(wish => {
+        //     if(user.id === userId){
+        //         return {
+        //             ...user, 
+        //             score: user.score+1,
+        //             lastUpdateTime: new Date().toLocaleString('he-IL')
+        //         }//return
+        //     }//if
+        //     return user;
+        // })
+        .sort(function (event1, event2) {
+          return event2.lastUpdateTime - event1.lastUpdateTime;
+        })
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
@@ -46077,7 +46138,7 @@ function (_React$Component) {
         placeholder: "Event Location"
       }), _react.default.createElement("br", null), _react.default.createElement("button", {
         type: "button",
-        class: "btn btn-outline-warning"
+        className: "btn btn-outline-warning"
       }, "Search Event")))), _react.default.createElement("div", {
         className: "col-md-9"
       }, _react.default.createElement("div", null, _react.default.createElement("div", {
@@ -46104,21 +46165,17 @@ function (_React$Component) {
         className: "col-md-4"
       })), _react.default.createElement("div", {
         className: "row"
-      }, _react.default.createElement(_EventCardToView.default, null), _react.default.createElement(_EventCardToView.default, null)), _react.default.createElement("div", {
+      }, _react.default.createElement(_EventCardToView.default, null), _react.default.createElement(_EventCardToView.default, null), _react.default.createElement(_EventCardToView.default, null)), _react.default.createElement("div", {
         className: "row"
-      }, _react.default.createElement(_EventCardToView.default, null), _react.default.createElement(_EventCardToView.default, null), _react.default.createElement(_EventCardToView.default, null), _react.default.createElement(_EventCardToView.default, null), _react.default.createElement(_EventCardToView.default, null), _react.default.createElement(_EventCardToView.default, null)))), _react.default.createElement("div", {
+      }, this.state.events.map(function (event) {
+        return _react.default.createElement(_EventCardToView.default, _extends({}, event, {
+          key: event.id
+        }));
+      })))), _react.default.createElement("div", {
         className: "col-md-1"
       })), _react.default.createElement("div", {
         className: "row"
-      }, _react.default.createElement("br", null), _react.default.createElement("br", null)), _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-md-4"
-      }), _react.default.createElement("div", {
-        className: "col-md-4"
-      }), _react.default.createElement("div", {
-        className: "col-md-4"
-      })))));
+      }, _react.default.createElement("br", null), _react.default.createElement("br", null)))));
     }
   }]);
 
@@ -47205,7 +47262,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50170" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65197" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -4,6 +4,68 @@ import ReactDOM from "react-dom";
 import EventCardToView from "./EventCardToView";
 
 export default class SearchEvent extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+
+        events: [{
+            id: 1,
+            name: 'Mustafa',
+            avatar: 'images/avatar.jpg',
+            score: 24,
+            description: 'Marhaba, I love Avatars...',
+            lastUpdateTime: new Date().toLocaleString('he-IL'),
+            callercomp: "ShowUserWishes"
+        },
+            {
+            id: 2,
+            name: 'Suhir',
+            avatar: 'images/avatar.jpg',
+            score: 19,
+            description: 'Hello, I love Avatars...',
+            lastUpdateTime: new Date().toLocaleString('he-IL'),
+            callercomp: "ShowUserWishes"
+        },
+        {
+            id: 3,
+            name: 'Shahar',
+            avatar: 'images/avatar2.png',
+            score: 11,
+            description: 'Shalom, I love Avatars...',
+            lastUpdateTime: new Date().toLocaleString('he-IL'),
+            callercomp: "ShowUserWishes"
+        }],
+         
+    }
+    this.updateEvents = this.updateEvents.bind(this);
+}
+
+updateEvents(eventsarr){
+    // const user = this.state.users.find(user => user.id === userId);
+
+    this.setState({
+      events: [this.state.events , ...eventsarr]                             
+                        //  .push(wish => {
+                        //     if(user.id === userId){
+                        //         return {
+                        //             ...user, 
+                        //             score: user.score+1,
+                        //             lastUpdateTime: new Date().toLocaleString('he-IL')
+                        //         }//return
+                        //     }//if
+                        //     return user;
+                        // })
+                        .sort((event1, event2) => event2.lastUpdateTime - event1.lastUpdateTime)
+                        
+    
+                      }
+    
+    );
+}
+
+  
+  
+  
   render() {
     return (
       <>
@@ -85,7 +147,7 @@ export default class SearchEvent extends React.Component {
                   placeholder="Event Location"
                 />
                 <br />
-                <button type="button" class="btn btn-outline-warning">
+                <button type="button" className="btn btn-outline-warning">
                   Search Event
                 </button>
               </div>
@@ -111,17 +173,19 @@ export default class SearchEvent extends React.Component {
                     <div className="col-md-4" />
                   </div>
                   <div className="row">
-                    {/* <EventCardToView  /> */}
+                    <EventCardToView />
                     <EventCardToView />
                     <EventCardToView />
                   </div>
                   <div className="row">
+                    {/* <EventCardToView /> */}
+          {this.state.events.map(event => <EventCardToView  {...event  }  key={event.id}  />) }
+
+                    {/* <EventCardToView />
                     <EventCardToView />
                     <EventCardToView />
                     <EventCardToView />
-                    <EventCardToView />
-                    <EventCardToView />
-                    <EventCardToView />
+                    <EventCardToView /> */}
                   </div>
                 </div>
               </div>
@@ -131,12 +195,6 @@ export default class SearchEvent extends React.Component {
             <div className="row">
               <br />
               <br />
-            </div>
-
-            <div className="row">
-              <div className="col-md-4" />
-              <div className="col-md-4" />
-              <div className="col-md-4" />
             </div>
           </div>
         </div>
