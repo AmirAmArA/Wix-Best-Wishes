@@ -45783,6 +45783,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -45791,9 +45799,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -45805,12 +45813,71 @@ function (_React$Component) {
   _inherits(AddEvent, _React$Component);
 
   function AddEvent() {
+    var _this;
+
     _classCallCheck(this, AddEvent);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(AddEvent).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(AddEvent).call(this));
+    _this.state = {
+      events: [{
+        id: 1,
+        title: "event1",
+        startdate: new Date().toLocaleString("he-IL"),
+        enddate: new Date().toLocaleString("he-IL"),
+        avatar: "images/avatar.jpg",
+        where: "place1",
+        lastUpdateTime: new Date().toLocaleString("he-IL")
+      }, {
+        id: 2,
+        title: "event2",
+        startdate: new Date().toLocaleString("he-IL"),
+        enddate: new Date().toLocaleString("he-IL"),
+        avatar: "images/avatar.jpg",
+        where: "place1",
+        lastUpdateTime: new Date().toLocaleString("he-IL")
+      }, {
+        id: 3,
+        title: "event3",
+        startdate: new Date().toLocaleString("he-IL"),
+        enddate: new Date().toLocaleString("he-IL"),
+        avatar: "images/avatar.jpg",
+        where: "place1",
+        lastUpdateTime: new Date().toLocaleString("he-IL")
+      }, {
+        id: 4,
+        title: "event4",
+        startdate: new Date().toLocaleString("he-IL"),
+        enddate: new Date().toLocaleString("he-IL"),
+        avatar: "images/avatar.jpg",
+        where: "place1",
+        lastUpdateTime: new Date().toLocaleString("he-IL")
+      }]
+    };
+    _this.updateEvents = _this.updateEvents.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(AddEvent, [{
+    key: "updateEvents",
+    value: function updateEvents(eventsarr) {
+      // const user = this.state.users.find(user => user.id === userId);
+      this.setState({
+        events: [this.state.events].concat(_toConsumableArray(eventsarr)) //  .push(wish => {
+        //     if(user.id === userId){
+        //         return {
+        //             ...user, 
+        //             score: user.score+1,
+        //             lastUpdateTime: new Date().toLocaleString('he-IL')
+        //         }//return
+        //     }//if
+        //     return user;
+        // })
+        .sort(function (event1, event2) {
+          return event2.lastUpdateTime - event1.lastUpdateTime;
+        })
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
@@ -45841,33 +45908,16 @@ function (_React$Component) {
         className: "col-md-8"
       }, _react.default.createElement("div", {
         className: "btn-group  btn-group-md "
-      }, _react.default.createElement("button", {
-        type: "button",
-        className: "btn btn-light  btn dropdown-toggle ",
-        "data-toggle": "dropdown",
-        "aria-haspopup": "true",
-        "aria-expanded": "false"
-      }, "Choose Category"), _react.default.createElement("div", {
-        className: "dropdown-menu dropdown-menu-center"
-      }, _react.default.createElement("button", {
-        className: "dropdown-item",
-        type: "button"
-      }, "Birthday"), _react.default.createElement("button", {
-        className: "dropdown-item",
-        type: "button"
-      }, "Wedding"), _react.default.createElement("button", {
-        className: "dropdown-item",
-        type: "button"
-      }, "New Born")), _react.default.createElement(_reactBootstrap.Dropdown, null, _react.default.createElement(_reactBootstrap.Dropdown.Toggle, {
+      }, _react.default.createElement(_reactBootstrap.Dropdown, null, _react.default.createElement(_reactBootstrap.Dropdown.Toggle, {
         variant: "secondary",
         id: "dropdown-basic"
-      }, "Dropdown Button"), _react.default.createElement(_reactBootstrap.Dropdown.Menu, null, _react.default.createElement(_reactBootstrap.Dropdown.Item, {
+      }, "Choose A Category"), _react.default.createElement(_reactBootstrap.Dropdown.Menu, null, _react.default.createElement(_reactBootstrap.Dropdown.Item, {
         href: "#/action-1"
-      }, "Action"), _react.default.createElement(_reactBootstrap.Dropdown.Item, {
+      }, "Birthday"), _react.default.createElement(_reactBootstrap.Dropdown.Item, {
         href: "#/action-2"
-      }, "Another action"), _react.default.createElement(_reactBootstrap.Dropdown.Item, {
+      }, "Wedding"), _react.default.createElement(_reactBootstrap.Dropdown.Item, {
         href: "#/action-3"
-      }, "Something else"))))))), _react.default.createElement("div", {
+      }, "New Born"))))))), _react.default.createElement("div", {
         className: "col-md-4"
       })), _react.default.createElement("div", {
         className: "row"
@@ -46163,6 +46213,8 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 
 var _EventCardToView = _interopRequireDefault(require("./EventCardToView"));
 
+var _reactBootstrap = require("react-bootstrap");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -46290,24 +46342,16 @@ function (_React$Component) {
         placeholder: "Enter Event ID"
       }), _react.default.createElement("br", null), _react.default.createElement("div", {
         className: "btn-group  btn-group-md "
-      }, _react.default.createElement("button", {
-        type: "button",
-        className: " btn  btn-outline-light dropdown-toggle  ",
-        "data-toggle": "dropdown",
-        "aria-haspopup": "true",
-        "aria-expanded": "false"
-      }, "Choose Category"), _react.default.createElement("div", {
-        className: "dropdown-menu dropdown-menu-center"
-      }, _react.default.createElement("button", {
-        className: "dropdown-item",
-        type: "button"
-      }, "Birthday"), _react.default.createElement("button", {
-        className: "dropdown-item",
-        type: "button"
-      }, "Wedding"), _react.default.createElement("button", {
-        className: "dropdown-item",
-        type: "button"
-      }, "New Born"))), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("br", null)), _react.default.createElement("input", {
+      }, _react.default.createElement(_reactBootstrap.Dropdown, null, _react.default.createElement(_reactBootstrap.Dropdown.Toggle, {
+        variant: "secondary",
+        id: "dropdown-basic"
+      }, "Choose A Category"), _react.default.createElement(_reactBootstrap.Dropdown.Menu, null, _react.default.createElement(_reactBootstrap.Dropdown.Item, {
+        href: "#/action-1"
+      }, "Birthday"), _react.default.createElement(_reactBootstrap.Dropdown.Item, {
+        href: "#/action-2"
+      }, "Wedding"), _react.default.createElement(_reactBootstrap.Dropdown.Item, {
+        href: "#/action-3"
+      }, "New Born")))), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("br", null)), _react.default.createElement("input", {
         className: "form-control",
         type: "date",
         placeholder: "Start"
@@ -46366,7 +46410,7 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.default = SearchEvent;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./EventCardToView":"src/EventCardToView.js"}],"src/HomeComponents.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./EventCardToView":"src/EventCardToView.js","react-bootstrap":"node_modules/react-bootstrap/es/index.js"}],"src/HomeComponents.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 
 import EventCardToView from "./EventCardToView";
 
+import {Dropdown , DropdownItem} from 'react-bootstrap';
 export default class SearchEvent extends React.Component {
   constructor(){
     super();
@@ -108,26 +109,18 @@ updateEvents(eventsarr){
                 />
                 <br />
                 <div className="btn-group  btn-group-md ">
-                  <button
-                    type="button"
-                    className=" btn  btn-outline-light dropdown-toggle  "
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    Choose Category
-                  </button>
-                  <div className="dropdown-menu dropdown-menu-center">
-                    <button className="dropdown-item" type="button">
-                      Birthday
-                    </button>
-                    <button className="dropdown-item" type="button">
-                      Wedding
-                    </button>
-                    <button className="dropdown-item" type="button">
-                      New Born
-                    </button>
-                  </div>
+                <Dropdown>
+                            <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                              Choose A Category
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                              <Dropdown.Item href="#/action-1">Birthday</Dropdown.Item>
+                              <Dropdown.Item href="#/action-2">Wedding</Dropdown.Item>
+                              <Dropdown.Item href="#/action-3">New Born</Dropdown.Item>
+                            </Dropdown.Menu>
+                          </Dropdown>
+                  
                 </div>
                 <br />
                 <div>

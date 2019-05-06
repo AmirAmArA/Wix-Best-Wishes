@@ -8,6 +8,74 @@ import App from "./App";
 import {Dropdown , DropdownItem} from 'react-bootstrap';
 
 export default class AddEvent extends React.Component {
+
+  constructor() {
+    super();
+    this.state = {
+
+      events: [
+        {
+          id: 1,
+          title: "event1",
+          startdate : new Date().toLocaleString("he-IL"),
+          enddate : new Date().toLocaleString("he-IL"),
+          avatar: "images/avatar.jpg",
+          where: "place1",
+          lastUpdateTime: new Date().toLocaleString("he-IL")
+        },
+        {
+          id: 2,
+          title: "event2",
+          startdate : new Date().toLocaleString("he-IL"),
+          enddate : new Date().toLocaleString("he-IL"),
+          avatar: "images/avatar.jpg",
+          where: "place1",
+          lastUpdateTime: new Date().toLocaleString("he-IL")
+        },
+        {
+          id: 3,
+          title: "event3",
+          startdate : new Date().toLocaleString("he-IL"),
+          enddate : new Date().toLocaleString("he-IL"),
+          avatar: "images/avatar.jpg",
+          where: "place1",
+          lastUpdateTime: new Date().toLocaleString("he-IL")
+        },
+        {
+          id: 4,
+          title: "event4",
+          startdate : new Date().toLocaleString("he-IL"),
+          enddate : new Date().toLocaleString("he-IL"),
+          avatar: "images/avatar.jpg",
+          where: "place1",
+          lastUpdateTime: new Date().toLocaleString("he-IL")
+        }
+      ]
+    };
+    this.updateEvents = this.updateEvents.bind(this);
+  }
+
+  updateEvents(eventsarr){
+    // const user = this.state.users.find(user => user.id === userId);
+
+    this.setState({
+      events: [this.state.events , ...eventsarr]                             
+                        //  .push(wish => {
+                        //     if(user.id === userId){
+                        //         return {
+                        //             ...user, 
+                        //             score: user.score+1,
+                        //             lastUpdateTime: new Date().toLocaleString('he-IL')
+                        //         }//return
+                        //     }//if
+                        //     return user;
+                        // })
+                        .sort((event1, event2) => event2.lastUpdateTime - event1.lastUpdateTime)
+    }
+    );
+}
+
+
   render() {
     return (
       <>
@@ -30,36 +98,17 @@ export default class AddEvent extends React.Component {
                       </div>
                       <div className="col-md-8">
                         <div className="btn-group  btn-group-md ">
-                          <button
-                            type="button"
-                            className="btn btn-light  btn dropdown-toggle "
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                          >
-                            Choose Category
-                          </button>
-                          <div className="dropdown-menu dropdown-menu-center">
-                            <button className="dropdown-item" type="button">
-                              Birthday
-                            </button>
-                            <button className="dropdown-item" type="button">
-                              Wedding
-                            </button>
-                            <button className="dropdown-item" type="button">
-                              New Born
-                            </button>
-
-                          </div>
+                          
+                          
                           <Dropdown>
                             <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                              Dropdown Button
+                              Choose A Category
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu>
-                              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                              <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                              <Dropdown.Item href="#/action-1">Birthday</Dropdown.Item>
+                              <Dropdown.Item href="#/action-2">Wedding</Dropdown.Item>
+                              <Dropdown.Item href="#/action-3">New Born</Dropdown.Item>
                             </Dropdown.Menu>
                           </Dropdown>
                         </div>
@@ -163,7 +212,7 @@ export default class AddEvent extends React.Component {
                           type="button"
                           className="btn btn-outline-info"
                         >
-                        <a href="/MyEvents">Create event box</a>
+                        <a href="/MyEvents" >Create event box</a>
                           
                         </button>
                       </div>
