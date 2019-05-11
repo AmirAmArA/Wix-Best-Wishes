@@ -42,8 +42,10 @@ export default class MyWishes extends React.Component {
           description: "Ahalan, I love Avatars...",
           lastUpdateTime: new Date().toLocaleString("he-IL")
         }
-      ]
+      ],
+      eventDetails: [this.props]
     };
+    console.log(this.props);
     this.updateWishes = this.updateWishes.bind(this);
   }
 
@@ -58,6 +60,8 @@ export default class MyWishes extends React.Component {
   }
 
   render() {
+    // eventname= localStorage.getItem('eventname');
+    console.log(this.props.name)
     return (
       <>
         <div>
@@ -75,7 +79,9 @@ export default class MyWishes extends React.Component {
                 <div className="card-body text-light">
                   <div className="row">
                     <div className="col-md-6">
-                      <span>Title:</span>
+                      <span>
+                        {this.props.name}:{this.props.id}
+                      </span>
                     </div>
                     <div className="col-md-6" />
                   </div>

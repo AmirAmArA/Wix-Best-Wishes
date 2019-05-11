@@ -5,7 +5,35 @@ import "./general.css";
 import Login from "./Login";
 
 export default class Register extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      username: "",
+      password: "",
+      fieldsvalidated: false
+    };
+    this.submit = this.submit.bind(this);
+  }
+
+  submit() {
+    var re = /^(([^<>()[]\.,;:s@"]+(.[^<>()[]\.,;:s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/gim;
+    if (exampleInputEmail1.val() == "" || !re.test(exampleInputEmail1.val())) {
+      alert("Please enter a valid email address.");
+      // return false;
+    }
+    if (password.value == "" || confirmpassword.value == "" ||confirmpassword.value !=password.value ) {
+      alert("passwords error!");
+    }
+  } //submit()
+  
+  
+  
   render() {
+    let exampleInputEmail1=document.getElementById("#exampleInputEmail1");
+    let fname=document.getElementById("#fname");
+    let lname=document.getElementById("#lname");
+    let password=document.getElementById("#password");
+    let confirmpassword=document.getElementById("#confirmpassword");
     return (
       <>
         <div className="signup-form">
@@ -23,6 +51,7 @@ export default class Register extends React.Component {
                     name="first_name"
                     placeholder="First Name"
                     required="required"
+                    id="fname"
                   />
                 </div>
                 <div className="col-md-6">
@@ -32,6 +61,7 @@ export default class Register extends React.Component {
                     name="last_name"
                     placeholder="Last Name"
                     required="required"
+                    id="lname"
                   />
                 </div>
               </div>
@@ -43,6 +73,7 @@ export default class Register extends React.Component {
                 name="email"
                 placeholder="Email"
                 required="required"
+                id="exampleInputEmail1"
               />
             </div>
             <div className="form-group">
@@ -52,6 +83,7 @@ export default class Register extends React.Component {
                 name="password"
                 placeholder="Password"
                 required="required"
+                id="password"
               />
             </div>
             <div className="form-group">
@@ -61,6 +93,7 @@ export default class Register extends React.Component {
                 name="confirm_password"
                 placeholder="Confirm Password"
                 required="required"
+                id="confirmpassword"
               />
             </div>
 
@@ -68,6 +101,7 @@ export default class Register extends React.Component {
               <button
                 type="submit"
                 className="btn btn-outline-info btn-lg btn-block"
+                onClick={this.submit}
               >
                 Join Now
               </button>
