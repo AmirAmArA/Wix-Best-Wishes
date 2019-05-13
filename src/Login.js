@@ -5,7 +5,33 @@ import "./general.css";
 import logo from "../assets/logo.PNG";
 
 export default class Login extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      username: "",
+      password: "",
+      fieldsvalidated: false
+    };
+    this.submit = this.submit.bind(this);
+  }
+
+  submit() {
+    var re = /^(([^<>()[]\.,;:s@"]+(.[^<>()[]\.,;:s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/gim;
+    if (exampleInputEmail1.val() == "" || !re.test(exampleInputEmail1.val())) {
+      alert("Please enter a valid email address.");
+      // return false;
+    }
+    if (exampleInputPassword1.value == "") {
+      alert("Please enter a valid password .");
+    }
+  } //submit()
+
   render() {
+    let exampleInputEmail1 = document.getElementById("#exampleInputEmail1");
+    let exampleInputPassword1 = document.getElementById(
+      "#exampleInputPassword1"
+    );
+
     return (
       <>
         <div className="row">
@@ -16,7 +42,7 @@ export default class Login extends React.Component {
               <div className="card-body">
                 <form>
                   <div className="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
+                    <label htmlFor="exampleInputEmail1">Email address</label>
                     <input
                       type="email"
                       className="form-control"
@@ -29,7 +55,7 @@ export default class Login extends React.Component {
                     </small>
                   </div>
                   <div className="form-group">
-                    <label for="exampleInputPassword1">Password</label>
+                    <label htmlFor="exampleInputPassword1">Password</label>
                     <input
                       type="password"
                       className="form-control"
@@ -37,7 +63,11 @@ export default class Login extends React.Component {
                       placeholder="Password"
                     />
                   </div>
-                  <button type="submit" className="btn btn-outline-info">
+                  <button
+                    type="submit"
+                    className="btn btn-outline-info"
+                    onClick={this.submit}
+                  >
                     Submit
                   </button>
                 </form>

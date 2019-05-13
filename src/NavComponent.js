@@ -22,7 +22,7 @@ export class NavComponent extends React.Component {
 
     };
     // console.log(localStorage.getItem("loginflag"));
-
+    localStorage.setItem("loginflag", this.state.loginFlag);
     // this.checkIfLogedIn = this.checkIfLogedIn.bind(this);
   }
   
