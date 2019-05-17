@@ -58829,7 +58829,6 @@ function (_Component) {
         variant: "success"
       }, "Your account was created successfully")), _react.default.createElement(_reactBootstrap.Row, null, _react.default.createElement(_reactBootstrap.Alert, {
         show: this.emailExists,
-        value: this.registerErr,
         variant: "danger"
       }, this.registerErr)), _react.default.createElement(_reactBootstrap.Row, null, _react.default.createElement(_reactBootstrap.Col, null, _react.default.createElement(_reactBootstrap.Form.Group, {
         controlId: "formControlName"

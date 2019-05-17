@@ -126,7 +126,7 @@ export default class App extends Component {
           <Alert show={this.successRegister} variant="success">Your account was created successfully</Alert>
           </Row>
           <Row>
-          <Alert show={this.emailExists} value={this.registerErr} variant="danger">{this.registerErr}</Alert>
+          <Alert show={this.emailExists}  variant="danger">{this.registerErr}</Alert>
           </Row>
               <Row>
                   <Col>
