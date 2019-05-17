@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
+import { NavLink } from 'react-router-dom'
+
 import "./general.css";
 import logo from "../assets/logo.PNG";
 import WishCard from './WishCard';

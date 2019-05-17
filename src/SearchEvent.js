@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { NavLink } from 'react-router-dom'
+
 
 import EventCardToView from "./EventCardToView";
 
@@ -73,6 +75,8 @@ export default class SearchEvent extends React.Component {
   }
 
   showEvents(e) {
+    // e.preventDefault();
+
     console.log(eventid.value);
     console.log(where.value);
     console.log(enddate.value);
@@ -85,7 +89,7 @@ export default class SearchEvent extends React.Component {
         this.state.errorMessages.push(
           "eventid should be bigger  than 0 and not empty"
         );
-        e.preventDefault();
+        // e.preventDefault();
       } //if
       else {
         this.state.continueSearchFlag = true;
@@ -95,14 +99,14 @@ export default class SearchEvent extends React.Component {
         this.state.errorMessages.push(
           "eventid should be bigger  than 0 and not empty"
         );
-        e.preventDefault();
+        // e.preventDefault();
       }
       if (!(enddate.value && startdate.value)) {
         console.log("you should Add start and end event dates ");
         this.state.errorMessages.push(
           "you should Add start and end event dates"
         );
-        e.preventDefault();
+        // e.preventDefault();
       }
 
       if (this.state.continueSearchFlag) {
@@ -122,15 +126,16 @@ export default class SearchEvent extends React.Component {
     });
 
     ReactDOM.render(
-      this.state.eventsToShow.map(event => (
-        <EventCardToView {...event} key={event.id} />
+      this.state.eventsToShow.map(event1 => (
+        <EventCardToView {...event1} key={event1.id} />
       )),
       document.querySelector("#showeventcardsdiv")
     );
   } //showevents()
 
   addWishInSearchEventCompo() {
-    ReactDOM.render(<MyWishes />, document.querySelector("#mainrowdiv"));
+    console.log(this.state.eventsToShow[0].id)
+    ReactDOM.render(<MyWishes eventid={this.state.eventsToShow[0].id}/>, document.querySelector("#mainrowdiv"));
   }
 
   onInputChange() {} //oninput...()
@@ -260,7 +265,7 @@ export default class SearchEvent extends React.Component {
                       <EventCardToView
                         {...event}
                         key={event.id}
-                        click={this.addWishInSearchEventCompo()}
+                        // click={this.addWishInSearchEventCompo()}
                       />
                     ))}
 

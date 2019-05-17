@@ -4,6 +4,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./general.css";
 import logo from "../assets/logo.PNG";
 import EventCard from "./EventCard";
+import { NavLink } from 'react-router-dom'
+
 
 export default class MyWishes extends React.Component {
   constructor() {
@@ -119,7 +121,9 @@ export default class MyWishes extends React.Component {
           <div className="col-md-4" />
           <div className="col-md-4">
             <button className="btn btn-outline-info " type="submit">
-              <a href="/AddEvent">Add new event box</a>
+            <NavLink to="/AddEvent">Add new event box</NavLink>
+             
+              {/* <a href="/AddEvent"></a> */}
             </button>
           </div>
         </div>

@@ -1,6 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
+import PropTypes from 'prop-types';
+
+
 import "./general.css";
 import logo from "../assets/logo.PNG";
 
@@ -10,7 +13,8 @@ export default class Login extends React.Component {
     this.state = {
       username: "",
       password: "",
-      fieldsvalidated: false
+      fieldsvalidated: false ,
+      email :""
     };
     this.submit = this.submit.bind(this);
   }
@@ -49,6 +53,7 @@ export default class Login extends React.Component {
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
                       placeholder="Enter email"
+                      defaultValue={this.state.email}
                     />
                     <small id="emailHelp" className="form-text text-muted">
                       We'll never share your email with anyone else.
@@ -61,6 +66,8 @@ export default class Login extends React.Component {
                       className="form-control"
                       id="exampleInputPassword1"
                       placeholder="Password"
+                      defaultValue={this.state.password}
+
                     />
                   </div>
                   <button
@@ -79,4 +86,5 @@ export default class Login extends React.Component {
       </>
     );
   }
-}
+} //class
+
