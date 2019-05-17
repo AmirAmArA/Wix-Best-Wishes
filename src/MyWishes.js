@@ -5,8 +5,7 @@ import "./general.css";
 import logo from "../assets/logo.PNG";
 import WishCard from "./WishCard";
 import { NavLink } from 'react-router-dom'
-
-
+import { getMyEvents } from './EventsApi';
 export default class MyWishes extends React.Component {
   constructor() {
     super();

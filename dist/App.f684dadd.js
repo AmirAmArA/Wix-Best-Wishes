@@ -46320,7 +46320,61 @@ EventCard.propTypes = {
   enddate: _propTypes.default.string,
   where: _propTypes.default.string
 };
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","prop-types":"node_modules/prop-types/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./App":"src/App.js"}],"src/MyWishes.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","prop-types":"node_modules/prop-types/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./App":"src/App.js"}],"src/EventsApi.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getMyEvents = getMyEvents;
+var events = [{
+  id: 1,
+  name: "event1",
+  avatar: "images/avatar.jpg",
+  score: 24,
+  description: "Marhaba, I love Avatars Marhaba, I love Avatars Marhaba, I love Avatars Marhaba, I love AvatarsMarhaba, I love AvatarsMarhaba, I love Avatars",
+  lastUpdateTime: new Date().toLocaleString("he-IL")
+}, {
+  id: 2,
+  name: "event2",
+  avatar: "images/avatar.jpg",
+  score: 19,
+  description: "Hello, I love Avatars...",
+  lastUpdateTime: new Date().toLocaleString("he-IL")
+}, {
+  id: 3,
+  name: "event3",
+  avatar: "images/avatar2.png",
+  score: 11,
+  description: "Shalom, I love Avatars",
+  lastUpdateTime: new Date().toLocaleString("he-IL")
+}, {
+  id: 4,
+  name: "event4",
+  avatar: "images/avatar2.png",
+  score: 10,
+  description: "Ahalan, I love Avatars...",
+  lastUpdateTime: new Date().toLocaleString("he-IL")
+}, {
+  id: 5,
+  name: "event5",
+  avatar: "images/avatar2.png",
+  score: 10,
+  description: "Ahalan, I love Avatars...",
+  lastUpdateTime: new Date().toLocaleString("he-IL")
+}];
+var exsistsEvent;
+
+function getMyEvents(eventID) {
+  events.forEach(function (event) {
+    if (eventID == event.id) {
+      console.log("event exsists", event);
+      exsistsEvent = event;
+    }
+  });
+  return exsistsEvent;
+}
+},{}],"src/MyWishes.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46341,6 +46395,8 @@ var _logo = _interopRequireDefault(require("../assets/logo.PNG"));
 var _WishCard = _interopRequireDefault(require("./WishCard"));
 
 var _reactRouterDom = require("react-router-dom");
+
+var _EventsApi = require("./EventsApi");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -46538,7 +46594,7 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.default = MyWishes;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./WishCard":"src/WishCard.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"src/EventCardToView.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./WishCard":"src/WishCard.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./EventsApi":"src/EventsApi.js"}],"src/EventCardToView.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46677,6 +46733,8 @@ var _reactRouterDom = require("react-router-dom");
 
 var _EventCardToView = _interopRequireDefault(require("./EventCardToView"));
 
+var _EventsApi = require("./EventsApi");
+
 var _reactBootstrap = require("react-bootstrap");
 
 var _MyWishes = _interopRequireDefault(require("./MyWishes"));
@@ -46752,6 +46810,7 @@ function (_React$Component) {
         callercomp: "ShowUserWishes"
       }],
       eventsToShow: [],
+      EventToShow: {},
       errorMessages: [],
       continueSearchFlag: false
     };
@@ -46794,6 +46853,10 @@ function (_React$Component) {
       console.log(where.value);
       console.log(enddate.value);
       console.log(startdate.value);
+      this.state.myEvent = (0, _EventsApi.getMyEvents)(eventid.value);
+      this.state.eventsToShow.push((0, _EventsApi.getMyEvents)(eventid.value));
+      console.log("njnunuihnuih", this.state.eventsToShow);
+      console.log("my event is ", this.state.myEvent);
       this.state.events.map(function (event) {
         console.log("the event id is ", event.id);
 
@@ -46822,12 +46885,10 @@ function (_React$Component) {
         }
 
         if (_this2.state.continueSearchFlag) {
-          if (event.id == eventid.value) {
-            _this2.state.eventsToShow.push(event);
+          if (event.id == eventid.value) {// this.state.eventsToShow.push(event);
           } else {
-            if (event.startdate == startdate.value && event.enddate == enddate.value && event.where == where.value) {
-              _this2.state.eventsToShow.push(event);
-            } //if
+            if (event.startdate == startdate.value && event.enddate == enddate.value && event.where == where.value) {} // this.state.eventsToShow.push(event);
+            //if
 
           } //else
 
@@ -46965,7 +47026,7 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.default = SearchEvent;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./EventCardToView":"src/EventCardToView.js","react-bootstrap":"node_modules/react-bootstrap/es/index.js","./MyWishes":"src/MyWishes.js"}],"src/HomeComponents.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./EventCardToView":"src/EventCardToView.js","./EventsApi":"src/EventsApi.js","react-bootstrap":"node_modules/react-bootstrap/es/index.js","./MyWishes":"src/MyWishes.js"}],"src/HomeComponents.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -48001,7 +48062,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51116" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58183" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
