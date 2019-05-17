@@ -39,6 +39,14 @@ const events = [
       score: 10,
       description: "Ahalan, I love Avatars...",
       lastUpdateTime: new Date().toLocaleString("he-IL")
+    },
+    {
+      id: 6,
+      name: "event6",
+      avatar: "images/avatar2.png",
+      score: 11,
+      description: "Ahalan, I love Avatars...",
+      lastUpdateTime: new Date().toLocaleString("he-IL")
     }
   ];
 
