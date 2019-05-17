@@ -133,7 +133,7 @@ export default class AddAWish extends React.Component {
               onClick={this.validatefields}
             >
               {/* <a id="myanchor">Add a wish</a> */}
-              <NavLink to="/MyWishes">Add a wish</NavLink>
+              <NavLink to="/MyWishes/">Add a wish</NavLink>
 
             </button>
           </div>

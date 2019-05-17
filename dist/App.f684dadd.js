@@ -30024,7 +30024,7 @@ function (_React$Component) {
         className: "btn btn-outline-warning",
         onClick: this.validatefields
       }, _react.default.createElement(_reactRouterDom.NavLink, {
-        to: "/MyWishes"
+        to: "/MyWishes/"
       }, "Add a wish")))));
     }
   }]);
@@ -30378,7 +30378,8 @@ function (_React$Component) {
     localStorage.clear();
     _this.state = {
       loginFlag: true,
-      username: "Majde"
+      username: "Majde",
+      userid: ""
     }; // console.log(localStorage.getItem("loginflag"));
 
     localStorage.setItem("loginflag", _this.state.loginFlag); // this.checkIfLogedIn = this.checkIfLogedIn.bind(this);
