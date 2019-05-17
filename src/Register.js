@@ -36,7 +36,7 @@ export default class Register extends React.Component {
     let confirmpassword=document.getElementById("#confirmpassword");
     return (
       <>
-        <div className="signup-form">
+        <div className="signup-form background-20060b4b">
           <form className="background-20060b4b">
             <h2>Join Now</h2>
             <p className="hint-text">
