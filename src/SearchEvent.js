@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 
 
 import EventCardToView from "./EventCardToView";
-
+import { getMyEvents } from './EventsApi';
 import { Dropdown, DropdownItem } from "react-bootstrap";
 import MyWishes from "./MyWishes";
 export default class SearchEvent extends React.Component {
@@ -44,13 +44,14 @@ export default class SearchEvent extends React.Component {
         }
       ],
       eventsToShow: [],
+      EventToShow:{},
       errorMessages: [],
-      continueSearchFlag: false
+      continueSearchFlag: false,
+      
     };
     this.updateEvents = this.updateEvents.bind(this);
     this.showEvents = this.showEvents.bind(this);
     this.addWishInSearchEventCompo = this.addWishInSearchEventCompo.bind(this);
-
     this.onInputChange = this.onInputChange.bind(this);
     // this.onSubmit = this.onSubmit.bind(this);
   } //constructor
@@ -81,6 +82,11 @@ export default class SearchEvent extends React.Component {
     console.log(where.value);
     console.log(enddate.value);
     console.log(startdate.value);
+    this.state.myEvent = getMyEvents(eventid.value);
+     this.state.eventsToShow.push(getMyEvents(eventid.value));
+     console.log("njnunuihnuih",this.state.eventsToShow);
+
+    console.log("my event is ",this.state.myEvent);
     this.state.events.map(event => {
       console.log("the event id is ", event.id);
 
@@ -111,14 +117,14 @@ export default class SearchEvent extends React.Component {
 
       if (this.state.continueSearchFlag) {
         if (event.id == eventid.value) {
-          this.state.eventsToShow.push(event);
+          // this.state.eventsToShow.push(event);
         } else {
           if (
             event.startdate == startdate.value &&
             event.enddate == enddate.value &&
             event.where == where.value
           ) {
-            this.state.eventsToShow.push(event);
+            // this.state.eventsToShow.push(event);
           } //if
         } //else
       } //if continue flag
