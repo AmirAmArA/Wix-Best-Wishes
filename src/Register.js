@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faMailBulk, faKey } from "@fortawesome/free-solid-svg-icons";
-import axios from 'axios';
+import axios from "axios";
 import { Alert, Button, Container, Row, Col } from "react-bootstrap";
 import {
   Form,
@@ -14,23 +14,22 @@ import validator, { field } from "./RegisterVaildator";
 import * as api from "./RegisterApi";
 import "./general.css";
 export default class App extends Component {
-   
   constructor() {
     super();
     this.state = {
-      
       name: field({ name: "name", minLength: 2 }),
       email: field({
         name: "email",
         pattern: /^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/
       }),
-      password: field({ name: "password", pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/ ,minLength: 8})
-      
-      
-     
+      password: field({
+        name: "password",
+        pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/,
+        minLength: 8
+      })
     };
-    
-    this.registerErr = '';
+
+    this.registerErr = "";
     this.successRegister = false;
     this.emailExists = false;
     this.onInputChange = this.onInputChange.bind(this);
@@ -38,8 +37,7 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-     console.log(this.successRegister);
-     
+    console.log(this.successRegister);
   }
 
   onInputChange({ target: { name, value } }) {
@@ -54,7 +52,7 @@ export default class App extends Component {
     //How can we do #2?
     //How can we know we need to check this value for minimum length?
     //We need to further change our state...
-    
+
     this.setState({
       [name]: {
         ...this.state[name],
@@ -63,17 +61,15 @@ export default class App extends Component {
       }
     });
   }
-  
-  
-  
+
   onSubmit(e) {
     e.preventDefault();
-    
+
     const user = Object.assign({}, this.state);
     let counter = 0;
     for (let key in user) {
       const { value, validations } = user[key];
-      
+
       const { valid, errors } = validator(value, key, validations);
 
       if (!valid) {
@@ -82,137 +78,55 @@ export default class App extends Component {
         user[key].valid = valid;
         user[key].errors = errors;
       }
-
-      
     }
 
     this.setState({ ...user });
     //Send data to somewhere
     //...
-    const { name,  email, password } = this.state;
-    const result = api.registerUser(name,  email, password);
-    if(counter == 0 ){
-    if (result.userId){      
-      this.successRegister = true;
-      this.emailExists = false ; 
+    const { name, email, password } = this.state;
+    const result = api.registerUser(name, email, password);
+    if (counter == 0) {
+      if (result.userId) {
+        this.successRegister = true;
+        this.emailExists = false;
+      } else if (result.error) {
+        this.successRegister = false;
+        this.emailExists = true;
+        this.registerErr = result.error.msg;
+        console.log(`this is error account ${this.registerErr}`);
+      }
     }
-    else if(result.error){
-
-      this.successRegister = false;
-      this.emailExists = true;
-      this.registerErr = result.error.msg;
-      console.log(`this is error account ${this.registerErr}`);
-    }
-    
-  }
-    
   }
 
   render() {
     return (
-<<<<<<< HEAD
       <>
-        <div className="signup-form background-20060b4b">
-          <form className="background-20060b4b">
-            <h2>Join Now</h2>
-            <p className="hint-text">
-              Create your account. It's free and only takes a minute.
-            </p>
-            <div className="form-group">
-              <div className="row">
-                <div className="col-md-6">
-                  <input
-                    type="text"
-                    className="form-control"
-                    name="first_name"
-                    placeholder="First Name"
-                    required="required"
-                    id="fname"
-                  />
-                </div>
-                <div className="col-md-6">
-                  <input
-                    type="text"
-                    className="form-control"
-                    name="last_name"
-                    placeholder="Last Name"
-                    required="required"
-                    id="lname"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="form-group">
-              <input
-                type="email"
-                className="form-control"
-                name="email"
-                placeholder="Email"
-                required="required"
-                id="exampleInputEmail1"
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="password"
-                className="form-control"
-                name="password"
-                placeholder="Password"
-                required="required"
-                id="password"
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="password"
-                className="form-control"
-                name="confirm_password"
-                placeholder="Confirm Password"
-                required="required"
-                id="confirmpassword"
-              />
-            </div>
-
-            <div className="form-group">
-              <button
-                type="submit"
-                className="btn btn-outline-info btn-lg btn-block"
-                onClick={this.submit}
-              >
-                Join Now
-              </button>
-            </div>
-          </form>
-          <div className="text-center">
-            Already have an account? <a href="/Login">Sign in</a>
-          </div>
-        </div>
-      </>
-=======
-      
-        <Container >
+        <Container>
           <Row>
             <Col md={{ span: 10, offset: 1 }}>
               <h1>Registration</h1>
               <hr />
             </Col>
           </Row>
-          
+
           <Row>
             <Col>
               <Form onSubmit={this.onSubmit}>
-              <Row>
-          <Alert show={this.successRegister} variant="success">Your account was created successfully</Alert>
-          </Row>
-          <Row>
-          <Alert show={this.emailExists}  variant="danger">{this.registerErr}</Alert>
-          </Row>
-              <Row>
+                <Row>
+                  <Alert show={this.successRegister} variant="success">
+                    Your account was created successfully
+                  </Alert>
+                </Row>
+                <Row>
+                  <Alert show={this.emailExists} variant="danger">
+                    {this.registerErr}
+                  </Alert>
+                </Row>
+                <Row>
                   <Col>
                     <Form.Group controlId="formControlName">
-                      
                       <InputGroup className="mb-3">
-                      <InputGroup.Prepend>
+                        <InputGroup.Prepend>
                           <InputGroup.Text>
                             <FontAwesomeIcon icon={faUser} />
                           </InputGroup.Text>
@@ -232,12 +146,11 @@ export default class App extends Component {
                       ))}
                     </Form.Group>
                   </Col>
-                   </Row>     
-                  
-               <Row>
+                </Row>
+
+                <Row>
                   <Col>
                     <Form.Group controlId="formBasicEmail">
-                      
                       <InputGroup className="mb-3">
                         <InputGroup.Prepend>
                           <InputGroup.Text>
@@ -258,7 +171,6 @@ export default class App extends Component {
                           {err}
                         </Form.Text>
                       ))}
-
                     </Form.Group>
                   </Col>
                 </Row>
@@ -266,7 +178,6 @@ export default class App extends Component {
                 <Row>
                   <Col>
                     <Form.Group controlId="formBasicPassword">
-                      
                       <InputGroup className="mb-3">
                         <InputGroup.Prepend>
                           <InputGroup.Text>
@@ -275,7 +186,6 @@ export default class App extends Component {
                         </InputGroup.Prepend>
 
                         <Form.Control
-                          
                           name="password"
                           type="password"
                           placeholder="Password"
@@ -291,8 +201,6 @@ export default class App extends Component {
                       ))}
                     </Form.Group>
                   </Col>
-
-                 
                 </Row>
 
                 <Button variant="primary" type="submit">
@@ -302,8 +210,7 @@ export default class App extends Component {
             </Col>
           </Row>
         </Container>
-      
->>>>>>> 5313971547677e9a97ca7d2dc0cecd689ac060b1
+      </>
     );
   }
 }

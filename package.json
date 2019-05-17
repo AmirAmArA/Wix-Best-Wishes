@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/AmirAmArA/Wix-Best-Wishes.git"
+    "url": "git+https://github.com/AmirAmArA/Wix-Best-Wishes.git"
   },
   "author": "AmirAmArA,KristinaDarawshe,majdedr,samir211,HussnyAzzam,Mostfamm",
   "license": "ISC",
@@ -25,6 +25,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.8.2",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "a": "^2.1.2",
+    "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "rea": "0.0.1",
     "reac": "0.0.0",
