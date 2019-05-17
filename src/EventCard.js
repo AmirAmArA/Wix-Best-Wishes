@@ -1,6 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
+import PropTypes from "prop-types";
+import { NavLink } from 'react-router-dom'
+
+
 import "./general.css";
 import logo from "../assets/logo.PNG";
 import App from "./App"
@@ -15,8 +19,16 @@ export default class EventCard extends React.Component {
                             <p className="card-text">{this.props.description}</p>
                             <button  id="searchEventbtn" type="button" className="btn btn-outline-info">Delete</button>
         
-                            <button  id="searchEventbtn" type="button" className="btn btn-outline-info"> <a href="/EditEvent"> Edit </a></button>
-                            <button  id="searchEventbtn" type="button" className="btn btn-outline-info"> <a href="/MyWishes"> View Wishes </a></button>
+                            <button  id="searchEventbtn" type="button" className="btn btn-outline-info"> 
+                            {/* <a href="/EditEvent"> Edit </a> */}
+                           <NavLink to="/EditEvent">Edit</NavLink>
+                            
+                            </button>
+                            <button  id="searchEventbtn" type="button" className="btn btn-outline-info">
+                             {/* <a href="/MyWishes"> View Wishes </a> */}
+                           <NavLink to="/MyWishes">View Wishes</NavLink>
+                            
+                            </button>
         
         
                         </div>
@@ -24,4 +36,14 @@ export default class EventCard extends React.Component {
 
     </>;
   }
-}
+}//class
+
+EventCard.propTypes = {
+  key: PropTypes.string,
+  name: PropTypes.string,
+  lastUpdateTime: PropTypes.string,
+  description: PropTypes.string,
+  startdate: PropTypes.string,
+  enddate: PropTypes.string,
+  where : PropTypes.string
+ };

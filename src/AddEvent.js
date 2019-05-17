@@ -1,6 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
+import { NavLink } from 'react-router-dom'
+
+
 import "./general.css";
 import logo from "../assets/logo.PNG";
 import App from "./App";
@@ -52,7 +55,8 @@ export default class AddEvent extends React.Component {
       dropdownvalue: "",
       continueflag:false ,
       navigatefroma : "/AddEvent"
-    };
+    }//state
+    ;
     this.updateEvents = this.updateEvents.bind(this);
     this.handledropdown = this.handledropdown.bind(this);
     this.createnewevent = this.createnewevent.bind(this);
@@ -85,25 +89,24 @@ export default class AddEvent extends React.Component {
   }
 
   createnewevent(e) { //checking the event fields and navigate depending on..
-
-    if (eventtitle.value == "") {
-      console.log("you should add event location ");
-      this.state.errorMessages.push(
-        "eventid should be bigger  than 0 and not empty"
-      );
       e.preventDefault();
+      console.log( eventtitle.value ,where.value , enddate.value , startdate.value );
+    if (eventtitle.value == "") {
+      console.log("you should add event title ");
+      this.state.errorMessages=[...this.state.errorMessages , "you should add event title "];
+        
+      
     } //if title
     if (where.value == "") {
       console.log("you should add event location ");
-      this.state.errorMessages.push(
-        "eventid should be bigger  than 0 and not empty"
-      );
-      e.preventDefault();
+      this.state.errorMessages=[...this.state.errorMessages , "you should add event location "];
+
+    
     } //ifwhere
     if (!(enddate.value && startdate.value)) {
       console.log("you should Add start and end event dates ");
-      this.state.errorMessages.push("you should Add start and end event dates");
-      e.preventDefault();
+      this.state.errorMessages=[...this.state.errorMessages , "you should Add start and end event dates"];
+
     } //ifstart and end date
 
     if(eventtitle.value && this.state.dropdownvalue && enddate.value && startdate.value && where.value){
@@ -278,8 +281,10 @@ export default class AddEvent extends React.Component {
                           type="button"
                           className="btn btn-outline-info"
                           onClick={this.createnewevent}
-                        >
-                          <a href={this.state.navigatefroma}>Create event box</a>
+                        > 
+                          {/* <a href={this.state.navigatefroma}>Create event box</a> */}
+                           <NavLink to="/MyEvents">Create event box</NavLink>
+                          
                         </button>
                       </div>
                     </div>

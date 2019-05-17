@@ -1,6 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
+import PropTypes from "prop-types";
+import { NavLink } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import App from "./App";
+
 import "./general.css";
 import logo from "../assets/logo.PNG";
 
@@ -8,17 +13,31 @@ import {Link} from "react-router-dom";
 
 import MyWishes from "./MyWishes";
 export default class EventCardToView extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      eventsToShow: []
+      imageurl : "",
+      name : "",
+      lastUpdateTime : "" ,
+      description : "",
+      startdate: "",
+      enddate: "",
+      eventid: "" || this.props.eventid
+
+
+
     };
     // this.updateEvents = this.updateEvents.bind(this);
     // this.showEvents = this.showEvents.bind(this);
     console.log(this.props);
   }
   render() {
+    let reference = "/MyWishes/" + this.props.id;
     console.log(this.props);
+    console.log(reference);
+
+    // console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+
     const aa = { ...this.props };
     
     // localStorage.setItem("eventname", this.props.name);
@@ -44,16 +63,27 @@ export default class EventCardToView extends React.Component {
               id="searchEventbtn"
               type="button"
               className="btn btn-outline-info"
-              onClick={() =>this.props.click}
+              //  onClick={() =>this.props.click}
             >
               {/* Add A Wish */}
-               <a href={"/MyWishes"}>
-                Add A Wish
-              </a> 
+                  {/* <Router> */}
+              {/* <NavLink to={reference}>Add A Wish</NavLink> */}
+                  {/* </Router> */}
+               <a href={reference}>Add A Wish</a> 
             </button>
           </div>
         </div>
       </>
     );
   }
-}
+}//class
+
+// EventCardToView.propTypes = {
+//   key: PropTypes.string,
+//   name: PropTypes.string,
+//   lastUpdateTime: PropTypes.string,
+//   description: PropTypes.string,
+//   startdate: PropTypes.string,
+//   enddate: PropTypes.string,
+//   where : PropTypes.string
+//  };

@@ -29848,6 +29848,10 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 
 require("bootstrap/dist/css/bootstrap.css");
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _reactRouterDom = require("react-router-dom");
+
 require("./general.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -29920,7 +29924,7 @@ function (_React$Component) {
           wishu: wishbody.value,
           imageurl: imageurl.value,
           validafields: true,
-          ahref: "/MyWishes " //  [this.state.ahref ="/MyWishes" , ...this.state] 
+          ahref: "/MyWishes " //  [this.state.ahref ="/MyWishes" , ...this.state]
 
         }); // this.state.ahref="/MyWishes";
 
@@ -29932,6 +29936,9 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _React$createElement;
+
+      console.log(this.props.match.params.eventid);
       var imageurl = document.getElementById("#imageurl");
       var wishbody = document.getElementById("#wishbody");
       var fromname = document.getElementById("#fromname");
@@ -29954,7 +29961,8 @@ function (_React$Component) {
         className: "form-control",
         type: "text",
         placeholder: "Enter you're name",
-        id: "fromname"
+        id: "fromname",
+        defaultValue: this.state.from
       })))), _react.default.createElement("div", {
         className: "col-md-4"
       })), _react.default.createElement("div", {
@@ -29973,12 +29981,12 @@ function (_React$Component) {
         className: "col-md-9"
       }, _react.default.createElement("div", {
         className: "form-group"
-      }, _react.default.createElement("textarea", _defineProperty({
+      }, _react.default.createElement("textarea", (_React$createElement = {
         className: "form-control",
         id: "exampleFormControlTextarea3",
         rows: "7",
         placeholder: "Write you're wish"
-      }, "id", "wishbody")))))), _react.default.createElement("div", {
+      }, _defineProperty(_React$createElement, "id", "wishbody"), _defineProperty(_React$createElement, "defaultValue", this.state.wishu), _React$createElement)))))), _react.default.createElement("div", {
         className: "col-md-4"
       })), _react.default.createElement("div", {
         className: "row"
@@ -29998,7 +30006,8 @@ function (_React$Component) {
         className: "form-control",
         type: "text",
         placeholder: "URL",
-        id: "imageurl"
+        id: "imageurl",
+        defaultValue: this.state.imageurl
       })))), _react.default.createElement("div", {
         className: "col-md-4"
       })), _react.default.createElement("div", {
@@ -30014,17 +30023,23 @@ function (_React$Component) {
         type: "button",
         className: "btn btn-outline-warning",
         onClick: this.validatefields
-      }, _react.default.createElement("a", {
-        id: "myanchor"
+      }, _react.default.createElement(_reactRouterDom.NavLink, {
+        to: "/MyWishes"
       }, "Add a wish")))));
     }
   }]);
 
   return AddAWish;
-}(_react.default.Component);
+}(_react.default.Component); //cllass
+
 
 exports.default = AddAWish;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css"}],"src/WishCard.js":[function(require,module,exports) {
+AddAWish.propTypes = {
+  from: _propTypes.default.string,
+  wishu: _propTypes.default.string,
+  imageurl: _propTypes.default.string
+};
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","prop-types":"node_modules/prop-types/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./general.css":"src/general.css"}],"src/WishCard.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30037,6 +30052,10 @@ var _react = _interopRequireDefault(require("react"));
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
 require("bootstrap/dist/css/bootstrap.css");
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _reactRouterDom = require("react-router-dom");
 
 require("./general.css");
 
@@ -30141,10 +30160,19 @@ function (_React$Component) {
   }]);
 
   return WishCard;
-}(_react.default.Component);
+}(_react.default.Component); //class
+
 
 exports.default = WishCard;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./AddAWish":"src/AddAWish.js"}],"src/ShowUserWishes.js":[function(require,module,exports) {
+WishCard.propTypes = {
+  key: _propTypes.default.string.isRequired,
+  name: _propTypes.default.string.isRequired,
+  lastUpdateTime: _propTypes.default.string.isRequired,
+  description: _propTypes.default.string.isRequired,
+  gender: _propTypes.default.oneOf(["Male", "Female", "Other"]).isRequired,
+  courses: _propTypes.default.arrayOf(_propTypes.default.string)
+};
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","prop-types":"node_modules/prop-types/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./AddAWish":"src/AddAWish.js"}],"src/ShowUserWishes.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30157,6 +30185,8 @@ var _react = _interopRequireDefault(require("react"));
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
 require("bootstrap/dist/css/bootstrap.css");
+
+var _reactRouterDom = require("react-router-dom");
 
 require("./general.css");
 
@@ -30286,7 +30316,7 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.default = ShowUserWishes;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./WishCard":"src/WishCard.js"}],"src/NavComponent.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./WishCard":"src/WishCard.js"}],"src/NavComponent.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30297,6 +30327,8 @@ exports.NavComponent = void 0;
 var _react = _interopRequireDefault(require("react"));
 
 var _reactRouterDom = require("react-router-dom");
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
 require("bootstrap/dist/css/bootstrap.css");
 
@@ -30360,67 +30392,69 @@ function (_React$Component) {
     value: function render() {
       localStorage.setItem("loginflag", this.state.loginFlag);
       var style = this.state.loginFlag ? {
-        display: 'none'
+        display: "none"
       } : {};
       var style1 = this.state.loginFlag ? {} : {
-        display: 'none'
+        display: "none"
       }; // const isLoggedIn = localStorage.getItem("loginflag");
 
       if (this.state.loginFlag) {
         console.log("user is logged in");
-        return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement("nav", {
-          className: "navbar navbar-expand-lg navbar-dark navStyle"
-        }, _react.default.createElement("a", {
-          className: "navbar-brand"
-        }, _react.default.createElement("img", {
-          src: _logo.default,
-          className: "logo"
-        })), _react.default.createElement("button", {
-          className: "navbar-toggler",
-          type: "button",
-          "data-toggle": "collapse",
-          "data-target": "#navbarSupportedContent",
-          "aria-controls": "navbarSupportedContent",
-          "aria-expanded": "false",
-          "aria-label": "Toggle navigation"
-        }, _react.default.createElement("span", {
-          className: "navbar-toggler-icon"
-        })), _react.default.createElement("div", {
-          className: "collapse navbar-collapse",
-          id: "navbarSupportedContent"
-        }, _react.default.createElement("ul", {
-          className: "navbar-nav mr-auto"
-        }, _react.default.createElement("li", {
-          className: "nav-item active"
-        }, _react.default.createElement("a", {
-          className: "nav-link",
-          href: "/"
-        }, "Home")), _react.default.createElement("li", {
-          className: "nav-item"
-        }, _react.default.createElement("a", {
-          className: "nav-link",
-          href: "/MyEvents"
-        }, "MyEvents")), _react.default.createElement("li", {
-          className: "nav-item "
-        }, _react.default.createElement("a", {
-          className: "nav-link",
-          href: "/ShowUserWishes"
-        }, "MyWishes")), _react.default.createElement("li", {
-          className: "nav-item"
-        }, _react.default.createElement("a", {
-          className: "nav-link ",
-          href: "/about",
-          tabIndex: "-1",
-          "aria-disabled": "true"
-        }, "About"))), _react.default.createElement("form", {
-          className: "form-inline my-2 my-lg-0"
-        }, _react.default.createElement("div", {
-          className: this.state.divhellousername,
-          id: "hellousernameid",
-          style: style1
-        }, _react.default.createElement("span", {
-          className: "colorwhite "
-        }, "Hi:", this.state.username))))));
+        return (// <Router>
+          _react.default.createElement("nav", {
+            className: "navbar navbar-expand-lg navbar-dark navStyle"
+          }, _react.default.createElement("a", {
+            className: "navbar-brand"
+          }, _react.default.createElement("img", {
+            src: _logo.default,
+            className: "logo"
+          })), _react.default.createElement("button", {
+            className: "navbar-toggler",
+            type: "button",
+            "data-toggle": "collapse",
+            "data-target": "#navbarSupportedContent",
+            "aria-controls": "navbarSupportedContent",
+            "aria-expanded": "false",
+            "aria-label": "Toggle navigation"
+          }, _react.default.createElement("span", {
+            className: "navbar-toggler-icon"
+          })), _react.default.createElement("div", {
+            className: "collapse navbar-collapse",
+            id: "navbarSupportedContent"
+          }, _react.default.createElement("ul", {
+            className: "navbar-nav mr-auto"
+          }, _react.default.createElement("li", {
+            className: "nav-item "
+          }, _react.default.createElement(_reactRouterDom.NavLink, {
+            className: "nav-link",
+            exact: true,
+            to: "/"
+          }, "Home")), _react.default.createElement("li", {
+            className: "nav-item"
+          }, _react.default.createElement(_reactRouterDom.NavLink, {
+            className: "nav-link",
+            to: "/MyEvents"
+          }, "MyEvents")), _react.default.createElement("li", {
+            className: "nav-item "
+          }, _react.default.createElement(_reactRouterDom.NavLink, {
+            className: "nav-link",
+            to: "/ShowUserWishes"
+          }, "MyWishes")), _react.default.createElement("li", {
+            className: "nav-item"
+          }, _react.default.createElement(_reactRouterDom.NavLink, {
+            className: "nav-link",
+            to: "/about"
+          }, "About"))), _react.default.createElement("form", {
+            className: "form-inline my-2 my-lg-0"
+          }, _react.default.createElement("div", {
+            className: this.state.divhellousername,
+            id: "hellousernameid",
+            style: style1
+          }, _react.default.createElement("span", {
+            className: "colorwhite "
+          }, "Hi:", this.state.username))))) // </Router>
+
+        );
       } else {
         console.log("user is not logged in");
         return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement("nav", {
@@ -30446,27 +30480,25 @@ function (_React$Component) {
         }, _react.default.createElement("ul", {
           className: "navbar-nav mr-auto"
         }, _react.default.createElement("li", {
-          className: "nav-item active"
-        }, _react.default.createElement("a", {
+          className: "nav-item "
+        }, _react.default.createElement(_reactRouterDom.NavLink, {
           className: "nav-link",
-          href: "/"
+          to: "/"
         }, "Home")), _react.default.createElement("li", {
           className: "nav-item"
-        }, _react.default.createElement("a", {
+        }, _react.default.createElement(_reactRouterDom.NavLink, {
           className: "nav-link",
-          href: "/MyEvents"
+          to: "/MyEvents"
         }, "MyEvents")), _react.default.createElement("li", {
           className: "nav-item "
-        }, _react.default.createElement("a", {
+        }, _react.default.createElement(_reactRouterDom.NavLink, {
           className: "nav-link",
-          href: "/ShowUserWishes"
+          to: "/ShowUserWishes"
         }, "MyWishes")), _react.default.createElement("li", {
           className: "nav-item"
-        }, _react.default.createElement("a", {
-          className: "nav-link ",
-          href: "/about",
-          tabIndex: "-1",
-          "aria-disabled": "true"
+        }, _react.default.createElement(_reactRouterDom.NavLink, {
+          className: "nav-link",
+          to: "/about"
         }, "About"))), _react.default.createElement("form", {
           className: "form-inline my-2 my-lg-0"
         }, _react.default.createElement("button", {
@@ -30481,7 +30513,7 @@ function (_React$Component) {
         }, "SignIn")), _react.default.createElement("button", {
           id: "Registerbtn",
           className: this.state.btn,
-          style: style //"btn btn-outline-success my-2 my-sm-0" 
+          style: style //"btn btn-outline-success my-2 my-sm-0"
 
         }, _react.default.createElement("a", {
           href: "/Register",
@@ -30496,10 +30528,14 @@ function (_React$Component) {
 
   return NavComponent;
 }(_react.default.Component); //class
+// NavComponent.propTypes = {
+//   username: PropTypes.string,
+//   loginFlag: PropTypes.boolean
+//  }
 
 
 exports.NavComponent = NavComponent;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./App":"src/App.js","./ShowUserWishes":"src/ShowUserWishes.js"}],"src/About.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","prop-types":"node_modules/prop-types/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./App":"src/App.js","./ShowUserWishes":"src/ShowUserWishes.js"}],"src/About.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45849,6 +45885,8 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 
 require("bootstrap/dist/css/bootstrap.css");
 
+var _reactRouterDom = require("react-router-dom");
+
 require("./general.css");
 
 var _logo = _interopRequireDefault(require("../assets/logo.PNG"));
@@ -45932,7 +45970,8 @@ function (_React$Component) {
       }],
       dropdownvalue: "",
       continueflag: false,
-      navigatefroma: "/AddEvent"
+      navigatefroma: "/AddEvent" //state
+
     };
     _this.updateEvents = _this.updateEvents.bind(_assertThisInitialized(_this));
     _this.handledropdown = _this.handledropdown.bind(_assertThisInitialized(_this));
@@ -45972,24 +46011,24 @@ function (_React$Component) {
     key: "createnewevent",
     value: function createnewevent(e) {
       //checking the event fields and navigate depending on..
+      e.preventDefault();
+      console.log(eventtitle.value, where.value, enddate.value, startdate.value);
+
       if (eventtitle.value == "") {
-        console.log("you should add event location ");
-        this.state.errorMessages.push("eventid should be bigger  than 0 and not empty");
-        e.preventDefault();
+        console.log("you should add event title ");
+        this.state.errorMessages = [].concat(_toConsumableArray(this.state.errorMessages), ["you should add event title "]);
       } //if title
 
 
       if (where.value == "") {
         console.log("you should add event location ");
-        this.state.errorMessages.push("eventid should be bigger  than 0 and not empty");
-        e.preventDefault();
+        this.state.errorMessages = [].concat(_toConsumableArray(this.state.errorMessages), ["you should add event location "]);
       } //ifwhere
 
 
       if (!(enddate.value && startdate.value)) {
         console.log("you should Add start and end event dates ");
-        this.state.errorMessages.push("you should Add start and end event dates");
-        e.preventDefault();
+        this.state.errorMessages = [].concat(_toConsumableArray(this.state.errorMessages), ["you should Add start and end event dates"]);
       } //ifstart and end date
 
 
@@ -46163,8 +46202,8 @@ function (_React$Component) {
         type: "button",
         className: "btn btn-outline-info",
         onClick: this.createnewevent
-      }, _react.default.createElement("a", {
-        href: this.state.navigatefroma
+      }, _react.default.createElement(_reactRouterDom.NavLink, {
+        to: "/MyEvents"
       }, "Create event box"))))), _react.default.createElement("div", {
         className: "col-md-4"
       })))), _react.default.createElement("div", {
@@ -46177,7 +46216,7 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.default = AddEvent;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./App":"src/App.js","react-bootstrap":"node_modules/react-bootstrap/es/index.js"}],"src/EventCard.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./App":"src/App.js","react-bootstrap":"node_modules/react-bootstrap/es/index.js"}],"src/EventCard.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46190,6 +46229,10 @@ var _react = _interopRequireDefault(require("react"));
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
 require("bootstrap/dist/css/bootstrap.css");
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _reactRouterDom = require("react-router-dom");
 
 require("./general.css");
 
@@ -46251,23 +46294,33 @@ function (_React$Component) {
         id: "searchEventbtn",
         type: "button",
         className: "btn btn-outline-info"
-      }, " ", _react.default.createElement("a", {
-        href: "/EditEvent"
-      }, " Edit ")), _react.default.createElement("button", {
+      }, _react.default.createElement(_reactRouterDom.NavLink, {
+        to: "/EditEvent"
+      }, "Edit")), _react.default.createElement("button", {
         id: "searchEventbtn",
         type: "button",
         className: "btn btn-outline-info"
-      }, " ", _react.default.createElement("a", {
-        href: "/MyWishes"
-      }, " View Wishes ")))));
+      }, _react.default.createElement(_reactRouterDom.NavLink, {
+        to: "/MyWishes"
+      }, "View Wishes")))));
     }
   }]);
 
   return EventCard;
-}(_react.default.Component);
+}(_react.default.Component); //class
+
 
 exports.default = EventCard;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./App":"src/App.js"}],"src/MyWishes.js":[function(require,module,exports) {
+EventCard.propTypes = {
+  key: _propTypes.default.string,
+  name: _propTypes.default.string,
+  lastUpdateTime: _propTypes.default.string,
+  description: _propTypes.default.string,
+  startdate: _propTypes.default.string,
+  enddate: _propTypes.default.string,
+  where: _propTypes.default.string
+};
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","prop-types":"node_modules/prop-types/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./App":"src/App.js"}],"src/MyWishes.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46286,6 +46339,8 @@ require("./general.css");
 var _logo = _interopRequireDefault(require("../assets/logo.PNG"));
 
 var _WishCard = _interopRequireDefault(require("./WishCard"));
+
+var _reactRouterDom = require("react-router-dom");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -46358,9 +46413,37 @@ function (_React$Component) {
         description: "Ahalan, I love Avatars...",
         lastUpdateTime: new Date().toLocaleString("he-IL")
       }],
+      events: [{
+        id: 1,
+        name: "Mustafa",
+        avatar: "images/avatar.jpg",
+        startdate: "2019-01-01",
+        enddate: "2019-01-01",
+        description: "Marhaba, I love Avatars...",
+        lastUpdateTime: new Date().toLocaleString("he-IL"),
+        callercomp: "ShowUserWishes"
+      }, {
+        id: "2",
+        name: "Suhir",
+        avatar: "images/avatar.jpg",
+        startdate: "2019-01-01",
+        enddate: "2019-01-01",
+        description: "Hello, I love Avatars...",
+        lastUpdateTime: new Date().toLocaleString("he-IL"),
+        callercomp: "ShowUserWishes"
+      }, {
+        id: 3,
+        name: "Shahar",
+        avatar: "images/avatar2.png",
+        startdate: "2019-01-01",
+        enddate: "2019-01-01",
+        description: "Shalom, I love Avatars...",
+        lastUpdateTime: new Date().toLocaleString("he-IL"),
+        callercomp: "ShowUserWishes"
+      }],
       eventDetails: [_this.props]
-    };
-    console.log(_this.props);
+    }; // console.log(this.props);
+
     _this.updateWishes = _this.updateWishes.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -46378,8 +46461,24 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      // eventname= localStorage.getItem('eventname');
-      console.log(this.props.name);
+      var eventid = this.props.match.params.eventid;
+      var eventname = "";
+      var where = "Location";
+      var startdate = "";
+      this.state.events.map(function (event) {
+        if (event.id == eventid) {
+          eventname = event.name; // where = event.where
+
+          startdate = event.startdate;
+        } //if
+
+      }); // eventname= localStorage.getItem('eventname');
+      // console.log(this.props.name)
+
+      console.log(this.props.match.params.eventid); //here we recieve the eventid
+
+      var linktosend = "/AddAWish/" + this.props.match.params.eventid; // console.log(this.props.eventid)
+
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", null, _react.default.createElement("div", {
         className: "row"
       }, _react.default.createElement("br", null), _react.default.createElement("br", null)), _react.default.createElement("div", {
@@ -46396,19 +46495,19 @@ function (_React$Component) {
         className: "row"
       }, _react.default.createElement("div", {
         className: "col-md-6"
-      }, _react.default.createElement("span", null, this.props.name, ":", this.props.id)), _react.default.createElement("div", {
+      }, _react.default.createElement("span", null, "ID : ", eventid, " ", _react.default.createElement("br", null), "Name:", eventname)), _react.default.createElement("div", {
         className: "col-md-6"
       })), _react.default.createElement("div", {
         className: "row"
       }, _react.default.createElement("div", {
         className: "col-md-6"
-      }, _react.default.createElement("span", null, "When:")), _react.default.createElement("div", {
+      }, _react.default.createElement("span", null, "When: ", startdate)), _react.default.createElement("div", {
         className: "col-md-6"
       })), _react.default.createElement("div", {
         className: "row"
       }, _react.default.createElement("div", {
         className: "col-md-6"
-      }, _react.default.createElement("span", null, "Where:")), _react.default.createElement("div", {
+      }, _react.default.createElement("span", null, "Where: ", where)), _react.default.createElement("div", {
         className: "col-md-6"
       })))), _react.default.createElement("div", {
         className: "row"
@@ -46417,9 +46516,8 @@ function (_React$Component) {
       }, _react.default.createElement("button", {
         type: "button",
         className: "btn btn-outline-warning"
-      }, _react.default.createElement("a", {
-        className: "coloryellow",
-        href: "/AddAWish"
+      }, _react.default.createElement(_reactRouterDom.NavLink, {
+        to: linktosend
       }, "Add a Best Wish !!"))))), _react.default.createElement("div", {
         className: "col-md-9 overyscrol "
       }, _react.default.createElement("div", {
@@ -46440,7 +46538,7 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.default = MyWishes;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./WishCard":"src/WishCard.js"}],"src/EventCardToView.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./WishCard":"src/WishCard.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"src/EventCardToView.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46454,11 +46552,15 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 
 require("bootstrap/dist/css/bootstrap.css");
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _App = _interopRequireDefault(require("./App"));
+
 require("./general.css");
 
 var _logo = _interopRequireDefault(require("../assets/logo.PNG"));
-
-var _reactRouterDom = require("react-router-dom");
 
 var _MyWishes = _interopRequireDefault(require("./MyWishes"));
 
@@ -46491,14 +46593,20 @@ var EventCardToView =
 function (_React$Component) {
   _inherits(EventCardToView, _React$Component);
 
-  function EventCardToView() {
+  function EventCardToView(props) {
     var _this;
 
     _classCallCheck(this, EventCardToView);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(EventCardToView).call(this));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(EventCardToView).call(this, props));
     _this.state = {
-      eventsToShow: []
+      imageurl: "",
+      name: "",
+      lastUpdateTime: "",
+      description: "",
+      startdate: "",
+      enddate: "",
+      eventid: "" || _this.props.eventid
     }; // this.updateEvents = this.updateEvents.bind(this);
     // this.showEvents = this.showEvents.bind(this);
 
@@ -46509,9 +46617,9 @@ function (_React$Component) {
   _createClass(EventCardToView, [{
     key: "render",
     value: function render() {
-      var _this2 = this;
-
+      var reference = "/MyWishes/" + this.props.id;
       console.log(this.props);
+      console.log(reference); // console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 
       var aa = _objectSpread({}, this.props); // localStorage.setItem("eventname", this.props.name);
 
@@ -46531,21 +46639,29 @@ function (_React$Component) {
       }, this.props.description), _react.default.createElement("button", {
         id: "searchEventbtn",
         type: "button",
-        className: "btn btn-outline-info",
-        onClick: function onClick() {
-          return _this2.props.click;
-        }
+        className: "btn btn-outline-info" //  onClick={() =>this.props.click}
+
       }, _react.default.createElement("a", {
-        href: "/MyWishes"
+        href: reference
       }, "Add A Wish")))));
     }
   }]);
 
   return EventCardToView;
-}(_react.default.Component);
+}(_react.default.Component); //class
+// EventCardToView.propTypes = {
+//   key: PropTypes.string,
+//   name: PropTypes.string,
+//   lastUpdateTime: PropTypes.string,
+//   description: PropTypes.string,
+//   startdate: PropTypes.string,
+//   enddate: PropTypes.string,
+//   where : PropTypes.string
+//  };
+
 
 exports.default = EventCardToView;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./MyWishes":"src/MyWishes.js"}],"src/SearchEvent.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","prop-types":"node_modules/prop-types/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./App":"src/App.js","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./MyWishes":"src/MyWishes.js"}],"src/SearchEvent.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46556,6 +46672,8 @@ exports.default = void 0;
 var _react = _interopRequireDefault(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
+
+var _reactRouterDom = require("react-router-dom");
 
 var _EventCardToView = _interopRequireDefault(require("./EventCardToView"));
 
@@ -46671,6 +46789,7 @@ function (_React$Component) {
     value: function showEvents(e) {
       var _this2 = this;
 
+      // e.preventDefault();
       console.log(eventid.value);
       console.log(where.value);
       console.log(enddate.value);
@@ -46681,9 +46800,8 @@ function (_React$Component) {
         if (eventid.value == "" || eventid.value < 0) {
           console.log("eventid should be bigger  than 0 and not empty");
 
-          _this2.state.errorMessages.push("eventid should be bigger  than 0 and not empty");
+          _this2.state.errorMessages.push("eventid should be bigger  than 0 and not empty"); // e.preventDefault();
 
-          e.preventDefault();
         } //if
         else {
             _this2.state.continueSearchFlag = true;
@@ -46692,17 +46810,15 @@ function (_React$Component) {
         if (where.value == "") {
           console.log("you should add event location ");
 
-          _this2.state.errorMessages.push("eventid should be bigger  than 0 and not empty");
+          _this2.state.errorMessages.push("eventid should be bigger  than 0 and not empty"); // e.preventDefault();
 
-          e.preventDefault();
         }
 
         if (!(enddate.value && startdate.value)) {
           console.log("you should Add start and end event dates ");
 
-          _this2.state.errorMessages.push("you should Add start and end event dates");
+          _this2.state.errorMessages.push("you should Add start and end event dates"); // e.preventDefault();
 
-          e.preventDefault();
         }
 
         if (_this2.state.continueSearchFlag) {
@@ -46721,9 +46837,9 @@ function (_React$Component) {
         console.log(_this2.state.eventsToShow);
       });
 
-      _reactDom.default.render(this.state.eventsToShow.map(function (event) {
-        return _react.default.createElement(_EventCardToView.default, _extends({}, event, {
-          key: event.id
+      _reactDom.default.render(this.state.eventsToShow.map(function (event1) {
+        return _react.default.createElement(_EventCardToView.default, _extends({}, event1, {
+          key: event1.id
         }));
       }), document.querySelector("#showeventcardsdiv"));
     } //showevents()
@@ -46731,7 +46847,11 @@ function (_React$Component) {
   }, {
     key: "addWishInSearchEventCompo",
     value: function addWishInSearchEventCompo() {
-      _reactDom.default.render(_react.default.createElement(_MyWishes.default, null), document.querySelector("#mainrowdiv"));
+      console.log(this.state.eventsToShow[0].id);
+
+      _reactDom.default.render(_react.default.createElement(_MyWishes.default, {
+        eventid: this.state.eventsToShow[0].id
+      }), document.querySelector("#mainrowdiv"));
     }
   }, {
     key: "onInputChange",
@@ -46740,8 +46860,6 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
-
       var eventid = document.getElementById("#eventid");
       var startdate = document.getElementById("#startdate");
       var enddate = document.getElementById("#enddate");
@@ -46832,8 +46950,8 @@ function (_React$Component) {
         id: "showeventcardsdiv"
       }, this.state.eventsToShow.map(function (event) {
         return _react.default.createElement(_EventCardToView.default, _extends({}, event, {
-          key: event.id,
-          click: _this3.addWishInSearchEventCompo()
+          key: event.id // click={this.addWishInSearchEventCompo()}
+
         }));
       })))), _react.default.createElement("div", {
         className: "col-md-1"
@@ -46847,7 +46965,7 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.default = SearchEvent;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./EventCardToView":"src/EventCardToView.js","react-bootstrap":"node_modules/react-bootstrap/es/index.js","./MyWishes":"src/MyWishes.js"}],"src/HomeComponents.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./EventCardToView":"src/EventCardToView.js","react-bootstrap":"node_modules/react-bootstrap/es/index.js","./MyWishes":"src/MyWishes.js"}],"src/HomeComponents.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46860,6 +46978,10 @@ var _react = _interopRequireDefault(require("react"));
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
 require("bootstrap/dist/css/bootstrap.css");
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _reactRouterDom = require("react-router-dom");
 
 require("./general.css");
 
@@ -46901,7 +47023,8 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(HomeComponent).call(this));
     _this.state = {
-      loginFlag: localStorage.getItem("loginflag")
+      loginFlag: localStorage.getItem("loginflag"),
+      username: ""
     };
     return _this;
   }
@@ -46910,7 +47033,7 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var isLoggedIn = localStorage.getItem("loginflag");
-      console.log("loginflag = ", isLoggedIn); // 
+      console.log("loginflag = ", isLoggedIn); //
 
       if (this.state.loginFlag) {
         return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
@@ -46934,12 +47057,12 @@ function (_React$Component) {
           className: "col-md-4"
         }, _react.default.createElement("button", {
           className: "btn btn-outline-info my-2 my-sm-0"
-        }, _react.default.createElement("a", {
-          href: "/AddEvent"
+        }, _react.default.createElement(_reactRouterDom.NavLink, {
+          to: "/AddEvent"
         }, "Create event Box")), _react.default.createElement("button", {
           className: "btn btn-outline-info my-2 my-sm-0"
-        }, _react.default.createElement("a", {
-          href: "/SearchEvent"
+        }, _react.default.createElement(_reactRouterDom.NavLink, {
+          to: "/SearchEvent"
         }, "Add a best wish!!"))), _react.default.createElement("div", {
           className: "col-md-4"
         }))), _react.default.createElement("div", {
@@ -46968,12 +47091,12 @@ function (_React$Component) {
             className: "col-md-4"
           }, _react.default.createElement("button", {
             className: "btn btn-outline-info my-2 my-sm-0"
-          }, _react.default.createElement("a", {
-            href: "/Register"
+          }, _react.default.createElement(_reactRouterDom.NavLink, {
+            to: "/Register"
           }, "Create event Box")), _react.default.createElement("button", {
             className: "btn btn-outline-info my-2 my-sm-0"
-          }, _react.default.createElement("a", {
-            href: "/SearchEvent"
+          }, _react.default.createElement(_reactRouterDom.NavLink, {
+            to: "/SearchEvent"
           }, "Add a best wish!!"))), _react.default.createElement("div", {
             className: "col-md-4"
           }))), _react.default.createElement("div", {
@@ -46990,7 +47113,11 @@ function (_React$Component) {
 
 
 exports.default = HomeComponent;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./App":"src/App.js","./SearchEvent":"src/SearchEvent.js"}],"src/MyEvents.js":[function(require,module,exports) {
+HomeComponent.propTypes = {
+  loginFlag: _propTypes.default.boolean,
+  username: _propTypes.default.string
+};
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","prop-types":"node_modules/prop-types/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./App":"src/App.js","./SearchEvent":"src/SearchEvent.js"}],"src/MyEvents.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -47009,6 +47136,8 @@ require("./general.css");
 var _logo = _interopRequireDefault(require("../assets/logo.PNG"));
 
 var _EventCard = _interopRequireDefault(require("./EventCard"));
+
+var _reactRouterDom = require("react-router-dom");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -47154,8 +47283,8 @@ function (_React$Component) {
       }, _react.default.createElement("button", {
         className: "btn btn-outline-info ",
         type: "submit"
-      }, _react.default.createElement("a", {
-        href: "/AddEvent"
+      }, _react.default.createElement(_reactRouterDom.NavLink, {
+        to: "/AddEvent"
       }, "Add new event box")))));
     }
   }]);
@@ -47164,7 +47293,7 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.default = MyWishes;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./EventCard":"src/EventCard.js"}],"src/Login.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./EventCard":"src/EventCard.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"src/Login.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -47177,6 +47306,8 @@ var _react = _interopRequireDefault(require("react"));
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
 require("bootstrap/dist/css/bootstrap.css");
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
 require("./general.css");
 
@@ -47216,7 +47347,8 @@ function (_React$Component) {
     _this.state = {
       username: "",
       password: "",
-      fieldsvalidated: false
+      fieldsvalidated: false,
+      email: ""
     };
     _this.submit = _this.submit.bind(_assertThisInitialized(_this));
     return _this;
@@ -47263,7 +47395,8 @@ function (_React$Component) {
         className: "form-control",
         id: "exampleInputEmail1",
         "aria-describedby": "emailHelp",
-        placeholder: "Enter email"
+        placeholder: "Enter email",
+        defaultValue: this.state.email
       }), _react.default.createElement("small", {
         id: "emailHelp",
         className: "form-text text-muted"
@@ -47275,7 +47408,8 @@ function (_React$Component) {
         type: "password",
         className: "form-control",
         id: "exampleInputPassword1",
-        placeholder: "Password"
+        placeholder: "Password",
+        defaultValue: this.state.password
       })), _react.default.createElement("button", {
         type: "submit",
         className: "btn btn-outline-info",
@@ -47287,10 +47421,11 @@ function (_React$Component) {
   }]);
 
   return Login;
-}(_react.default.Component);
+}(_react.default.Component); //class
+
 
 exports.default = Login;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG"}],"src/Register.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","prop-types":"node_modules/prop-types/index.js","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG"}],"src/Register.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -47341,7 +47476,9 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Register).call(this));
     _this.state = {
       username: "",
+      lastname: "",
       password: "",
+      email: "",
       fieldsvalidated: false
     };
     _this.submit = _this.submit.bind(_assertThisInitialized(_this));
@@ -47397,7 +47534,8 @@ function (_React$Component) {
         name: "last_name",
         placeholder: "Last Name",
         required: "required",
-        id: "lname"
+        id: "lname",
+        defaultValue: this.state.l
       })))), _react.default.createElement("div", {
         className: "form-group"
       }, _react.default.createElement("input", {
@@ -47406,7 +47544,8 @@ function (_React$Component) {
         name: "email",
         placeholder: "Email",
         required: "required",
-        id: "exampleInputEmail1"
+        id: "exampleInputEmail1",
+        defaultValue: this.state.email
       })), _react.default.createElement("div", {
         className: "form-group"
       }, _react.default.createElement("input", {
@@ -47415,7 +47554,8 @@ function (_React$Component) {
         name: "password",
         placeholder: "Password",
         required: "required",
-        id: "password"
+        id: "password",
+        defaultValue: this.state.password
       })), _react.default.createElement("div", {
         className: "form-group"
       }, _react.default.createElement("input", {
@@ -47440,7 +47580,8 @@ function (_React$Component) {
   }]);
 
   return Register;
-}(_react.default.Component);
+}(_react.default.Component); //class
+
 
 exports.default = Register;
 },{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","./Login":"src/Login.js"}],"src/EditEvent.js":[function(require,module,exports) {
@@ -47456,6 +47597,10 @@ var _react = _interopRequireDefault(require("react"));
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
 require("bootstrap/dist/css/bootstrap.css");
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _reactRouterDom = require("react-router-dom");
 
 require("./general.css");
 
@@ -47487,9 +47632,19 @@ function (_React$Component) {
   _inherits(EditEvent, _React$Component);
 
   function EditEvent() {
+    var _this;
+
     _classCallCheck(this, EditEvent);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(EditEvent).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(EditEvent).call(this));
+    _this.state = {
+      eventCategory: "",
+      startDate: "",
+      endDate: "",
+      description: "" //state
+
+    };
+    return _this;
   }
 
   _createClass(EditEvent, [{
@@ -47640,8 +47795,8 @@ function (_React$Component) {
         id: "searchEventbtn",
         type: "button",
         className: "btn btn-outline-info"
-      }, _react.default.createElement("a", {
-        href: "/MyEvents"
+      }, _react.default.createElement(_reactRouterDom.NavLink, {
+        to: "/MyEvents"
       }, "Save Changes"))))), _react.default.createElement("div", {
         className: "col-md-4"
       })))), _react.default.createElement("div", {
@@ -47651,10 +47806,18 @@ function (_React$Component) {
   }]);
 
   return EditEvent;
-}(_react.default.Component);
+}(_react.default.Component); //class
+
 
 exports.default = EditEvent;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG"}],"src/App.js":[function(require,module,exports) {
+EditEvent.propTypes = {
+  eventCategory: _propTypes.default.string,
+  startDate: _propTypes.default.string,
+  lastUpdateTime: _propTypes.default.string,
+  endDate: _propTypes.default.string,
+  description: _propTypes.default.string
+}; //afterwards to add .isRequired
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","prop-types":"node_modules/prop-types/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG"}],"src/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -47696,6 +47859,8 @@ var _ShowUserWishes = _interopRequireDefault(require("./ShowUserWishes"));
 
 var _EditEvent = _interopRequireDefault(require("./EditEvent"));
 
+var _EventCardToView = _interopRequireDefault(require("./EventCardToView"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -47716,6 +47881,22 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+//the context we R going to use
+//  const MyContext= React.createContext();
+//then we also need a provider to the context
+//  class MyProvider extends React.Component {
+// constructor(){
+// super();
+// this.state={
+//   username:"", password:"" , loginFlag:""
+// }
+// }//constructor
+// render(){
+//   return (<MyContext.Provider value="Im the value"> 
+//   {this.props.children}
+//   </MyContext.Provider>)
+// }
+//  }//class myprovider 
 var App =
 /*#__PURE__*/
 function (_React$Component) {
@@ -47739,15 +47920,15 @@ function (_React$Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_NavComponent.NavComponent, null), _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_reactRouterDom.Route, {
+      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_NavComponent.NavComponent, null), _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
         path: "/",
-        component: _HomeComponents.default,
-        exact: true
+        exact: true,
+        component: _HomeComponents.default
       }), _react.default.createElement(_reactRouterDom.Route, {
         path: "/about",
         component: _About.default
       }), _react.default.createElement(_reactRouterDom.Route, {
-        path: "/addawish",
+        path: "/addawish/:eventid",
         component: _AddAWish.default
       }), _react.default.createElement(_reactRouterDom.Route, {
         path: "/AddEvent",
@@ -47759,7 +47940,7 @@ function (_React$Component) {
         path: "/Login",
         component: _Login.default
       }), _react.default.createElement(_reactRouterDom.Route, {
-        path: "/MyWishes",
+        path: "/MyWishes/:eventid",
         component: _MyWishes.default
       }), _react.default.createElement(_reactRouterDom.Route, {
         path: "/Register",
@@ -47779,7 +47960,10 @@ function (_React$Component) {
       }), _react.default.createElement(_reactRouterDom.Route, {
         path: "/EditEvent",
         component: _EditEvent.default
-      })));
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        path: "/EventCardToView",
+        component: _EventCardToView.default
+      }))));
     }
   }]);
 
@@ -47789,7 +47973,7 @@ function (_React$Component) {
 exports.App = App;
 
 _reactDom.default.render(_react.default.createElement(App, null), document.querySelector("#container"));
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./NavComponent":"src/NavComponent.js","./About":"src/About.js","./AddAWish":"src/AddAWish.js","./AddEvent":"src/AddEvent.js","./EventCard":"src/EventCard.js","./HomeComponents":"src/HomeComponents.js","./MyEvents":"src/MyEvents.js","./Login":"src/Login.js","./MyWishes":"src/MyWishes.js","./Register":"src/Register.js","./WishCard":"src/WishCard.js","./SearchEvent":"src/SearchEvent.js","./ShowUserWishes":"src/ShowUserWishes.js","./EditEvent":"src/EditEvent.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./NavComponent":"src/NavComponent.js","./About":"src/About.js","./AddAWish":"src/AddAWish.js","./AddEvent":"src/AddEvent.js","./EventCard":"src/EventCard.js","./HomeComponents":"src/HomeComponents.js","./MyEvents":"src/MyEvents.js","./Login":"src/Login.js","./MyWishes":"src/MyWishes.js","./Register":"src/Register.js","./WishCard":"src/WishCard.js","./SearchEvent":"src/SearchEvent.js","./ShowUserWishes":"src/ShowUserWishes.js","./EditEvent":"src/EditEvent.js","./EventCardToView":"src/EventCardToView.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -47817,7 +48001,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57778" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51116" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
