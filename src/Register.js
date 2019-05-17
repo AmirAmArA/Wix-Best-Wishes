@@ -101,7 +101,7 @@ export default class App extends Component {
       this.successRegister = false;
       this.emailExists = true;
       this.registerErr = result.error.msg;
-      //console.log(this.registerErr);
+      console.log(`this is error account ${this.registerErr}`);
     }
     
   }
@@ -126,7 +126,7 @@ export default class App extends Component {
           <Alert show={this.successRegister} variant="success">Your account was created successfully</Alert>
           </Row>
           <Row>
-          <Alert show={this.emailExists} value={this.registerErr} variant="danger"></Alert>
+          <Alert show={this.emailExists} value={this.registerErr} variant="danger">{this.registerErr}</Alert>
           </Row>
               <Row>
                   <Col>

@@ -58809,7 +58809,8 @@ function (_Component) {
         } else if (result.error) {
           this.successRegister = false;
           this.emailExists = true;
-          this.registerErr = result.error.msg; //console.log(this.registerErr);
+          this.registerErr = result.error.msg;
+          console.log("this is error account ".concat(this.registerErr));
         }
       }
     }
@@ -58830,7 +58831,7 @@ function (_Component) {
         show: this.emailExists,
         value: this.registerErr,
         variant: "danger"
-      })), _react.default.createElement(_reactBootstrap.Row, null, _react.default.createElement(_reactBootstrap.Col, null, _react.default.createElement(_reactBootstrap.Form.Group, {
+      }, this.registerErr)), _react.default.createElement(_reactBootstrap.Row, null, _react.default.createElement(_reactBootstrap.Col, null, _react.default.createElement(_reactBootstrap.Form.Group, {
         controlId: "formControlName"
       }, _react.default.createElement(_reactBootstrap.InputGroup, {
         className: "mb-3"
