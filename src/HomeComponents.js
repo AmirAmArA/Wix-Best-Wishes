@@ -1,26 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
+import PropTypes from "prop-types";
+
+import { NavLink } from 'react-router-dom'
+
 import "./general.css";
 import logo from "../assets/logo.PNG";
 import App from "./App";
 import SearchEvent from "./SearchEvent";
 export default class HomeComponent extends React.Component {
- 
-      constructor(){
-        super();
-        this.state ={
-          loginFlag: localStorage.getItem("loginflag")
+  constructor() {
+    super();
+    this.state = {
+      loginFlag: localStorage.getItem("loginflag"),
+      username: ""
+    };
+  }
 
-        }
-      }
- 
- 
   render() {
     const isLoggedIn = localStorage.getItem("loginflag");
     console.log("loginflag = ", isLoggedIn);
-    // 
-    if (this.state.loginFlag ) {
+    //
+    if (this.state.loginFlag) {
       return (
         <>
           <div className="row">
@@ -34,12 +36,15 @@ export default class HomeComponent extends React.Component {
 
                     <div className="col-md-4">
                       <button className="btn btn-outline-info my-2 my-sm-0">
-                        <a href="/AddEvent">Create event Box</a>
+                      <NavLink to="/AddEvent">Create event Box</NavLink>
+                        {/* <a href="/AddEvent">Create event Box</a> */}
                       </button>
                       <button className="btn btn-outline-info my-2 my-sm-0">
                         {/* should navigate to search event */}
 
-                        <a href="/SearchEvent">Add a best wish!!</a>
+                        {/* <a href="/SearchEvent">Add a best wish!!</a> */}
+                        <NavLink to="/SearchEvent">Add a best wish!!</NavLink>
+                      
                       </button>
                     </div>
                     <div className="col-md-4" />
@@ -67,12 +72,15 @@ export default class HomeComponent extends React.Component {
 
                     <div className="col-md-4">
                       <button className="btn btn-outline-info my-2 my-sm-0">
-                        <a href="/Register">Create event Box</a>
+              <NavLink to="/Register">Create event Box</NavLink>
+
+                        {/* <a href="/Register">Create event Box</a> */}
                       </button>
                       <button className="btn btn-outline-info my-2 my-sm-0">
                         {/* should navigate to search event */}
+              <NavLink to="/SearchEvent">Add a best wish!!</NavLink>
 
-                        <a href="/SearchEvent">Add a best wish!!</a>
+                        {/* <a href="/SearchEvent">Add a best wish!!</a> */}
                       </button>
                     </div>
                     <div className="col-md-4" />
@@ -88,3 +96,8 @@ export default class HomeComponent extends React.Component {
     } //else
   } //render
 } //class
+
+HomeComponent.propTypes = {
+  loginFlag: PropTypes.boolean,
+  username: PropTypes.string
+};

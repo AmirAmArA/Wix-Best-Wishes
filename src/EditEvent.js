@@ -1,10 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
+import PropTypes from "prop-types";
+import { NavLink } from 'react-router-dom'
+
+
 import "./general.css";
 import logo from "../assets/logo.PNG";
 
 export default class EditEvent extends React.Component {
+  
+  constructor(){
+    super();
+    this.state={
+      eventCategory: "" ,
+      startDate:"" ,
+      endDate:"",
+      description : ""
+    }//state
+  }
+  
   render() {
     return (
       <>
@@ -148,7 +163,8 @@ export default class EditEvent extends React.Component {
                           type="button"
                           className="btn btn-outline-info"
                         >
-                        <a href="/MyEvents">Save Changes</a>
+                        {/* <a href="/MyEvents">Save Changes</a> */}
+                        <NavLink to="/MyEvents">Save Changes</NavLink>
                           
                         </button>
                       </div>
@@ -164,4 +180,14 @@ export default class EditEvent extends React.Component {
       </>
     );
   }
-}
+}//class
+
+EditEvent.propTypes = {
+  eventCategory: PropTypes.string,
+  startDate: PropTypes.string,
+  lastUpdateTime: PropTypes.string,
+  endDate: PropTypes.string,
+  description: PropTypes.string
+};
+
+//afterwards to add .isRequired

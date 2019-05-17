@@ -9,7 +9,9 @@ export default class Register extends React.Component {
     super();
     this.state = {
       username: "",
+      lastname : "",
       password: "",
+      email : "" ,
       fieldsvalidated: false
     };
     this.submit = this.submit.bind(this);
@@ -62,6 +64,7 @@ export default class Register extends React.Component {
                     placeholder="Last Name"
                     required="required"
                     id="lname"
+                    defaultValue={this.state.l}
                   />
                 </div>
               </div>
@@ -74,6 +77,7 @@ export default class Register extends React.Component {
                 placeholder="Email"
                 required="required"
                 id="exampleInputEmail1"
+                defaultValue={this.state.email}
               />
             </div>
             <div className="form-group">
@@ -84,6 +88,7 @@ export default class Register extends React.Component {
                 placeholder="Password"
                 required="required"
                 id="password"
+                defaultValue={this.state.password} 
               />
             </div>
             <div className="form-group">
@@ -114,4 +119,6 @@ export default class Register extends React.Component {
       </>
     );
   }
-}
+}//class
+
+

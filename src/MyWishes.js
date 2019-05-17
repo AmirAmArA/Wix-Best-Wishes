@@ -4,6 +4,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./general.css";
 import logo from "../assets/logo.PNG";
 import WishCard from "./WishCard";
+import { NavLink } from 'react-router-dom'
+
 
 export default class MyWishes extends React.Component {
   constructor() {
@@ -43,9 +45,40 @@ export default class MyWishes extends React.Component {
           lastUpdateTime: new Date().toLocaleString("he-IL")
         }
       ],
+      events: [
+        {
+          id: 1,
+          name: "Mustafa",
+          avatar: "images/avatar.jpg",
+          startdate: "2019-01-01",
+          enddate: "2019-01-01",
+          description: "Marhaba, I love Avatars...",
+          lastUpdateTime: new Date().toLocaleString("he-IL"),
+          callercomp: "ShowUserWishes"
+        },
+        {
+          id: "2",
+          name: "Suhir",
+          avatar: "images/avatar.jpg",
+          startdate: "2019-01-01",
+          enddate: "2019-01-01",
+          description: "Hello, I love Avatars...",
+          lastUpdateTime: new Date().toLocaleString("he-IL"),
+          callercomp: "ShowUserWishes"
+        },
+        {
+          id: 3,
+          name: "Shahar",
+          avatar: "images/avatar2.png",
+          startdate: "2019-01-01",
+          enddate: "2019-01-01",
+          description: "Shalom, I love Avatars...",
+          lastUpdateTime: new Date().toLocaleString("he-IL"),
+          callercomp: "ShowUserWishes"
+        }],
       eventDetails: [this.props]
     };
-    console.log(this.props);
+    // console.log(this.props);
     this.updateWishes = this.updateWishes.bind(this);
   }
 
@@ -60,8 +93,24 @@ export default class MyWishes extends React.Component {
   }
 
   render() {
+    let eventid=this.props.match.params.eventid;
+    let eventname ="";
+    let where = "Location";
+    let startdate = "";
+    this.state.events.map(event => {
+      if(event.id== eventid){
+        eventname = event.name
+        // where = event.where
+        startdate = event.startdate;
+
+      }//if
+
+    });
     // eventname= localStorage.getItem('eventname');
-    console.log(this.props.name)
+    // console.log(this.props.name)
+    console.log(this.props.match.params.eventid);//here we recieve the eventid
+    let linktosend ="/AddAWish/" + this.props.match.params.eventid;
+    // console.log(this.props.eventid)
     return (
       <>
         <div>
@@ -80,20 +129,21 @@ export default class MyWishes extends React.Component {
                   <div className="row">
                     <div className="col-md-6">
                       <span>
-                        {this.props.name}:{this.props.id}
+                        ID : {eventid} <br/>
+                         Name:{eventname}
                       </span>
                     </div>
                     <div className="col-md-6" />
                   </div>
                   <div className="row">
                     <div className="col-md-6">
-                      <span>When:</span>
+                      <span>When: {startdate}</span>
                     </div>
                     <div className="col-md-6" />
                   </div>
                   <div className="row">
                     <div className="col-md-6">
-                      <span>Where:</span>
+                      <span>Where: {where}</span>
                     </div>
                     <div className="col-md-6" />
                   </div>
@@ -102,9 +152,10 @@ export default class MyWishes extends React.Component {
               <div className="row">
                 <div className="col-md-12">
                   <button type="button" className="btn btn-outline-warning">
-                    <a className="coloryellow" href="/AddAWish">
-                      Add a Best Wish !!
-                    </a>
+                   
+            <NavLink to={linktosend}>Add a Best Wish !!</NavLink>
+                   
+                    {/* <a className="coloryellow" href="/AddAWish"></a> */}
                   </button>
                 </div>
               </div>
