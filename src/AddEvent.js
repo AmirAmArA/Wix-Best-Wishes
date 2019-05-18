@@ -118,7 +118,7 @@ export default class AddEvent extends React.Component {
     // spantitle.innerText="Please Enter Title";
 
     if (!startdate.value) {
-      spanstartdate.innerText = "Please Enter Title";
+      spanstartdate.innerText = "Please Enter Event Start Date";
     } //if
     if (startdate.value) {
       spanstartdate.innerText = "";
@@ -250,7 +250,7 @@ export default class AddEvent extends React.Component {
 
                         <div className="row">
                           <span id="spanstartdate">
-                            U Should Add Event Date!
+                          
                           </span>
                         </div>
                       </div>
@@ -274,7 +274,7 @@ export default class AddEvent extends React.Component {
                         />
                         <div>
                           <span id="spanenddate">
-                            U Should Add Event End Date!
+                          
                           </span>
                         </div>
                         <br />
@@ -300,7 +300,7 @@ export default class AddEvent extends React.Component {
                         />
                         <div>
                           <span id="spanlocation">
-                            U Should Add Event Location!
+                          
                           </span>
                         </div>
                       </div>

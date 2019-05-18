@@ -46131,7 +46131,7 @@ function (_React$Component) {
 
 
       if (!startdate.value) {
-        spanstartdate.innerText = "Please Enter Title";
+        spanstartdate.innerText = "Please Enter Event Start Date";
       } //if
 
 
@@ -46261,7 +46261,7 @@ function (_React$Component) {
         className: "row"
       }, _react.default.createElement("span", {
         id: "spanstartdate"
-      }, "U Should Add Event Date!"))))), _react.default.createElement("div", {
+      }))))), _react.default.createElement("div", {
         className: "col-md-4"
       })), _react.default.createElement("div", {
         className: "row"
@@ -46284,7 +46284,7 @@ function (_React$Component) {
         id: "enddate"
       }), _react.default.createElement("div", null, _react.default.createElement("span", {
         id: "spanenddate"
-      }, "U Should Add Event End Date!")), _react.default.createElement("br", null)))), _react.default.createElement("div", {
+      })), _react.default.createElement("br", null)))), _react.default.createElement("div", {
         className: "col-md-4"
       })), _react.default.createElement("div", {
         className: "row"
@@ -46307,7 +46307,7 @@ function (_React$Component) {
         id: "where"
       }), _react.default.createElement("div", null, _react.default.createElement("span", {
         id: "spanlocation"
-      }, "U Should Add Event Location!"))))), _react.default.createElement("div", {
+      }))))), _react.default.createElement("div", {
         className: "col-md-4"
       })), _react.default.createElement("div", {
         className: "row"
