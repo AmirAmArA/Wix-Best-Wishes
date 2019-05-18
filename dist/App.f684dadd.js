@@ -46096,6 +46096,16 @@ function (_React$Component) {
       e.preventDefault();
       console.log(eventtitle.value, where.value, enddate.value, startdate.value);
 
+      if (this.state.dropdownvalue == "") {
+        categoryspan.innerText = "Please Choose Category";
+      } //if  
+
+
+      if (this.state.dropdownvalue != "") {
+        categoryspan.innerText = "";
+      } //if  
+
+
       if (eventtitle.value == "") {
         console.log("you should add event title ");
         spantitle.innerText = "Please Enter Title";
@@ -46168,6 +46178,7 @@ function (_React$Component) {
       var enddate = document.getElementById("#enddate");
       var where = document.getElementById("#where");
       var createventref = this.state.continueflag ? "/MyEvents/" + this.state.userid : "/AddEvent/" + this.state.userid;
+      var categoryspan = document.getElementById("#categoryspan");
       var spantitle = document.getElementById("#spantitle");
       var spanstartdate = document.getElementById("#spanstartdate");
       var spanenddate = document.getElementById("#spanenddate");
@@ -46211,6 +46222,8 @@ function (_React$Component) {
         onClick: this.handledropdown
       }, "New Born"))), _react.default.createElement("span", {
         ref: this.state.dropdownvalue
+      })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("span", {
+        id: "categoryspan"
       }))))), _react.default.createElement("div", {
         className: "col-md-4"
       })), _react.default.createElement("div", {
@@ -59532,7 +59545,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50092" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51766" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

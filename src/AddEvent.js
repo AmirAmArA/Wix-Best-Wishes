@@ -93,6 +93,13 @@ export default class AddEvent extends React.Component {
     e.preventDefault();
     console.log(eventtitle.value, where.value, enddate.value, startdate.value);
 
+      if(this.state.dropdownvalue==""){
+        categoryspan.innerText = "Please Choose Category";
+      }//if  
+      if(this.state.dropdownvalue!=""){
+        categoryspan.innerText = "";
+      }//if  
+
     if (eventtitle.value == "") {
       console.log("you should add event title ");
       spantitle.innerText = "Please Enter Title";
@@ -156,6 +163,7 @@ export default class AddEvent extends React.Component {
 
     let createventref = this.state.continueflag ? "/MyEvents/" + this.state.userid :"/AddEvent/" + this.state.userid ;
 
+    let categoryspan =document.getElementById("#categoryspan"); 
     let spantitle = document.getElementById("#spantitle");
     let spanstartdate = document.getElementById("#spanstartdate");
     let spanenddate = document.getElementById("#spanenddate");
@@ -200,6 +208,12 @@ export default class AddEvent extends React.Component {
                             </Dropdown.Menu>
                           </Dropdown>
                           <span ref={this.state.dropdownvalue} />
+                        </div>
+                        <br/>
+                        <div>
+                        <span id="categoryspan"> 
+                        
+                        </span> 
                         </div>
                       </div>
                     </div>
