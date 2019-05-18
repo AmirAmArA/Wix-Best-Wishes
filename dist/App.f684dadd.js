@@ -29858,6 +29858,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -29888,11 +29890,14 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(AddAWish).call(this));
     _this.state = {
-      from: "",
-      wishu: "",
-      imageurl: "",
+      from: " ",
+      wishu: " ",
+      imageurl: " ",
       validafields: false,
-      ahref: "/AddAWish "
+      ahref: "/AddAWish ",
+      usernameerror: "",
+      wishuerror: "",
+      urlerror: ""
     };
     _this.validatefields = _this.validatefields.bind(_assertThisInitialized(_this));
     _this.is_url = _this.is_url.bind(_assertThisInitialized(_this)); // this.validURL= this.validURL.bind(this);
@@ -29916,21 +29921,80 @@ function (_React$Component) {
   }, {
     key: "validatefields",
     value: function validatefields(e) {
+      // let linktosend = "/MyWishes/" + this.props.match.params.eventid
+      console.log("hello from validate fields");
       e.preventDefault();
+      console.log(this.is_url(imageurl.value));
 
-      if (this.is_url(imageurl.value) && wishbody.value && fromname.value) {
+      if (this.is_url(imageurl.value) == false || imageurl.value == "") {
+        this.setState(_objectSpread({
+          urlerror: "u should add image link"
+        }, this.state));
+        urlspan.innerText = "u should add  Image Url";
+      } //if
+
+
+      if (this.is_url(imageurl.value) == true || imageurl.value == "") {
+        urlspan.innerText = "";
+      } //if
+
+
+      if (fromname.value == "") {
+        this.setState({
+          from: fromname.value,
+          wishu: wishbody.value,
+          imageurl: imageurl.value,
+          validafields: false,
+          ahref: "/MyWishes ",
+          usernameerror: "u should add your name",
+          wishuerror: this.state.wishuerror,
+          urlerror: this.state.urlerror
+        });
+        fromspan.innerText = "u should add  your name!!!";
+      } //if
+
+
+      if (fromname.value != "") {
+        fromspan.innerText = "";
+      }
+
+      if (wishbody.value == "") {
+        this.setState({
+          from: fromname.value,
+          wishu: wishbody.value,
+          imageurl: imageurl.value,
+          validafields: false,
+          ahref: "/MyWishes ",
+          usernameerror: this.state.usernameerror,
+          wishuerror: "u should add A Wish Description",
+          urlerror: this.state.urlerror
+        });
+        wishuspan.innerText = "u should add  Wish Body!!!";
+      } //if
+
+
+      if (wishbody.value != "") {
+        wishuspan.innerText = "";
+      }
+
+      if (this.is_url(imageurl.value) && wishbody.value != "" && fromname.value != "") {
         // this.state.validafields =true
         this.setState({
           from: fromname.value,
           wishu: wishbody.value,
           imageurl: imageurl.value,
           validafields: true,
-          ahref: "/MyWishes " //  [this.state.ahref ="/MyWishes" , ...this.state]
+          ahref: "/MyWishes ",
+          usernameerror: "",
+          wishuerror: "",
+          urlerror: "" //  [this.state.ahref ="/MyWishes" , ...this.state]
 
         }); // this.state.ahref="/MyWishes";
         // myanchor.href = "/MyWishes";
+        // console.log(this.state.from ,this.state.wishu , this.state.imageurl );
 
-        console.log(this.state.from, this.state.wishu, this.state.imageurl);
+        console.log(fromname.value, wishbody.value, imageurl.value);
+        console.log(linktosend && true);
       } //if
 
     } //validate...
@@ -29938,14 +30002,16 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _React$createElement;
-
       console.log(this.props.match.params.eventid);
       var imageurl = document.getElementById("#imageurl");
       var wishbody = document.getElementById("#wishbody");
       var fromname = document.getElementById("#fromname");
       var myanchor = document.getElementById("#myanchor");
       var linktosend = "/MyWishes/" + this.props.match.params.eventid;
+      var linktosend2 = "/AddAWish/" + this.props.match.params.eventid;
+      var fromspan = document.getElementById("#fromspan");
+      var urlspan = document.getElementById("#urlspan");
+      var wishuspan = document.getElementById("#wishuspan");
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
         className: "row"
       }, _react.default.createElement("div", {
@@ -29964,10 +30030,16 @@ function (_React$Component) {
         className: "form-control",
         type: "text",
         placeholder: "Enter you're name",
-        id: "fromname",
-        defaultValue: this.state.from
+        id: "fromname" // defaultValue={this.state.from}
+
       })))), _react.default.createElement("div", {
         className: "col-md-4"
+      })), _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("div", {
+        className: "col-md-5"
+      }), _react.default.createElement("span", {
+        id: "fromspan"
       })), _react.default.createElement("div", {
         className: "row"
       }, _react.default.createElement("div", {
@@ -29984,12 +30056,14 @@ function (_React$Component) {
         className: "col-md-9"
       }, _react.default.createElement("div", {
         className: "form-group"
-      }, _react.default.createElement("textarea", (_React$createElement = {
+      }, _react.default.createElement("textarea", _defineProperty({
         className: "form-control",
         id: "exampleFormControlTextarea3",
         rows: "7",
         placeholder: "Write you're wish"
-      }, _defineProperty(_React$createElement, "id", "wishbody"), _defineProperty(_React$createElement, "defaultValue", this.state.wishu), _React$createElement)))))), _react.default.createElement("div", {
+      }, "id", "wishbody")), _react.default.createElement("br", null), _react.default.createElement("span", {
+        id: "wishuspan"
+      }))))), _react.default.createElement("div", {
         className: "col-md-4"
       })), _react.default.createElement("div", {
         className: "row"
@@ -30009,8 +30083,8 @@ function (_React$Component) {
         className: "form-control",
         type: "text",
         placeholder: "URL",
-        id: "imageurl",
-        defaultValue: this.state.imageurl
+        id: "imageurl" // defaultValue={this.state.imageurl}
+
       })))), _react.default.createElement("div", {
         className: "col-md-4"
       })), _react.default.createElement("div", {
@@ -30019,14 +30093,18 @@ function (_React$Component) {
         className: "col-md-4"
       }), _react.default.createElement("div", {
         className: "col-md-4"
-      }), _react.default.createElement("div", {
+      }, _react.default.createElement("span", {
+        id: "urlspan"
+      })), _react.default.createElement("div", {
         className: "col-md-4"
       }, _react.default.createElement("button", {
         id: "searchEventbtn",
         type: "button",
         className: "btn btn-outline-warning",
         onClick: this.validatefields
-      }, "Add a wish"))));
+      }, _react.default.createElement(_reactRouterDom.NavLink, {
+        to: this.state.validafields ? linktosend : linktosend2
+      }, "Add a wish")))));
     }
   }]);
 
@@ -59402,7 +59480,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54147" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49286" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
