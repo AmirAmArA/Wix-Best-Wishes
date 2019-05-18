@@ -55,8 +55,11 @@ export default class AddAWish extends React.Component {
     let wishbody = document.getElementById("#wishbody");
     let fromname = document.getElementById("#fromname");
     let myanchor = document.getElementById("#myanchor");
+    let linktosend ="/MyWishes/" + this.props.match.params.eventid;
 
     return (
+
+      
       <>
         <div className="row">
           <div className="col-md-4" />
@@ -133,7 +136,7 @@ export default class AddAWish extends React.Component {
               onClick={this.validatefields}
             >
               {/* <a id="myanchor">Add a wish</a> */}
-              <NavLink to="/MyWishes">Add a wish</NavLink>
+              <NavLink to={linktosend}>Add a wish</NavLink>
 
             </button>
           </div>

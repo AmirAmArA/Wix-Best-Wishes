@@ -20,7 +20,8 @@ export class NavComponent extends React.Component {
     localStorage.clear();
     this.state = {
       loginFlag: true,
-      username: "Majde"
+      username: "Majde",
+      userid: 22
     };
     // console.log(localStorage.getItem("loginflag"));
     localStorage.setItem("loginflag", this.state.loginFlag);
@@ -32,7 +33,8 @@ export class NavComponent extends React.Component {
     localStorage.setItem("loginflag", this.state.loginFlag);
     const style = this.state.loginFlag ? { display: "none" } : {};
     const style1 = this.state.loginFlag ? {} : { display: "none" };
-
+    let myeventslink= "/MyEvents/"+this.state.userid;
+    let ShowUserWishes="/ShowUserWishes/"+this.state.userid;
     // const isLoggedIn = localStorage.getItem("loginflag");
     if (this.state.loginFlag) {
       console.log("user is logged in");
@@ -70,14 +72,16 @@ export class NavComponent extends React.Component {
                 </li>
                 <li className="nav-item">
                 
-                  <NavLink className="nav-link" to="/MyEvents">
+                {/* /MyEvents */}
+                  <NavLink className="nav-link" to={myeventslink}>
                     MyEvents
                   </NavLink>
 
                   {/* <a className="nav-link" href="/MyEvents"></a> */}
                 </li>
                 <li className="nav-item ">
-                  <NavLink className="nav-link" to="/ShowUserWishes">
+                {/* /ShowUserWishes */}
+                  <NavLink className="nav-link" to={ShowUserWishes}>
                     MyWishes
                   </NavLink>
 

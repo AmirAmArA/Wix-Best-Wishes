@@ -29943,6 +29943,7 @@ function (_React$Component) {
       var wishbody = document.getElementById("#wishbody");
       var fromname = document.getElementById("#fromname");
       var myanchor = document.getElementById("#myanchor");
+      var linktosend = "/MyWishes/" + this.props.match.params.eventid;
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
         className: "row"
       }, _react.default.createElement("div", {
@@ -30024,7 +30025,7 @@ function (_React$Component) {
         className: "btn btn-outline-warning",
         onClick: this.validatefields
       }, _react.default.createElement(_reactRouterDom.NavLink, {
-        to: "/MyWishes"
+        to: linktosend
       }, "Add a wish")))));
     }
   }]);
@@ -30378,7 +30379,8 @@ function (_React$Component) {
     localStorage.clear();
     _this.state = {
       loginFlag: true,
-      username: "Majde"
+      username: "Majde",
+      userid: 22
     }; // console.log(localStorage.getItem("loginflag"));
 
     localStorage.setItem("loginflag", _this.state.loginFlag); // this.checkIfLogedIn = this.checkIfLogedIn.bind(this);
@@ -30396,7 +30398,9 @@ function (_React$Component) {
       } : {};
       var style1 = this.state.loginFlag ? {} : {
         display: "none"
-      }; // const isLoggedIn = localStorage.getItem("loginflag");
+      };
+      var myeventslink = "/MyEvents/" + this.state.userid;
+      var ShowUserWishes = "/ShowUserWishes/" + this.state.userid; // const isLoggedIn = localStorage.getItem("loginflag");
 
       if (this.state.loginFlag) {
         console.log("user is logged in");
@@ -30433,12 +30437,12 @@ function (_React$Component) {
             className: "nav-item"
           }, _react.default.createElement(_reactRouterDom.NavLink, {
             className: "nav-link",
-            to: "/MyEvents"
+            to: myeventslink
           }, "MyEvents")), _react.default.createElement("li", {
             className: "nav-item "
           }, _react.default.createElement(_reactRouterDom.NavLink, {
             className: "nav-link",
-            to: "/ShowUserWishes"
+            to: ShowUserWishes
           }, "MyWishes")), _react.default.createElement("li", {
             className: "nav-item"
           }, _react.default.createElement(_reactRouterDom.NavLink, {
@@ -59326,13 +59330,13 @@ function (_React$Component) {
         path: "/WishCard",
         component: _WishCard.default
       }), _react.default.createElement(_reactRouterDom.Route, {
-        path: "/MyEvents",
+        path: "/MyEvents/:userid",
         component: _MyEvents.default
       }), _react.default.createElement(_reactRouterDom.Route, {
         path: "/SearchEvent",
         component: _SearchEvent.default
       }), _react.default.createElement(_reactRouterDom.Route, {
-        path: "/ShowUserWishes",
+        path: "/ShowUserWishes/:userid",
         component: _ShowUserWishes.default
       }), _react.default.createElement(_reactRouterDom.Route, {
         path: "/EditEvent",
@@ -59378,7 +59382,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62142" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60491" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
