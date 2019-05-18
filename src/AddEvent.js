@@ -1,8 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
-import { NavLink } from 'react-router-dom'
-
+import { NavLink } from "react-router-dom";
 
 import "./general.css";
 import logo from "../assets/logo.PNG";
@@ -53,11 +52,10 @@ export default class AddEvent extends React.Component {
         }
       ],
       dropdownvalue: "",
-      continueflag:false ,
-      navigatefroma : "/AddEvent",
-      userid:2
-    }//state
-    ;
+      continueflag: false,
+      navigatefroma: "/AddEvent",
+      userid: 2
+    }; //state
     this.updateEvents = this.updateEvents.bind(this);
     this.handledropdown = this.handledropdown.bind(this);
     this.createnewevent = this.createnewevent.bind(this);
@@ -86,49 +84,67 @@ export default class AddEvent extends React.Component {
   handledropdown(e) {
     // e.preventDefault();
     this.state.dropdownvalue = e.target.innerText;
-    dropdown.innerText=this.state.dropdownvalue;
+    dropdown.innerText = this.state.dropdownvalue;
+    console.log(this.state.dropdownvalue);
   }
 
-  createnewevent(e) { //checking the event fields and navigate depending on..
-      e.preventDefault();
-      console.log( eventtitle.value ,where.value , enddate.value , startdate.value );
+  createnewevent(e) {
+    //checking the event fields and navigate depending on..
+    e.preventDefault();
+    console.log(eventtitle.value, where.value, enddate.value, startdate.value);
+
     if (eventtitle.value == "") {
       console.log("you should add event title ");
-      this.state.errorMessages=[...this.state.errorMessages , "you should add event title "];
-        
-      
+      spantitle.innerText = "Please Enter Title";
     } //if title
+    if (eventtitle.value != "") {
+      spantitle.innerText = "";
+    } //if
     if (where.value == "") {
       console.log("you should add event location ");
-      this.state.errorMessages=[...this.state.errorMessages , "you should add event location "];
-
-    
+      spanlocation.innerText = "Please Enter Event Location";
     } //ifwhere
-    if (!(enddate.value && startdate.value)) {
+    if (where.value != "") {
+      spanlocation.innerText = "";
+    } //if
+    if (!enddate.value) {
+      spanenddate.innerText = "Please Enter End Date";
+
       console.log("you should Add start and end event dates ");
-      this.state.errorMessages=[...this.state.errorMessages , "you should Add start and end event dates"];
+    } //if end date
+    if (enddate.value) {
+      spanenddate.innerText = "";
+    } //if
+    // spantitle.innerText="Please Enter Title";
 
-    } //ifstart and end date
+    if (!startdate.value) {
+      spanstartdate.innerText = "Please Enter Title";
+    } //if
+    if (startdate.value) {
+      spanstartdate.innerText = "";
+    } //if
 
-    if(eventtitle.value && this.state.dropdownvalue && enddate.value && startdate.value && where.value){
-      this.state.continueflag=true 
-      this.setState(
-          [this.state.navigatefroma ="/MyEvents", this.state]
-      )
+    if (
+      eventtitle.value &&
+      this.state.dropdownvalue &&
+      enddate.value &&
+      startdate.value &&
+      where.value
+    ) {
+      this.state.continueflag = true;
+      this.setState([(this.state.navigatefroma = "/MyEvents"), this.state]);
       console.log(this.state.continueflag);
-    }
-
-
+    }///if
   } //createnewevent()
 
-  navigateahref(){///navigate according the fields -- if filled true -continue , else stay in this component
-    if(this.state.continueflag){
+  navigateahref() {
+    ///navigate according the fields -- if filled true -continue , else stay in this component
+    if (this.state.continueflag) {
       return "/MyEvents";
-    }//if
-    else{
-      return ("/AddEvent");
+    } //if
+    else {
+      return "/AddEvent";
     }
-    
   }
 
   render() {
@@ -137,7 +153,13 @@ export default class AddEvent extends React.Component {
     let startdate = document.getElementById("#startdate");
     let enddate = document.getElementById("#enddate");
     let where = document.getElementById("#where");
-    let createventref ="/MyEvents/"+this.state.userid;
+
+    let createventref = this.state.continueflag ? "/MyEvents/" + this.state.userid :"/AddEvent/" + this.state.userid ;
+
+    let spantitle = document.getElementById("#spantitle");
+    let spanstartdate = document.getElementById("#spanstartdate");
+    let spanenddate = document.getElementById("#spanenddate");
+    let spanlocation = document.getElementById("#spanlocation");
 
     return (
       <>
@@ -161,10 +183,7 @@ export default class AddEvent extends React.Component {
                       <div className="col-md-8">
                         <div className="btn-group  btn-group-md ">
                           <Dropdown>
-                            <Dropdown.Toggle
-                              variant="secondary"
-                              id="dropdown"
-                            >
+                            <Dropdown.Toggle variant="secondary" id="dropdown">
                               Choose A Category
                             </Dropdown.Toggle>
 
@@ -204,6 +223,10 @@ export default class AddEvent extends React.Component {
                             placeholder="write event title"
                             id="eventtitle"
                           />
+
+                          <div>
+                            <span id="spantitle" />
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -224,7 +247,12 @@ export default class AddEvent extends React.Component {
                           name="date"
                           id="startdate"
                         />
-                        <br />
+
+                        <div className="row">
+                          <span id="spanstartdate">
+                            U Should Add Event Date!
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -244,6 +272,11 @@ export default class AddEvent extends React.Component {
                           name="date"
                           id="enddate"
                         />
+                        <div>
+                          <span id="spanenddate">
+                            U Should Add Event End Date!
+                          </span>
+                        </div>
                         <br />
                       </div>
                     </div>
@@ -265,6 +298,11 @@ export default class AddEvent extends React.Component {
                           placeholder="Type Event Location"
                           id="where"
                         />
+                        <div>
+                          <span id="spanlocation">
+                            U Should Add Event Location!
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -283,11 +321,13 @@ export default class AddEvent extends React.Component {
                           type="button"
                           className="btn btn-outline-info"
                           onClick={this.createnewevent}
-                        > 
+                        >
                           {/* <a href={this.state.navigatefroma}>Create event box</a> */}
                           {/* "/MyEvents" */}
-                           <NavLink to={createventref}>Create event box</NavLink>
                           
+                          <NavLink to={createventref}>
+                          Create New Event{" "}
+                          </NavLink>
                         </button>
                       </div>
                     </div>

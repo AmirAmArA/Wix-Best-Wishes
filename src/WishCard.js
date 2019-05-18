@@ -24,6 +24,7 @@ export default class WishCard extends React.Component {
   }
 
   render() {
+    let editbtnref="/AddAWish/"+this.props.id
     if (!this.state.deleted) {
       if (this.props.callercomp == "ShowUserWishes") {
         // console.log("calling components is" ,this.props.callercomp)
@@ -41,7 +42,8 @@ export default class WishCard extends React.Component {
                     up the bulk of the card's content. */}
                   {this.props.description} <br />
                   <button>
-                    <a href="/AddAWish"> edit </a>
+
+                    <a href={editbtnref}> edit </a>
                   </button>
                   <button onClick={this.deleteWish}> delete</button>
                 </p>

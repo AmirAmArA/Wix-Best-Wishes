@@ -230,8 +230,8 @@ export default class AddAWish extends React.Component {
   }
 } //cllass
 
-AddAWish.propTypes = {
-  from: PropTypes.string,
-  wishu: PropTypes.string,
-  imageurl: PropTypes.string
-};
+// AddAWish.propTypes = {
+//   from: PropTypes.string,
+//   wishu: PropTypes.string,
+//   imageurl: PropTypes.string
+// };

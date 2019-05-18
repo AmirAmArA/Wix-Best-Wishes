@@ -30110,14 +30110,14 @@ function (_React$Component) {
 
   return AddAWish;
 }(_react.default.Component); //cllass
+// AddAWish.propTypes = {
+//   from: PropTypes.string,
+//   wishu: PropTypes.string,
+//   imageurl: PropTypes.string
+// };
 
 
 exports.default = AddAWish;
-AddAWish.propTypes = {
-  from: _propTypes.default.string,
-  wishu: _propTypes.default.string,
-  imageurl: _propTypes.default.string
-};
 },{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","prop-types":"node_modules/prop-types/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./general.css":"src/general.css"}],"src/WishCard.js":[function(require,module,exports) {
 "use strict";
 
@@ -30192,6 +30192,8 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var editbtnref = "/AddAWish/" + this.props.id;
+
       if (!this.state.deleted) {
         if (this.props.callercomp == "ShowUserWishes") {
           // console.log("calling components is" ,this.props.callercomp)
@@ -30211,7 +30213,7 @@ function (_React$Component) {
           }), _react.default.createElement("p", {
             className: "card-text"
           }, this.props.description, " ", _react.default.createElement("br", null), _react.default.createElement("button", null, _react.default.createElement("a", {
-            href: "/AddAWish"
+            href: editbtnref
           }, " edit ")), _react.default.createElement("button", {
             onClick: this.deleteWish
           }, " delete")))));
@@ -30276,8 +30278,6 @@ var _WishCard = _interopRequireDefault(require("./WishCard"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
@@ -30384,9 +30384,7 @@ function (_React$Component) {
       }, _react.default.createElement("div", {
         className: "row"
       }, this.state.wishes.map(function (wish) {
-        return _react.default.createElement(_WishCard.default, _extends({}, wish, {
-          key: wish.id
-        }));
+        return _react.default.createElement(_WishCard.default, wish);
       }))))));
     }
   }]);
@@ -46053,9 +46051,9 @@ function (_React$Component) {
       dropdownvalue: "",
       continueflag: false,
       navigatefroma: "/AddEvent",
-      userid: 2 //state
+      userid: 2
+    }; //state
 
-    };
     _this.updateEvents = _this.updateEvents.bind(_assertThisInitialized(_this));
     _this.handledropdown = _this.handledropdown.bind(_assertThisInitialized(_this));
     _this.createnewevent = _this.createnewevent.bind(_assertThisInitialized(_this));
@@ -46089,6 +46087,7 @@ function (_React$Component) {
       // e.preventDefault();
       this.state.dropdownvalue = e.target.innerText;
       dropdown.innerText = this.state.dropdownvalue;
+      console.log(this.state.dropdownvalue);
     }
   }, {
     key: "createnewevent",
@@ -46099,27 +46098,54 @@ function (_React$Component) {
 
       if (eventtitle.value == "") {
         console.log("you should add event title ");
-        this.state.errorMessages = [].concat(_toConsumableArray(this.state.errorMessages), ["you should add event title "]);
+        spantitle.innerText = "Please Enter Title";
       } //if title
+
+
+      if (eventtitle.value != "") {
+        spantitle.innerText = "";
+      } //if
 
 
       if (where.value == "") {
         console.log("you should add event location ");
-        this.state.errorMessages = [].concat(_toConsumableArray(this.state.errorMessages), ["you should add event location "]);
+        spanlocation.innerText = "Please Enter Event Location";
       } //ifwhere
 
 
-      if (!(enddate.value && startdate.value)) {
+      if (where.value != "") {
+        spanlocation.innerText = "";
+      } //if
+
+
+      if (!enddate.value) {
+        spanenddate.innerText = "Please Enter End Date";
         console.log("you should Add start and end event dates ");
-        this.state.errorMessages = [].concat(_toConsumableArray(this.state.errorMessages), ["you should Add start and end event dates"]);
-      } //ifstart and end date
+      } //if end date
+
+
+      if (enddate.value) {
+        spanenddate.innerText = "";
+      } //if
+      // spantitle.innerText="Please Enter Title";
+
+
+      if (!startdate.value) {
+        spanstartdate.innerText = "Please Enter Title";
+      } //if
+
+
+      if (startdate.value) {
+        spanstartdate.innerText = "";
+      } //if
 
 
       if (eventtitle.value && this.state.dropdownvalue && enddate.value && startdate.value && where.value) {
         this.state.continueflag = true;
         this.setState([this.state.navigatefroma = "/MyEvents", this.state]);
         console.log(this.state.continueflag);
-      }
+      } ///if
+
     } //createnewevent()
 
   }, {
@@ -46141,7 +46167,11 @@ function (_React$Component) {
       var startdate = document.getElementById("#startdate");
       var enddate = document.getElementById("#enddate");
       var where = document.getElementById("#where");
-      var createventref = "/MyEvents/" + this.state.userid;
+      var createventref = this.state.continueflag ? "/MyEvents/" + this.state.userid : "/AddEvent/" + this.state.userid;
+      var spantitle = document.getElementById("#spantitle");
+      var spanstartdate = document.getElementById("#spanstartdate");
+      var spanenddate = document.getElementById("#spanenddate");
+      var spanlocation = document.getElementById("#spanlocation");
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
         className: "row"
       }, _react.default.createElement("br", null), _react.default.createElement("br", null)), _react.default.createElement("div", {
@@ -46204,7 +46234,9 @@ function (_React$Component) {
         type: "text",
         placeholder: "write event title",
         id: "eventtitle"
-      }))))), _react.default.createElement("div", {
+      }), _react.default.createElement("div", null, _react.default.createElement("span", {
+        id: "spantitle"
+      })))))), _react.default.createElement("div", {
         className: "col-md-4"
       })), _react.default.createElement("div", {
         className: "row"
@@ -46225,7 +46257,11 @@ function (_React$Component) {
         type: "date",
         name: "date",
         id: "startdate"
-      }), _react.default.createElement("br", null)))), _react.default.createElement("div", {
+      }), _react.default.createElement("div", {
+        className: "row"
+      }, _react.default.createElement("span", {
+        id: "spanstartdate"
+      }, "U Should Add Event Date!"))))), _react.default.createElement("div", {
         className: "col-md-4"
       })), _react.default.createElement("div", {
         className: "row"
@@ -46246,7 +46282,9 @@ function (_React$Component) {
         type: "date",
         name: "date",
         id: "enddate"
-      }), _react.default.createElement("br", null)))), _react.default.createElement("div", {
+      }), _react.default.createElement("div", null, _react.default.createElement("span", {
+        id: "spanenddate"
+      }, "U Should Add Event End Date!")), _react.default.createElement("br", null)))), _react.default.createElement("div", {
         className: "col-md-4"
       })), _react.default.createElement("div", {
         className: "row"
@@ -46267,7 +46305,9 @@ function (_React$Component) {
         type: "text",
         placeholder: "Type Event Location",
         id: "where"
-      })))), _react.default.createElement("div", {
+      }), _react.default.createElement("div", null, _react.default.createElement("span", {
+        id: "spanlocation"
+      }, "U Should Add Event Location!"))))), _react.default.createElement("div", {
         className: "col-md-4"
       })), _react.default.createElement("div", {
         className: "row"
@@ -46288,7 +46328,7 @@ function (_React$Component) {
         onClick: this.createnewevent
       }, _react.default.createElement(_reactRouterDom.NavLink, {
         to: createventref
-      }, "Create event box"))))), _react.default.createElement("div", {
+      }, "Create New Event", " "))))), _react.default.createElement("div", {
         className: "col-md-4"
       })))), _react.default.createElement("div", {
         className: "col-md-1"
@@ -46917,6 +46957,7 @@ function (_React$Component) {
   _createClass(SearchEvent, [{
     key: "updateEvents",
     value: function updateEvents(eventsarr) {
+      //after recieving the events array from api - we add it so state here
       // const user = this.state.users.find(user => user.id === userId);
       this.setState({
         events: [this.state.events].concat(_toConsumableArray(eventsarr)) //  .push(wish => {
@@ -46946,13 +46987,15 @@ function (_React$Component) {
       console.log(startdate.value);
       this.state.myEvent = (0, _EventsApi.getMyEvents)(eventid.value);
       this.state.eventsToShow.push((0, _EventsApi.getMyEvents)(eventid.value));
-      console.log("njnunuihnuih", this.state.eventsToShow);
+      console.log("the events to show", this.state.eventsToShow);
       console.log("my event is ", this.state.myEvent);
       this.state.events.map(function (event) {
         console.log("the event id is ", event.id);
 
         if (eventid.value == "" || eventid.value < 0) {
+          //-------------------------------------------------------
           console.log("eventid should be bigger  than 0 and not empty");
+          eventidspan.innerText = "eventid should be bigger  than 0 and not empty!!!!";
 
           _this2.state.errorMessages.push("eventid should be bigger  than 0 and not empty"); // e.preventDefault();
 
@@ -47024,6 +47067,10 @@ function (_React$Component) {
       var enddate = document.getElementById("#enddate");
       var where = document.getElementById("#where");
       var dropdown = document.getElementById("#dropdown");
+      var eventidspan = document.getElementById("#eventidspan"); // let eventidspan= document.getElementById("#eventidspan");
+      // let eventidspan= document.getElementById("#eventidspan");
+      // let eventidspan= document.getElementById("#eventidspan");
+
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
         className: "row",
         id: "mainrowdiv"
@@ -47037,13 +47084,13 @@ function (_React$Component) {
         className: "btn-group btn-group-toggle",
         "data-toggle": "buttons"
       }, _react.default.createElement("label", {
-        className: "btn btn-outline-secondary  active"
+        className: "btn btn-outline-secondary  colorwhite"
       }, _react.default.createElement("input", {
         type: "radio",
-        name: "options",
+        name: "eventid",
         id: "option1",
-        autoComplete: "off",
-        checked: true
+        autoComplete: "off" // checked
+
       }), " ", "Event ID"), _react.default.createElement("label", {
         className: "btn btn-outline-secondary "
       }, _react.default.createElement("input", {
@@ -47056,7 +47103,9 @@ function (_React$Component) {
         type: "text",
         placeholder: "Enter Event ID",
         id: "eventid"
-      }), _react.default.createElement("br", null), _react.default.createElement("div", {
+      }), _react.default.createElement("div", null, _react.default.createElement("span", {
+        id: "eventidspan"
+      })), _react.default.createElement("br", null), _react.default.createElement("div", {
         className: "btn-group  btn-group-md "
       }, _react.default.createElement(_reactBootstrap.Dropdown, null, _react.default.createElement(_reactBootstrap.Dropdown.Toggle, {
         variant: "secondary",
@@ -47068,7 +47117,7 @@ function (_React$Component) {
         onClick: this.handledropdown
       }, "Wedding"), _react.default.createElement(_reactBootstrap.Dropdown.Item, {
         onClick: this.handledropdown
-      }, " New Born"))), _react.default.createElement("span", {
+      }, " ", "New Born"))), _react.default.createElement("span", {
         ref: this.state.dropdownvalue
       })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("br", null)), _react.default.createElement("input", {
         className: "form-control",
@@ -47191,8 +47240,9 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(HomeComponent).call(this));
     _this.state = {
-      loginFlag: localStorage.getItem("loginflag"),
-      username: ""
+      loginFlag: true,
+      username: "",
+      userid: 2
     };
     return _this;
   }
@@ -47200,7 +47250,9 @@ function (_React$Component) {
   _createClass(HomeComponent, [{
     key: "render",
     value: function render() {
-      var isLoggedIn = localStorage.getItem("loginflag");
+      var addeventlink = "/AddEvent/" + this.state.userid; // const isLoggedIn = localStorage.getItem("loginflag");
+
+      var isLoggedIn = this.state.loginFlag;
       console.log("loginflag = ", isLoggedIn); //
 
       if (this.state.loginFlag) {
@@ -47226,7 +47278,7 @@ function (_React$Component) {
         }, _react.default.createElement("button", {
           className: "btn btn-outline-info my-2 my-sm-0"
         }, _react.default.createElement(_reactRouterDom.NavLink, {
-          to: "/AddEvent"
+          to: addeventlink
         }, "Create event Box")), _react.default.createElement("button", {
           className: "btn btn-outline-info my-2 my-sm-0"
         }, _react.default.createElement(_reactRouterDom.NavLink, {
@@ -59410,7 +59462,7 @@ function (_React$Component) {
         path: "/addawish/:eventid",
         component: _AddAWish.default
       }), _react.default.createElement(_reactRouterDom.Route, {
-        path: "/AddEvent",
+        path: "/AddEvent/:userid",
         component: _AddEvent.default
       }), _react.default.createElement(_reactRouterDom.Route, {
         path: "/EventCard",
@@ -59480,7 +59532,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49286" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50092" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

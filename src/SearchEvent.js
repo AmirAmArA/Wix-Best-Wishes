@@ -1,10 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { NavLink } from 'react-router-dom'
-
+import { NavLink } from "react-router-dom";
 
 import EventCardToView from "./EventCardToView";
-import { getMyEvents } from './EventsApi';
+import { getMyEvents } from "./EventsApi";
 import { Dropdown, DropdownItem } from "react-bootstrap";
 import MyWishes from "./MyWishes";
 export default class SearchEvent extends React.Component {
@@ -44,21 +43,21 @@ export default class SearchEvent extends React.Component {
         }
       ],
       eventsToShow: [],
-      EventToShow:{},
+      EventToShow: {},
       errorMessages: [],
       continueSearchFlag: false,
-      dropdownvalue:""
-      
+      dropdownvalue: ""
     };
     this.updateEvents = this.updateEvents.bind(this);
     this.showEvents = this.showEvents.bind(this);
     this.addWishInSearchEventCompo = this.addWishInSearchEventCompo.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
-    this.handledropdown=this.handledropdown.bind(this);
+    this.handledropdown = this.handledropdown.bind(this);
     // this.onSubmit = this.onSubmit.bind(this);
   } //constructor
 
   updateEvents(eventsarr) {
+    //after recieving the events array from api - we add it so state here
     // const user = this.state.users.find(user => user.id === userId);
 
     this.setState({
@@ -85,15 +84,18 @@ export default class SearchEvent extends React.Component {
     console.log(enddate.value);
     console.log(startdate.value);
     this.state.myEvent = getMyEvents(eventid.value);
-     this.state.eventsToShow.push(getMyEvents(eventid.value));
-     console.log("njnunuihnuih",this.state.eventsToShow);
+    this.state.eventsToShow.push(getMyEvents(eventid.value));
+    console.log("the events to show", this.state.eventsToShow);
 
-    console.log("my event is ",this.state.myEvent);
+    console.log("my event is ", this.state.myEvent);
     this.state.events.map(event => {
       console.log("the event id is ", event.id);
 
       if (eventid.value == "" || eventid.value < 0) {
+        //-------------------------------------------------------
         console.log("eventid should be bigger  than 0 and not empty");
+        eventidspan.innerText =
+          "eventid should be bigger  than 0 and not empty!!!!";
         this.state.errorMessages.push(
           "eventid should be bigger  than 0 and not empty"
         );
@@ -144,12 +146,15 @@ export default class SearchEvent extends React.Component {
   handledropdown(e) {
     // e.preventDefault();
     this.state.dropdownvalue = e.target.innerText;
-    dropdown.innerText=this.state.dropdownvalue;
+    dropdown.innerText = this.state.dropdownvalue;
   }
 
   addWishInSearchEventCompo() {
-    console.log(this.state.eventsToShow[0].id)
-    ReactDOM.render(<MyWishes eventid={this.state.eventsToShow[0].id}/>, document.querySelector("#mainrowdiv"));
+    console.log(this.state.eventsToShow[0].id);
+    ReactDOM.render(
+      <MyWishes eventid={this.state.eventsToShow[0].id} />,
+      document.querySelector("#mainrowdiv")
+    );
   }
 
   onInputChange() {} //oninput...()
@@ -161,6 +166,11 @@ export default class SearchEvent extends React.Component {
     let where = document.getElementById("#where");
     let dropdown = document.getElementById("#dropdown");
 
+    let eventidspan = document.getElementById("#eventidspan");
+    // let eventidspan= document.getElementById("#eventidspan");
+    // let eventidspan= document.getElementById("#eventidspan");
+    // let eventidspan= document.getElementById("#eventidspan");
+
     return (
       <>
         <div className="row" id="mainrowdiv">
@@ -171,13 +181,14 @@ export default class SearchEvent extends React.Component {
                   className="btn-group btn-group-toggle"
                   data-toggle="buttons"
                 >
-                  <label className="btn btn-outline-secondary  active">
+                  <label className="btn btn-outline-secondary  colorwhite">
+                    {/* active */}
                     <input
                       type="radio"
-                      name="options"
+                      name="eventid"
                       id="option1"
                       autoComplete="off"
-                      checked
+                      // checked
                     />{" "}
                     Event ID
                   </label>
@@ -201,7 +212,10 @@ export default class SearchEvent extends React.Component {
                   placeholder="Enter Event ID"
                   id="eventid"
                 />
-                <br />
+                <div>
+                  <span id="eventidspan" />
+                </div>
+                <br/>
                 <div className="btn-group  btn-group-md ">
                   <Dropdown>
                     <Dropdown.Toggle
@@ -213,9 +227,16 @@ export default class SearchEvent extends React.Component {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                      <Dropdown.Item onClick={this.handledropdown}>Birthday</Dropdown.Item>
-                      <Dropdown.Item onClick={this.handledropdown}>Wedding</Dropdown.Item>
-                      <Dropdown.Item onClick={this.handledropdown}> New Born</Dropdown.Item>
+                      <Dropdown.Item onClick={this.handledropdown}>
+                        Birthday
+                      </Dropdown.Item>
+                      <Dropdown.Item onClick={this.handledropdown}>
+                        Wedding
+                      </Dropdown.Item>
+                      <Dropdown.Item onClick={this.handledropdown}>
+                        {" "}
+                        New Born
+                      </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                   <span ref={this.state.dropdownvalue} />

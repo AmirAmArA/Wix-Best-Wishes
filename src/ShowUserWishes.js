@@ -89,7 +89,7 @@ updateWishes(wishesarr){
         <div className="col-md-9 overyscrol " >
           
           <div className="row">
-          {this.state.wishes.map(wish => <WishCard  {...wish  }  key={wish.id}  />) }
+          {this.state.wishes.map(wish => <WishCard  {...wish  }    />) }
           
           
           </div>

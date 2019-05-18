@@ -70,7 +70,7 @@ export class App extends React.Component {
             <Route path="/" exact component={HomeComponent} />
             <Route path="/about" component={About} />
             <Route path="/addawish/:eventid" component={AddAWish} />
-            <Route path="/AddEvent" component={AddEvent} />
+            <Route path="/AddEvent/:userid" component={AddEvent} />
             <Route path="/EventCard" component={EventCard} />
             <Route path="/Login" component={Login} />
             {/*  */}

@@ -13,13 +13,16 @@ export default class HomeComponent extends React.Component {
   constructor() {
     super();
     this.state = {
-      loginFlag: localStorage.getItem("loginflag"),
-      username: ""
+      loginFlag: true,
+      username: "",
+      userid:2
     };
   }
 
   render() {
-    const isLoggedIn = localStorage.getItem("loginflag");
+   let  addeventlink = "/AddEvent/"+ this.state.userid;
+    // const isLoggedIn = localStorage.getItem("loginflag");
+    const isLoggedIn = this.state.loginFlag;
     console.log("loginflag = ", isLoggedIn);
     //
     if (this.state.loginFlag) {
@@ -36,7 +39,7 @@ export default class HomeComponent extends React.Component {
 
                     <div className="col-md-4">
                       <button className="btn btn-outline-info my-2 my-sm-0">
-                      <NavLink to="/AddEvent">Create event Box</NavLink>
+                      <NavLink to={addeventlink}>Create event Box</NavLink>
                         {/* <a href="/AddEvent">Create event Box</a> */}
                       </button>
                       <button className="btn btn-outline-info my-2 my-sm-0">
