@@ -47,12 +47,14 @@ export default class SearchEvent extends React.Component {
       EventToShow:{},
       errorMessages: [],
       continueSearchFlag: false,
+      dropdownvalue:""
       
     };
     this.updateEvents = this.updateEvents.bind(this);
     this.showEvents = this.showEvents.bind(this);
     this.addWishInSearchEventCompo = this.addWishInSearchEventCompo.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
+    this.handledropdown=this.handledropdown.bind(this);
     // this.onSubmit = this.onSubmit.bind(this);
   } //constructor
 
@@ -139,6 +141,12 @@ export default class SearchEvent extends React.Component {
     );
   } //showevents()
 
+  handledropdown(e) {
+    // e.preventDefault();
+    this.state.dropdownvalue = e.target.innerText;
+    dropdown.innerText=this.state.dropdownvalue;
+  }
+
   addWishInSearchEventCompo() {
     console.log(this.state.eventsToShow[0].id)
     ReactDOM.render(<MyWishes eventid={this.state.eventsToShow[0].id}/>, document.querySelector("#mainrowdiv"));
@@ -151,6 +159,7 @@ export default class SearchEvent extends React.Component {
     let startdate = document.getElementById("#startdate");
     let enddate = document.getElementById("#enddate");
     let where = document.getElementById("#where");
+    let dropdown = document.getElementById("#dropdown");
 
     return (
       <>
@@ -197,18 +206,19 @@ export default class SearchEvent extends React.Component {
                   <Dropdown>
                     <Dropdown.Toggle
                       variant="secondary"
-                      id="dropdown-basic"
+                      id="dropdown"
                       onBlur={this.onInputChange}
                     >
                       Choose A Category
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                      <Dropdown.Item>Birthday</Dropdown.Item>
-                      <Dropdown.Item>Wedding</Dropdown.Item>
-                      <Dropdown.Item>New Born</Dropdown.Item>
+                      <Dropdown.Item onClick={this.handledropdown}>Birthday</Dropdown.Item>
+                      <Dropdown.Item onClick={this.handledropdown}>Wedding</Dropdown.Item>
+                      <Dropdown.Item onClick={this.handledropdown}> New Born</Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
+                  <span ref={this.state.dropdownvalue} />
                 </div>
                 <br />
                 <div>

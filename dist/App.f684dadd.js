@@ -29895,7 +29895,8 @@ function (_React$Component) {
       ahref: "/AddAWish "
     };
     _this.validatefields = _this.validatefields.bind(_assertThisInitialized(_this));
-    _this.is_url = _this.is_url.bind(_assertThisInitialized(_this));
+    _this.is_url = _this.is_url.bind(_assertThisInitialized(_this)); // this.validURL= this.validURL.bind(this);
+
     return _this;
   } //constructor
 
@@ -29927,8 +29928,9 @@ function (_React$Component) {
           ahref: "/MyWishes " //  [this.state.ahref ="/MyWishes" , ...this.state]
 
         }); // this.state.ahref="/MyWishes";
+        // myanchor.href = "/MyWishes";
 
-        myanchor.href = "/MyWishes";
+        console.log(this.state.from, this.state.wishu, this.state.imageurl);
       } //if
 
     } //validate...
@@ -30024,9 +30026,7 @@ function (_React$Component) {
         type: "button",
         className: "btn btn-outline-warning",
         onClick: this.validatefields
-      }, _react.default.createElement(_reactRouterDom.NavLink, {
-        to: linktosend
-      }, "Add a wish")))));
+      }, "Add a wish"))));
     }
   }]);
 
@@ -45974,7 +45974,8 @@ function (_React$Component) {
       }],
       dropdownvalue: "",
       continueflag: false,
-      navigatefroma: "/AddEvent" //state
+      navigatefroma: "/AddEvent",
+      userid: 2 //state
 
     };
     _this.updateEvents = _this.updateEvents.bind(_assertThisInitialized(_this));
@@ -46062,6 +46063,7 @@ function (_React$Component) {
       var startdate = document.getElementById("#startdate");
       var enddate = document.getElementById("#enddate");
       var where = document.getElementById("#where");
+      var createventref = "/MyEvents/" + this.state.userid;
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
         className: "row"
       }, _react.default.createElement("br", null), _react.default.createElement("br", null)), _react.default.createElement("div", {
@@ -46207,7 +46209,7 @@ function (_React$Component) {
         className: "btn btn-outline-info",
         onClick: this.createnewevent
       }, _react.default.createElement(_reactRouterDom.NavLink, {
-        to: "/MyEvents"
+        to: createventref
       }, "Create event box"))))), _react.default.createElement("div", {
         className: "col-md-4"
       })))), _react.default.createElement("div", {
@@ -46821,12 +46823,14 @@ function (_React$Component) {
       eventsToShow: [],
       EventToShow: {},
       errorMessages: [],
-      continueSearchFlag: false
+      continueSearchFlag: false,
+      dropdownvalue: ""
     };
     _this.updateEvents = _this.updateEvents.bind(_assertThisInitialized(_this));
     _this.showEvents = _this.showEvents.bind(_assertThisInitialized(_this));
     _this.addWishInSearchEventCompo = _this.addWishInSearchEventCompo.bind(_assertThisInitialized(_this));
-    _this.onInputChange = _this.onInputChange.bind(_assertThisInitialized(_this)); // this.onSubmit = this.onSubmit.bind(this);
+    _this.onInputChange = _this.onInputChange.bind(_assertThisInitialized(_this));
+    _this.handledropdown = _this.handledropdown.bind(_assertThisInitialized(_this)); // this.onSubmit = this.onSubmit.bind(this);
 
     return _this;
   } //constructor
@@ -46915,6 +46919,13 @@ function (_React$Component) {
     } //showevents()
 
   }, {
+    key: "handledropdown",
+    value: function handledropdown(e) {
+      // e.preventDefault();
+      this.state.dropdownvalue = e.target.innerText;
+      dropdown.innerText = this.state.dropdownvalue;
+    }
+  }, {
     key: "addWishInSearchEventCompo",
     value: function addWishInSearchEventCompo() {
       console.log(this.state.eventsToShow[0].id);
@@ -46934,6 +46945,7 @@ function (_React$Component) {
       var startdate = document.getElementById("#startdate");
       var enddate = document.getElementById("#enddate");
       var where = document.getElementById("#where");
+      var dropdown = document.getElementById("#dropdown");
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
         className: "row",
         id: "mainrowdiv"
@@ -46970,9 +46982,17 @@ function (_React$Component) {
         className: "btn-group  btn-group-md "
       }, _react.default.createElement(_reactBootstrap.Dropdown, null, _react.default.createElement(_reactBootstrap.Dropdown.Toggle, {
         variant: "secondary",
-        id: "dropdown-basic",
+        id: "dropdown",
         onBlur: this.onInputChange
-      }, "Choose A Category"), _react.default.createElement(_reactBootstrap.Dropdown.Menu, null, _react.default.createElement(_reactBootstrap.Dropdown.Item, null, "Birthday"), _react.default.createElement(_reactBootstrap.Dropdown.Item, null, "Wedding"), _react.default.createElement(_reactBootstrap.Dropdown.Item, null, "New Born")))), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("br", null)), _react.default.createElement("input", {
+      }, "Choose A Category"), _react.default.createElement(_reactBootstrap.Dropdown.Menu, null, _react.default.createElement(_reactBootstrap.Dropdown.Item, {
+        onClick: this.handledropdown
+      }, "Birthday"), _react.default.createElement(_reactBootstrap.Dropdown.Item, {
+        onClick: this.handledropdown
+      }, "Wedding"), _react.default.createElement(_reactBootstrap.Dropdown.Item, {
+        onClick: this.handledropdown
+      }, " New Born"))), _react.default.createElement("span", {
+        ref: this.state.dropdownvalue
+      })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("br", null)), _react.default.createElement("input", {
         className: "form-control",
         type: "date",
         placeholder: "Start",
@@ -59382,7 +59402,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60491" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54147" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

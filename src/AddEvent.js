@@ -54,7 +54,8 @@ export default class AddEvent extends React.Component {
       ],
       dropdownvalue: "",
       continueflag:false ,
-      navigatefroma : "/AddEvent"
+      navigatefroma : "/AddEvent",
+      userid:2
     }//state
     ;
     this.updateEvents = this.updateEvents.bind(this);
@@ -136,6 +137,7 @@ export default class AddEvent extends React.Component {
     let startdate = document.getElementById("#startdate");
     let enddate = document.getElementById("#enddate");
     let where = document.getElementById("#where");
+    let createventref ="/MyEvents/"+this.state.userid;
 
     return (
       <>
@@ -283,7 +285,8 @@ export default class AddEvent extends React.Component {
                           onClick={this.createnewevent}
                         > 
                           {/* <a href={this.state.navigatefroma}>Create event box</a> */}
-                           <NavLink to="/MyEvents">Create event box</NavLink>
+                          {/* "/MyEvents" */}
+                           <NavLink to={createventref}>Create event box</NavLink>
                           
                         </button>
                       </div>

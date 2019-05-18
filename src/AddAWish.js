@@ -19,6 +19,7 @@ export default class AddAWish extends React.Component {
     };
     this.validatefields = this.validatefields.bind(this);
     this.is_url = this.is_url.bind(this);
+    // this.validURL= this.validURL.bind(this);
   } //constructor
 
   is_url(str) {
@@ -44,7 +45,8 @@ export default class AddAWish extends React.Component {
         //  [this.state.ahref ="/MyWishes" , ...this.state]
       });
       // this.state.ahref="/MyWishes";
-      myanchor.href = "/MyWishes";
+      // myanchor.href = "/MyWishes";
+      console.log(this.state.from ,this.state.wishu , this.state.imageurl );
     } //if
   } //validate...
 
@@ -134,9 +136,9 @@ export default class AddAWish extends React.Component {
               type="button"
               className="btn btn-outline-warning"
               onClick={this.validatefields}
-            >
+            >Add a wish
               {/* <a id="myanchor">Add a wish</a> */}
-              <NavLink to={linktosend}>Add a wish</NavLink>
+              {/* <NavLink to={linktosend}>Add a wish</NavLink> */}
 
             </button>
           </div>
