@@ -1,9 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import {Router,Route,BrowserHistory} from "react-router";
-
-
 
 import { NavComponent } from "./NavComponent";
 import About from "./About";
@@ -16,56 +13,71 @@ import Login from "./Login";
 import MyWishes from "./MyWishes";
 import Register from "./Register";
 import WishCard from "./WishCard";
- import SearchEvent from "./SearchEvent";
- import ShowUserWishes from './ShowUserWishes';
- import EditEvent from "./EditEvent";
+import SearchEvent from "./SearchEvent";
+import ShowUserWishes from "./ShowUserWishes";
+import EditEvent from "./EditEvent";
 import EventCardToView from "./EventCardToView";
 
-
 //the context we R going to use
-//  const MyContext= React.createContext();
+export const MyContext = React.createContext();
 
- //then we also need a provider to the context
+//then we also need a provider to the context
 
-//  class MyProvider extends React.Component {
-// constructor(){
-// super();
-// this.state={
-//   username:"", password:"" , loginFlag:""
-// }
-
-// }//constructor
-
-// render(){
-//   return (<MyContext.Provider value="Im the value"> 
-//   {this.props.children}
-//   </MyContext.Provider>)
-
-// }
-
-//  }//class myprovider 
-
-export class App extends React.Component {
+export class MyProvider extends React.Component {
   constructor() {
     super();
     this.state = {
       loginFlag: false,
-      username:"Visitor"
+      userid: 0,
+      username: "Majde",
+      age: 10
     };
-    // localStorage.setItem("loginflag", this.state.loginFlag);
-    // console.log(localStorage.getItem("loginflag"));
+  } //constructor
+
+  render() {
+    return (
+      <MyContext.Provider
+        value={{
+          state: this.state,
+          growAYearOlder: () =>
+            this.setState({
+              age: this.state.age + 1
+            })
+        }}
+      >
+        {this.props.children}
+      </MyContext.Provider>
+    );
+  }
+} //class myprovider
+
+export class App extends React.Component {
+  constructor() {
+    super();
   }
 
   render() {
     return (
-      <>
+      <MyProvider>
         <Router>
-        <NavComponent />
-        {/* <Route 
+          <NavComponent />
+          <div>
+            <MyContext.Consumer>
+              {context => (
+                <React.Fragment>
+                  {/* here we should return one elemenet which i refer to as react fragment */}
+
+                  {/* <p> im inside the consumer {context.state.username}{context.state.age}</p> */}
+                  {/* <button onClick={context.growAYearOlder}> + ++++</button> */}
+                </React.Fragment>
+              )}
+            </MyContext.Consumer>
+          </div>
+          {/* <Route 
           path='/'
           render={ props => <MyComponent {...props} />}
         /> */}
-        
+
           <Switch>
             <Route path="/" exact component={HomeComponent} />
             <Route path="/about" component={About} />
@@ -84,11 +96,9 @@ export class App extends React.Component {
             <Route path="/ShowUserWishes/:userid" component={ShowUserWishes} />
             <Route path="/EditEvent/:eventid" component={EditEvent} />
             <Route path="/EventCardToView" component={EventCardToView} />
-
-            
-          </Switch>          
+          </Switch>
         </Router>
-      </>
+      </MyProvider>
     );
   }
 }
