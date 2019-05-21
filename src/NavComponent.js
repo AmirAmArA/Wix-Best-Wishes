@@ -25,28 +25,8 @@ export class NavComponent extends React.Component {
       userid: 22,
       counter: 0 //if counter ==1 then dont update the state => in order to render just one time after updating the loginflag
     };
-    // console.log(localStorage.getItem("loginflag"));
-    this.updatestate = this.updatestate.bind(this);
     this.checkIfLoggedIn = this.checkIfLoggedIn.bind(this);
-    // this.checkIfLogedIn = this.checkIfLogedIn.bind(this);
   } //constructor
-
-  updatestate(context) {
-    console.log("hello from update state");
-    if (this.state.counter == 0) {
-      this.setState({
-        username: context.state.username,
-        loginFlag: context.state.loginFlag,
-        counter: 1
-      });
-      console.log(
-        "username:",
-        this.state.username,
-        "loginflag : ",
-        this.state.loginFlag
-      );
-    } //if
-  } //update state
 
   checkIfLoggedIn(flag, username) {
     if (flag == true) {
@@ -69,29 +49,21 @@ export class NavComponent extends React.Component {
           {/* <Link to="/Login"> */}
           <button
             id="Loginbtn"
-            className={this.state.btn}
-
-            /* "btn btn-outline-success my-2 my-sm-0"*/
+            className="btn btn-outline-success my-2 my-sm-0"
           >
-            <a href="/Login" className="colorgreen">
+            <NavLink className="nav-link" to="/Login">
               SignIn
-            </a>
+            </NavLink>
           </button>
-          {/* </Link> */}
-          {/* <Link to="/Register"> */}
           <button
             id="Registerbtn"
-            className={this.state.btn}
-
-            //"btn btn-outline-success my-2 my-sm-0"
+            className="btn btn-outline-success my-2 my-sm-0"
           >
-            <a href="/Register" className="colorgreen">
+            <NavLink className="nav-link" to="/Register">
               Register
-            </a>
+            </NavLink>
           </button>
-          {/* "my-4 my-lg-0 displaynone"  */}
 
-          {/* </Link> */}
         </form>
       );
     } //if
@@ -99,9 +71,9 @@ export class NavComponent extends React.Component {
 
   //inside render: if loggedin => run function that return the label , else run func. that retu. 2 buttons
   render() {
-    localStorage.setItem("loginflag", this.state.loginFlag);
     const style = this.state.loginFlag ? { display: "none" } : {};
     const style1 = this.state.loginFlag ? {} : { display: "none" };
+    
     let myeventslink = "/MyEvents/" + this.state.userid;
     let ShowUserWishes = "/ShowUserWishes/" + this.state.userid;
     // const isLoggedIn = localStorage.getItem("loginflag");
@@ -226,7 +198,6 @@ export class NavComponent extends React.Component {
                   context.state.username
                 )}
               </div>
-              {/* {this.updatestate(context)}------------------------------------------------- */}
             </nav>
           )}
         </MyContext.Consumer>

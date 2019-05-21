@@ -30459,32 +30459,13 @@ function (_React$Component) {
       userid: 22,
       counter: 0 //if counter ==1 then dont update the state => in order to render just one time after updating the loginflag
 
-    }; // console.log(localStorage.getItem("loginflag"));
-
-    _this.updatestate = _this.updatestate.bind(_assertThisInitialized(_this));
-    _this.checkIfLoggedIn = _this.checkIfLoggedIn.bind(_assertThisInitialized(_this)); // this.checkIfLogedIn = this.checkIfLogedIn.bind(this);
-
+    };
+    _this.checkIfLoggedIn = _this.checkIfLoggedIn.bind(_assertThisInitialized(_this));
     return _this;
   } //constructor
 
 
   _createClass(NavComponent, [{
-    key: "updatestate",
-    value: function updatestate(context) {
-      console.log("hello from update state");
-
-      if (this.state.counter == 0) {
-        this.setState({
-          username: context.state.username,
-          loginFlag: context.state.loginFlag,
-          counter: 1
-        });
-        console.log("username:", this.state.username, "loginflag : ", this.state.loginFlag);
-      } //if
-
-    } //update state
-
-  }, {
     key: "checkIfLoggedIn",
     value: function checkIfLoggedIn(flag, username) {
       if (flag == true) {
@@ -30504,19 +30485,16 @@ function (_React$Component) {
           className: "form-inline my-2 my-lg-0"
         }, _react.default.createElement("button", {
           id: "Loginbtn",
-          className: this.state.btn
-          /* "btn btn-outline-success my-2 my-sm-0"*/
-
-        }, _react.default.createElement("a", {
-          href: "/Login",
-          className: "colorgreen"
+          className: "btn btn-outline-success my-2 my-sm-0"
+        }, _react.default.createElement(_reactRouterDom.NavLink, {
+          className: "nav-link",
+          to: "/Login"
         }, "SignIn")), _react.default.createElement("button", {
           id: "Registerbtn",
-          className: this.state.btn //"btn btn-outline-success my-2 my-sm-0"
-
-        }, _react.default.createElement("a", {
-          href: "/Register",
-          className: "colorgreen"
+          className: "btn btn-outline-success my-2 my-sm-0"
+        }, _react.default.createElement(_reactRouterDom.NavLink, {
+          className: "nav-link",
+          to: "/Register"
         }, "Register")));
       } //if
 
@@ -30528,7 +30506,6 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      localStorage.setItem("loginflag", this.state.loginFlag);
       var style = this.state.loginFlag ? {
         display: "none"
       } : {};
@@ -47247,7 +47224,7 @@ require("./general.css");
 
 var _logo = _interopRequireDefault(require("../assets/logo.PNG"));
 
-var _App = _interopRequireDefault(require("./App"));
+var _App = require("./App");
 
 var _SearchEvent = _interopRequireDefault(require("./SearchEvent"));
 
@@ -47263,9 +47240,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -47287,19 +47264,18 @@ function (_React$Component) {
       username: "",
       userid: 2
     };
+    _this.checklogin = _this.checklogin.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(HomeComponent, [{
-    key: "render",
-    value: function render() {
-      var addeventlink = "/AddEvent/" + this.state.userid; // const isLoggedIn = localStorage.getItem("loginflag");
-
+    key: "checklogin",
+    value: function checklogin(flag) {
+      var addeventlink = "/AddEvent/" + this.state.userid;
       var isLoggedIn = this.state.loginFlag;
-      console.log("loginflag = ", isLoggedIn); //
 
-      if (this.state.loginFlag) {
-        return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+      if (flag == true) {
+        return _react.default.createElement("div", {
           className: "row"
         }, _react.default.createElement("div", {
           className: "col-md-4"
@@ -47330,43 +47306,54 @@ function (_React$Component) {
           className: "col-md-4"
         }))), _react.default.createElement("div", {
           className: "col-md-4"
-        })))));
-      } //if
-      else {
-          return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-            className: "row"
-          }, _react.default.createElement("div", {
-            className: "col-md-4"
-          }, " "), _react.default.createElement("div", {
-            className: "col-md-4"
-          }, _react.default.createElement("div", {
-            className: "card mb-3 cardBackground"
-          }, _react.default.createElement("img", {
-            src: _logo.default,
-            className: "card-img-top"
-          }), _react.default.createElement("div", {
-            className: "card-body"
-          }, _react.default.createElement("div", {
-            className: "row"
-          }, _react.default.createElement("div", {
-            className: "col-md-4"
-          }), _react.default.createElement("div", {
-            className: "col-md-4"
-          }, _react.default.createElement("button", {
-            className: "btn btn-outline-info my-2 my-sm-0"
-          }, _react.default.createElement(_reactRouterDom.NavLink, {
-            to: "/Register"
-          }, "Create event Box")), _react.default.createElement("button", {
-            className: "btn btn-outline-info my-2 my-sm-0"
-          }, _react.default.createElement(_reactRouterDom.NavLink, {
-            to: "/SearchEvent"
-          }, "Add a best wish!!"))), _react.default.createElement("div", {
-            className: "col-md-4"
-          }))), _react.default.createElement("div", {
-            className: "col-md-4"
-          })))));
-        } //else
+        }))));
+      } //if true
 
+
+      if (flag == false) {
+        return _react.default.createElement("div", {
+          className: "row"
+        }, _react.default.createElement("div", {
+          className: "col-md-4"
+        }, " "), _react.default.createElement("div", {
+          className: "col-md-4"
+        }, _react.default.createElement("div", {
+          className: "card mb-3 cardBackground"
+        }, _react.default.createElement("img", {
+          src: _logo.default,
+          className: "card-img-top"
+        }), _react.default.createElement("div", {
+          className: "card-body"
+        }, _react.default.createElement("div", {
+          className: "row"
+        }, _react.default.createElement("div", {
+          className: "col-md-4"
+        }), _react.default.createElement("div", {
+          className: "col-md-4"
+        }, _react.default.createElement("button", {
+          className: "btn btn-outline-info my-2 my-sm-0"
+        }, _react.default.createElement(_reactRouterDom.NavLink, {
+          to: "/Register"
+        }, "Create event Box")), _react.default.createElement("button", {
+          className: "btn btn-outline-info my-2 my-sm-0"
+        }, _react.default.createElement(_reactRouterDom.NavLink, {
+          to: "/SearchEvent"
+        }, "Add a best wish!!"))), _react.default.createElement("div", {
+          className: "col-md-4"
+        }))), _react.default.createElement("div", {
+          className: "col-md-4"
+        }))));
+      } //if false
+
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return _react.default.createElement(_App.MyContext.Consumer, null, function (context) {
+        return _react.default.createElement(_react.default.Fragment, null, _this2.checklogin(context.state.loginFlag));
+      });
     } //render
 
   }]);
@@ -59468,7 +59455,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(MyProvider).call(this));
     _this.state = {
-      loginFlag: false,
+      loginFlag: true,
       userid: 0,
       username: "Majde",
       age: 10
@@ -59598,7 +59585,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62693" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64478" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

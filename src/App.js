@@ -27,7 +27,7 @@ export class MyProvider extends React.Component {
   constructor() {
     super();
     this.state = {
-      loginFlag: false,
+      loginFlag: true,
       userid: 0,
       username: "Majde",
       age: 10
