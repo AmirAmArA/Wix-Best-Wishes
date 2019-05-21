@@ -30454,7 +30454,7 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(NavComponent).call(this));
     localStorage.clear();
     _this.state = {
-      loginFlag: true,
+      loginFlag: false,
       username: "Majde",
       userid: 22
     }; // console.log(localStorage.getItem("loginflag"));
@@ -30537,68 +30537,71 @@ function (_React$Component) {
         );
       } else {
         console.log("user is not logged in");
-        return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement("nav", {
-          className: "navbar navbar-expand-lg navbar-dark navStyle"
-        }, _react.default.createElement("a", {
-          className: "navbar-brand"
-        }, _react.default.createElement("img", {
-          src: _logo.default,
-          className: "logo"
-        })), _react.default.createElement("button", {
-          className: "navbar-toggler",
-          type: "button",
-          "data-toggle": "collapse",
-          "data-target": "#navbarSupportedContent",
-          "aria-controls": "navbarSupportedContent",
-          "aria-expanded": "false",
-          "aria-label": "Toggle navigation"
-        }, _react.default.createElement("span", {
-          className: "navbar-toggler-icon"
-        })), _react.default.createElement("div", {
-          className: "collapse navbar-collapse",
-          id: "navbarSupportedContent"
-        }, _react.default.createElement("ul", {
-          className: "navbar-nav mr-auto"
-        }, _react.default.createElement("li", {
-          className: "nav-item "
-        }, _react.default.createElement(_reactRouterDom.NavLink, {
-          className: "nav-link",
-          to: "/"
-        }, "Home")), _react.default.createElement("li", {
-          className: "nav-item"
-        }, _react.default.createElement(_reactRouterDom.NavLink, {
-          className: "nav-link",
-          to: "/MyEvents"
-        }, "MyEvents")), _react.default.createElement("li", {
-          className: "nav-item "
-        }, _react.default.createElement(_reactRouterDom.NavLink, {
-          className: "nav-link",
-          to: "/ShowUserWishes"
-        }, "MyWishes")), _react.default.createElement("li", {
-          className: "nav-item"
-        }, _react.default.createElement(_reactRouterDom.NavLink, {
-          className: "nav-link",
-          to: "/about"
-        }, "About"))), _react.default.createElement("form", {
-          className: "form-inline my-2 my-lg-0"
-        }, _react.default.createElement("button", {
-          id: "Loginbtn",
-          className: this.state.btn,
-          style: style
-          /* "btn btn-outline-success my-2 my-sm-0"*/
+        return (// <Router>
+          _react.default.createElement("nav", {
+            className: "navbar navbar-expand-lg navbar-dark navStyle"
+          }, _react.default.createElement("a", {
+            className: "navbar-brand"
+          }, _react.default.createElement("img", {
+            src: _logo.default,
+            className: "logo"
+          })), _react.default.createElement("button", {
+            className: "navbar-toggler",
+            type: "button",
+            "data-toggle": "collapse",
+            "data-target": "#navbarSupportedContent",
+            "aria-controls": "navbarSupportedContent",
+            "aria-expanded": "false",
+            "aria-label": "Toggle navigation"
+          }, _react.default.createElement("span", {
+            className: "navbar-toggler-icon"
+          })), _react.default.createElement("div", {
+            className: "collapse navbar-collapse",
+            id: "navbarSupportedContent"
+          }, _react.default.createElement("ul", {
+            className: "navbar-nav mr-auto"
+          }, _react.default.createElement("li", {
+            className: "nav-item "
+          }, _react.default.createElement(_reactRouterDom.NavLink, {
+            className: "nav-link",
+            to: "/"
+          }, "Home")), _react.default.createElement("li", {
+            className: "nav-item"
+          }, _react.default.createElement(_reactRouterDom.NavLink, {
+            className: "nav-link",
+            to: "/Register"
+          }, "MyEvents")), _react.default.createElement("li", {
+            className: "nav-item "
+          }, _react.default.createElement(_reactRouterDom.NavLink, {
+            className: "nav-link",
+            to: "/Register"
+          }, "MyWishes")), _react.default.createElement("li", {
+            className: "nav-item"
+          }, _react.default.createElement(_reactRouterDom.NavLink, {
+            className: "nav-link",
+            to: "/about"
+          }, "About"))), _react.default.createElement("form", {
+            className: "form-inline my-2 my-lg-0"
+          }, _react.default.createElement("button", {
+            id: "Loginbtn",
+            className: this.state.btn,
+            style: style
+            /* "btn btn-outline-success my-2 my-sm-0"*/
 
-        }, _react.default.createElement("a", {
-          href: "/Login",
-          className: "colorgreen"
-        }, "SignIn")), _react.default.createElement("button", {
-          id: "Registerbtn",
-          className: this.state.btn,
-          style: style //"btn btn-outline-success my-2 my-sm-0"
+          }, _react.default.createElement("a", {
+            href: "/Login",
+            className: "colorgreen"
+          }, "SignIn")), _react.default.createElement("button", {
+            id: "Registerbtn",
+            className: this.state.btn,
+            style: style //"btn btn-outline-success my-2 my-sm-0"
 
-        }, _react.default.createElement("a", {
-          href: "/Register",
-          className: "colorgreen"
-        }, "Register"))))));
+          }, _react.default.createElement("a", {
+            href: "/Register",
+            className: "colorgreen"
+          }, "Register"))))) // </Router>
+
+        );
       } //else
       // this.checkIfLogedIn(isLoggedIn);
 
@@ -46411,6 +46414,8 @@ function (_React$Component) {
   _createClass(EventCard, [{
     key: "render",
     value: function render() {
+      var editnav = "/EditEvent/" + this.props.id;
+      var wishesnav = "/MyWishes/" + this.props.id;
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
         className: "col-md-4"
       }, _react.default.createElement("div", {
@@ -46432,13 +46437,13 @@ function (_React$Component) {
         type: "button",
         className: "btn btn-outline-info"
       }, _react.default.createElement(_reactRouterDom.NavLink, {
-        to: "/EditEvent"
+        to: editnav
       }, "Edit")), _react.default.createElement("button", {
         id: "searchEventbtn",
         type: "button",
         className: "btn btn-outline-info"
       }, _react.default.createElement(_reactRouterDom.NavLink, {
-        to: "/MyWishes"
+        to: wishesnav
       }, "View Wishes")))));
     }
   }]);
@@ -46959,7 +46964,6 @@ function (_React$Component) {
     };
     _this.updateEvents = _this.updateEvents.bind(_assertThisInitialized(_this));
     _this.showEvents = _this.showEvents.bind(_assertThisInitialized(_this));
-    _this.addWishInSearchEventCompo = _this.addWishInSearchEventCompo.bind(_assertThisInitialized(_this));
     _this.onInputChange = _this.onInputChange.bind(_assertThisInitialized(_this));
     _this.handledropdown = _this.handledropdown.bind(_assertThisInitialized(_this)); // this.onSubmit = this.onSubmit.bind(this);
 
@@ -47003,8 +47007,7 @@ function (_React$Component) {
       console.log("the events to show", this.state.eventsToShow);
       console.log("my event is ", this.state.myEvent);
       this.state.events.map(function (event) {
-        console.log("the event id is ", event.id);
-
+        // console.log("the event id is ", event.id);
         if (eventid.value == "" || eventid.value < 0) {
           //-------------------------------------------------------
           console.log("eventid should be bigger  than 0 and not empty");
@@ -47058,15 +47061,6 @@ function (_React$Component) {
       // e.preventDefault();
       this.state.dropdownvalue = e.target.innerText;
       dropdown.innerText = this.state.dropdownvalue;
-    }
-  }, {
-    key: "addWishInSearchEventCompo",
-    value: function addWishInSearchEventCompo() {
-      console.log(this.state.eventsToShow[0].id);
-
-      _reactDom.default.render(_react.default.createElement(_MyWishes.default, {
-        eventid: this.state.eventsToShow[0].id
-      }), document.querySelector("#mainrowdiv"));
     }
   }, {
     key: "onInputChange",
@@ -47180,8 +47174,7 @@ function (_React$Component) {
         id: "showeventcardsdiv"
       }, this.state.eventsToShow.map(function (event) {
         return _react.default.createElement(_EventCardToView.default, _extends({}, event, {
-          key: event.id // click={this.addWishInSearchEventCompo()}
-
+          key: event.id
         }));
       })))), _react.default.createElement("div", {
         className: "col-md-1"
@@ -47496,9 +47489,9 @@ function (_React$Component) {
       })), _react.default.createElement("div", {
         className: "row"
       }, this.state.events.map(function (event) {
-        return _react.default.createElement(_EventCard.default, _extends({}, event, {
+        return _react.default.createElement(_EventCard.default, _extends({
           key: event.id
-        }));
+        }, event));
       })), _react.default.createElement("div", {
         className: "row"
       }))), _react.default.createElement("div", {
@@ -47513,12 +47506,7 @@ function (_React$Component) {
         className: "col-md-4"
       }), _react.default.createElement("div", {
         className: "col-md-4"
-      }, _react.default.createElement("button", {
-        className: "btn btn-outline-info ",
-        type: "submit"
-      }, _react.default.createElement(_reactRouterDom.NavLink, {
-        to: "/AddEvent"
-      }, "Add new event box")))));
+      })));
     }
   }]);
 
@@ -59502,7 +59490,7 @@ function (_React$Component) {
         path: "/ShowUserWishes/:userid",
         component: _ShowUserWishes.default
       }), _react.default.createElement(_reactRouterDom.Route, {
-        path: "/EditEvent",
+        path: "/EditEvent/:eventid",
         component: _EditEvent.default
       }), _react.default.createElement(_reactRouterDom.Route, {
         path: "/EventCardToView",
@@ -59545,7 +59533,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51766" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52854" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

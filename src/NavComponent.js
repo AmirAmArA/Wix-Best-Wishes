@@ -19,7 +19,7 @@ export class NavComponent extends React.Component {
     super();
     localStorage.clear();
     this.state = {
-      loginFlag: true,
+      loginFlag: false,
       username: "Majde",
       userid: 22
     };
@@ -112,7 +112,7 @@ export class NavComponent extends React.Component {
     } else {
       console.log("user is not logged in");
       return (
-        <Router>
+        // <Router>
           <nav className="navbar navbar-expand-lg navbar-dark navStyle">
             <a className="navbar-brand">
               <img src={logo} className="logo" />
@@ -140,12 +140,12 @@ export class NavComponent extends React.Component {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/MyEvents">
+                  <NavLink className="nav-link" to="/Register">
                     MyEvents
                   </NavLink>
                 </li>
                 <li className="nav-item ">
-                  <NavLink className="nav-link" to="/ShowUserWishes">
+                  <NavLink className="nav-link" to="/Register">
                     MyWishes
                   </NavLink>
                 </li>
@@ -187,7 +187,7 @@ export class NavComponent extends React.Component {
               </form>
             </div>
           </nav>
-        </Router>
+        // </Router>
       );
     } //else
     // this.checkIfLogedIn(isLoggedIn);

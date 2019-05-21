@@ -82,7 +82,7 @@ export class App extends React.Component {
             <Route path="/MyEvents/:userid" component={MyEvents} />
             <Route path="/SearchEvent" component={SearchEvent} />
             <Route path="/ShowUserWishes/:userid" component={ShowUserWishes} />
-            <Route path="/EditEvent" component={EditEvent} />
+            <Route path="/EditEvent/:eventid" component={EditEvent} />
             <Route path="/EventCardToView" component={EventCardToView} />
 
             

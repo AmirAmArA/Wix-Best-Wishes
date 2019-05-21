@@ -11,8 +11,10 @@ import App from "./App"
 
 export default class EventCard extends React.Component {
   render() {
+    let editnav = "/EditEvent/"+this.props.id
+    let wishesnav = "/MyWishes/"+this.props.id;
     return <>
-        <div className="col-md-4">
+        <div className="col-md-4" >
                     <div className="card-body text-center  eventcards" >
                             <p><img className=" img-fluid" src={"https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_03.png"} alt="card image"/></p>
                             <h4 className="card-title">{this.props.name} <br/>{this.props.lastUpdateTime}</h4>
@@ -21,12 +23,12 @@ export default class EventCard extends React.Component {
         
                             <button  id="searchEventbtn" type="button" className="btn btn-outline-info"> 
                             {/* <a href="/EditEvent"> Edit </a> */}
-                           <NavLink to="/EditEvent">Edit</NavLink>
+                           <NavLink to={editnav}>Edit</NavLink>
                             
                             </button>
                             <button  id="searchEventbtn" type="button" className="btn btn-outline-info">
                              {/* <a href="/MyWishes"> View Wishes </a> */}
-                           <NavLink to="/MyWishes">View Wishes</NavLink>
+                           <NavLink to={wishesnav}>View Wishes</NavLink>
                             
                             </button>
         

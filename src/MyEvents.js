@@ -93,7 +93,7 @@ export default class MyWishes extends React.Component {
               </div>
               <div className="row">
                 {/* <EventCard  /> */}
-              {this.state.events.map(event => <EventCard {...event} key={event.id}  />)} 
+              {this.state.events.map(event => <EventCard key={event.id}{...event}  />)} 
 
                 {/* <EventCard />
                 <EventCard /> */}
@@ -120,11 +120,11 @@ export default class MyWishes extends React.Component {
           <div className="col-md-4" />
           <div className="col-md-4" />
           <div className="col-md-4">
-            <button className="btn btn-outline-info " type="submit">
+            {/* <button className="btn btn-outline-info " type="submit">
             <NavLink to="/AddEvent">Add new event box</NavLink>
              
               {/* <a href="/AddEvent"></a> */}
-            </button>
+            {/* </button> */} 
           </div>
         </div>
       </>

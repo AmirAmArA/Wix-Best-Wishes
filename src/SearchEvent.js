@@ -50,7 +50,6 @@ export default class SearchEvent extends React.Component {
     };
     this.updateEvents = this.updateEvents.bind(this);
     this.showEvents = this.showEvents.bind(this);
-    this.addWishInSearchEventCompo = this.addWishInSearchEventCompo.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
     this.handledropdown = this.handledropdown.bind(this);
     // this.onSubmit = this.onSubmit.bind(this);
@@ -89,7 +88,7 @@ export default class SearchEvent extends React.Component {
 
     console.log("my event is ", this.state.myEvent);
     this.state.events.map(event => {
-      console.log("the event id is ", event.id);
+      // console.log("the event id is ", event.id);
 
       if (eventid.value == "" || eventid.value < 0) {
         //-------------------------------------------------------
@@ -147,14 +146,6 @@ export default class SearchEvent extends React.Component {
     // e.preventDefault();
     this.state.dropdownvalue = e.target.innerText;
     dropdown.innerText = this.state.dropdownvalue;
-  }
-
-  addWishInSearchEventCompo() {
-    console.log(this.state.eventsToShow[0].id);
-    ReactDOM.render(
-      <MyWishes eventid={this.state.eventsToShow[0].id} />,
-      document.querySelector("#mainrowdiv")
-    );
   }
 
   onInputChange() {} //oninput...()
@@ -215,7 +206,7 @@ export default class SearchEvent extends React.Component {
                 <div>
                   <span id="eventidspan" />
                 </div>
-                <br/>
+                <br />
                 <div className="btn-group  btn-group-md ">
                   <Dropdown>
                     <Dropdown.Toggle
@@ -299,11 +290,7 @@ export default class SearchEvent extends React.Component {
                   <div className="row" id="showeventcardsdiv">
                     {/* <EventCardToView /> */}
                     {this.state.eventsToShow.map(event => (
-                      <EventCardToView
-                        {...event}
-                        key={event.id}
-                        // click={this.addWishInSearchEventCompo()}
-                      />
+                      <EventCardToView {...event} key={event.id} />
                     ))}
 
                     {/* <EventCardToView />
