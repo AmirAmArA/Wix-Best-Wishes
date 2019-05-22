@@ -30,9 +30,57 @@ export class MyProvider extends React.Component {
       loginFlag: true,
       userid: 0,
       username: "Majde",
-      age: 10
-    };
+      age: 10,
+      events: [
+        {
+          id: 1,
+          name: "Mustafa",
+          avatar: "images/avatar.jpg",
+          startdate: "2019-01-01",
+          enddate: "2019-01-01",
+          description: "Marhaba, I love Avatars...",
+          lastUpdateTime: new Date().toLocaleString("he-IL"),
+          callercomp: "ShowUserWishes"
+        },
+        {
+          id: "2",
+          name: "Suhir",
+          avatar: "images/avatar.jpg",
+          startdate: "2019-01-01",
+          enddate: "2019-01-01",
+          description: "Hello, I love Avatars...",
+          lastUpdateTime: new Date().toLocaleString("he-IL"),
+          callercomp: "ShowUserWishes"
+        },
+        {
+          id: 3,
+          name: "Shahar",
+          avatar: "images/avatar2.png",
+          startdate: "2019-01-01",
+          enddate: "2019-01-01",
+          description: "Shalom, I love Avatars...",
+          lastUpdateTime: new Date().toLocaleString("he-IL"),
+          callercomp: "ShowUserWishes"
+        }
+      ]
+
+    };//state
+    this.addADate= this.addADate.bind(this)
   } //constructor
+
+
+addADate(obj){
+  if(obj !=null){
+
+      // if(obj.eventid>0 &&   ){}//if
+    this.setState({
+      events : [...events , obj]
+    })
+
+
+  }//if
+
+}//addadate()
 
   render() {
     return (
@@ -41,8 +89,10 @@ export class MyProvider extends React.Component {
           state: this.state,
           growAYearOlder: () =>
             this.setState({
-              age: this.state.age + 1
-            })
+              age: this.state.age + 1 
+            }) ,
+            addADate : this.addADate 
+            
         }}
       >
         {this.props.children}

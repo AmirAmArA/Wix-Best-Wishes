@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 import "./general.css";
 import logo from "../assets/logo.PNG";
-import App from "./App";
+import { App, MyContext, MyProvider } from "./App";
 
 import { Dropdown, DropdownItem } from "react-bootstrap";
 
@@ -170,7 +170,10 @@ export default class AddEvent extends React.Component {
     let spanlocation = document.getElementById("#spanlocation");
 
     return (
-      <>
+      
+      <MyContext.Consumer>  
+          {context => (
+            <> 
         <div className="row">
           <br />
           <br />
@@ -261,7 +264,7 @@ export default class AddEvent extends React.Component {
                           name="date"
                           id="startdate"
                         />
-
+                          <br/>
                         <div className="row">
                           <span id="spanstartdate">
                           
@@ -353,7 +356,10 @@ export default class AddEvent extends React.Component {
             <div className="col-md-1" />
           </div>
         </div>
-      </>
+        </>
+        )}
+        </MyContext.Consumer>
+      
     );
   }
 }

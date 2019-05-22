@@ -21,6 +21,7 @@ export default class HomeComponent extends React.Component {
   }
 
   checklogin(flag) {
+    console.log("login flag from checklogin() : "  ,flag)
     let addeventlink = "/AddEvent/" + this.state.userid;
     const isLoggedIn = this.state.loginFlag;
     if (flag == true) {
@@ -37,12 +38,10 @@ export default class HomeComponent extends React.Component {
                   <div className="col-md-4">
                     <button className="btn btn-outline-info my-2 my-sm-0">
                       <NavLink to={addeventlink}>Create event Box</NavLink>
-                      {/* <a href="/AddEvent">Create event Box</a> */}
                     </button>
                     <button className="btn btn-outline-info my-2 my-sm-0">
                       {/* should navigate to search event */}
 
-                      {/* <a href="/SearchEvent">Add a best wish!!</a> */}
                       <NavLink to="/SearchEvent">Add a best wish!!</NavLink>
                     </button>
                   </div>
@@ -92,7 +91,7 @@ export default class HomeComponent extends React.Component {
   render() {
     return (
       <MyContext.Consumer>
-        {context => <>{this.checklogin(context.state.loginFlag)}</>}
+        {(context) => <>{this.checklogin(context.state.loginFlag)}</>}
       </MyContext.Consumer>
     );
   } //render

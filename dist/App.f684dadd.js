@@ -45988,7 +45988,7 @@ require("./general.css");
 
 var _logo = _interopRequireDefault(require("../assets/logo.PNG"));
 
-var _App = _interopRequireDefault(require("./App"));
+var _App = require("./App");
 
 var _reactBootstrap = require("react-bootstrap");
 
@@ -46189,6 +46189,8 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var dropdown = document.getElementById("#dropdown");
       var eventtitle = document.getElementById("#eventtitle");
       var startdate = document.getElementById("#startdate");
@@ -46200,169 +46202,171 @@ function (_React$Component) {
       var spanstartdate = document.getElementById("#spanstartdate");
       var spanenddate = document.getElementById("#spanenddate");
       var spanlocation = document.getElementById("#spanlocation");
-      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("br", null), _react.default.createElement("br", null)), _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-md-1"
-      }, " "), _react.default.createElement("div", {
-        className: "col-md-10"
-      }, _react.default.createElement("div", {
-        className: "card mb-3  background-20060b4b"
-      }, _react.default.createElement("div", {
-        className: "card-body"
-      }, _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-md-4"
-      }, " "), _react.default.createElement("div", {
-        className: "col-md-4"
-      }, _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-md-4"
-      }, _react.default.createElement("span", {
-        className: "colorWhite"
-      }, "Category")), _react.default.createElement("div", {
-        className: "col-md-8"
-      }, _react.default.createElement("div", {
-        className: "btn-group  btn-group-md "
-      }, _react.default.createElement(_reactBootstrap.Dropdown, null, _react.default.createElement(_reactBootstrap.Dropdown.Toggle, {
-        variant: "secondary",
-        id: "dropdown"
-      }, "Choose A Category"), _react.default.createElement(_reactBootstrap.Dropdown.Menu, null, _react.default.createElement(_reactBootstrap.Dropdown.Item, {
-        onClick: this.handledropdown
-      }, "Birthday"), _react.default.createElement(_reactBootstrap.Dropdown.Item, {
-        onClick: this.handledropdown
-      }, "Wedding"), _react.default.createElement(_reactBootstrap.Dropdown.Item, {
-        onClick: this.handledropdown
-      }, "New Born"))), _react.default.createElement("span", {
-        ref: this.state.dropdownvalue
-      })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("span", {
-        id: "categoryspan"
-      }))))), _react.default.createElement("div", {
-        className: "col-md-4"
-      })), _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-md-4"
-      }), _react.default.createElement("div", {
-        className: "col-md-4"
-      }, _react.default.createElement("br", null), _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-md-4"
-      }, _react.default.createElement("span", {
-        className: "colorWhite"
-      }, "Title")), _react.default.createElement("div", {
-        className: "col-md-8"
-      }, _react.default.createElement("div", {
-        className: "form-group"
-      }, _react.default.createElement("input", {
-        className: "form-control",
-        type: "text",
-        placeholder: "write event title",
-        id: "eventtitle"
-      }), _react.default.createElement("div", null, _react.default.createElement("span", {
-        id: "spantitle"
-      })))))), _react.default.createElement("div", {
-        className: "col-md-4"
-      })), _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-md-4"
-      }), _react.default.createElement("div", {
-        className: "col-md-4"
-      }, _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-md-4"
-      }, _react.default.createElement("span", {
-        className: "colorWhite"
-      }, "Start Date ")), _react.default.createElement("div", {
-        className: "col-md-8"
-      }, _react.default.createElement("input", {
-        className: "form-control",
-        type: "date",
-        name: "date",
-        id: "startdate"
-      }), _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("span", {
-        id: "spanstartdate"
-      }))))), _react.default.createElement("div", {
-        className: "col-md-4"
-      })), _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-md-4"
-      }), _react.default.createElement("div", {
-        className: "col-md-4"
-      }, _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-md-4"
-      }, _react.default.createElement("span", {
-        className: "colorWhite"
-      }, "End Date ")), _react.default.createElement("div", {
-        className: "col-md-8"
-      }, _react.default.createElement("input", {
-        className: "form-control",
-        type: "date",
-        name: "date",
-        id: "enddate"
-      }), _react.default.createElement("div", null, _react.default.createElement("span", {
-        id: "spanenddate"
-      })), _react.default.createElement("br", null)))), _react.default.createElement("div", {
-        className: "col-md-4"
-      })), _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-md-4"
-      }), _react.default.createElement("div", {
-        className: "col-md-4"
-      }, _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-md-4"
-      }, _react.default.createElement("span", {
-        className: "colorWhite"
-      }, "Where ")), _react.default.createElement("div", {
-        className: "col-md-8"
-      }, _react.default.createElement("input", {
-        className: "form-control",
-        type: "text",
-        placeholder: "Type Event Location",
-        id: "where"
-      }), _react.default.createElement("div", null, _react.default.createElement("span", {
-        id: "spanlocation"
-      }))))), _react.default.createElement("div", {
-        className: "col-md-4"
-      })), _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-md-4"
-      }), _react.default.createElement("div", {
-        className: "col-md-4"
-      }, _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-md-7"
-      }), _react.default.createElement("div", {
-        className: "col-md-5"
-      }, _react.default.createElement("br", null), _react.default.createElement("button", {
-        id: "searchEventbtn",
-        type: "button",
-        className: "btn btn-outline-info",
-        onClick: this.createnewevent
-      }, _react.default.createElement(_reactRouterDom.NavLink, {
-        to: createventref
-      }, "Create New Event", " "))))), _react.default.createElement("div", {
-        className: "col-md-4"
-      })))), _react.default.createElement("div", {
-        className: "col-md-1"
-      }))));
+      return _react.default.createElement(_App.MyContext.Consumer, null, function (context) {
+        return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+          className: "row"
+        }, _react.default.createElement("br", null), _react.default.createElement("br", null)), _react.default.createElement("div", {
+          className: "row"
+        }, _react.default.createElement("div", {
+          className: "col-md-1"
+        }, " "), _react.default.createElement("div", {
+          className: "col-md-10"
+        }, _react.default.createElement("div", {
+          className: "card mb-3  background-20060b4b"
+        }, _react.default.createElement("div", {
+          className: "card-body"
+        }, _react.default.createElement("div", {
+          className: "row"
+        }, _react.default.createElement("div", {
+          className: "col-md-4"
+        }, " "), _react.default.createElement("div", {
+          className: "col-md-4"
+        }, _react.default.createElement("div", {
+          className: "row"
+        }, _react.default.createElement("div", {
+          className: "col-md-4"
+        }, _react.default.createElement("span", {
+          className: "colorWhite"
+        }, "Category")), _react.default.createElement("div", {
+          className: "col-md-8"
+        }, _react.default.createElement("div", {
+          className: "btn-group  btn-group-md "
+        }, _react.default.createElement(_reactBootstrap.Dropdown, null, _react.default.createElement(_reactBootstrap.Dropdown.Toggle, {
+          variant: "secondary",
+          id: "dropdown"
+        }, "Choose A Category"), _react.default.createElement(_reactBootstrap.Dropdown.Menu, null, _react.default.createElement(_reactBootstrap.Dropdown.Item, {
+          onClick: _this2.handledropdown
+        }, "Birthday"), _react.default.createElement(_reactBootstrap.Dropdown.Item, {
+          onClick: _this2.handledropdown
+        }, "Wedding"), _react.default.createElement(_reactBootstrap.Dropdown.Item, {
+          onClick: _this2.handledropdown
+        }, "New Born"))), _react.default.createElement("span", {
+          ref: _this2.state.dropdownvalue
+        })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("span", {
+          id: "categoryspan"
+        }))))), _react.default.createElement("div", {
+          className: "col-md-4"
+        })), _react.default.createElement("div", {
+          className: "row"
+        }, _react.default.createElement("div", {
+          className: "col-md-4"
+        }), _react.default.createElement("div", {
+          className: "col-md-4"
+        }, _react.default.createElement("br", null), _react.default.createElement("div", {
+          className: "row"
+        }, _react.default.createElement("div", {
+          className: "col-md-4"
+        }, _react.default.createElement("span", {
+          className: "colorWhite"
+        }, "Title")), _react.default.createElement("div", {
+          className: "col-md-8"
+        }, _react.default.createElement("div", {
+          className: "form-group"
+        }, _react.default.createElement("input", {
+          className: "form-control",
+          type: "text",
+          placeholder: "write event title",
+          id: "eventtitle"
+        }), _react.default.createElement("div", null, _react.default.createElement("span", {
+          id: "spantitle"
+        })))))), _react.default.createElement("div", {
+          className: "col-md-4"
+        })), _react.default.createElement("div", {
+          className: "row"
+        }, _react.default.createElement("div", {
+          className: "col-md-4"
+        }), _react.default.createElement("div", {
+          className: "col-md-4"
+        }, _react.default.createElement("div", {
+          className: "row"
+        }, _react.default.createElement("div", {
+          className: "col-md-4"
+        }, _react.default.createElement("span", {
+          className: "colorWhite"
+        }, "Start Date ")), _react.default.createElement("div", {
+          className: "col-md-8"
+        }, _react.default.createElement("input", {
+          className: "form-control",
+          type: "date",
+          name: "date",
+          id: "startdate"
+        }), _react.default.createElement("br", null), _react.default.createElement("div", {
+          className: "row"
+        }, _react.default.createElement("span", {
+          id: "spanstartdate"
+        }))))), _react.default.createElement("div", {
+          className: "col-md-4"
+        })), _react.default.createElement("div", {
+          className: "row"
+        }, _react.default.createElement("div", {
+          className: "col-md-4"
+        }), _react.default.createElement("div", {
+          className: "col-md-4"
+        }, _react.default.createElement("div", {
+          className: "row"
+        }, _react.default.createElement("div", {
+          className: "col-md-4"
+        }, _react.default.createElement("span", {
+          className: "colorWhite"
+        }, "End Date ")), _react.default.createElement("div", {
+          className: "col-md-8"
+        }, _react.default.createElement("input", {
+          className: "form-control",
+          type: "date",
+          name: "date",
+          id: "enddate"
+        }), _react.default.createElement("div", null, _react.default.createElement("span", {
+          id: "spanenddate"
+        })), _react.default.createElement("br", null)))), _react.default.createElement("div", {
+          className: "col-md-4"
+        })), _react.default.createElement("div", {
+          className: "row"
+        }, _react.default.createElement("div", {
+          className: "col-md-4"
+        }), _react.default.createElement("div", {
+          className: "col-md-4"
+        }, _react.default.createElement("div", {
+          className: "row"
+        }, _react.default.createElement("div", {
+          className: "col-md-4"
+        }, _react.default.createElement("span", {
+          className: "colorWhite"
+        }, "Where ")), _react.default.createElement("div", {
+          className: "col-md-8"
+        }, _react.default.createElement("input", {
+          className: "form-control",
+          type: "text",
+          placeholder: "Type Event Location",
+          id: "where"
+        }), _react.default.createElement("div", null, _react.default.createElement("span", {
+          id: "spanlocation"
+        }))))), _react.default.createElement("div", {
+          className: "col-md-4"
+        })), _react.default.createElement("div", {
+          className: "row"
+        }, _react.default.createElement("div", {
+          className: "col-md-4"
+        }), _react.default.createElement("div", {
+          className: "col-md-4"
+        }, _react.default.createElement("div", {
+          className: "row"
+        }, _react.default.createElement("div", {
+          className: "col-md-7"
+        }), _react.default.createElement("div", {
+          className: "col-md-5"
+        }, _react.default.createElement("br", null), _react.default.createElement("button", {
+          id: "searchEventbtn",
+          type: "button",
+          className: "btn btn-outline-info",
+          onClick: _this2.createnewevent
+        }, _react.default.createElement(_reactRouterDom.NavLink, {
+          to: createventref
+        }, "Create New Event", " "))))), _react.default.createElement("div", {
+          className: "col-md-4"
+        })))), _react.default.createElement("div", {
+          className: "col-md-1"
+        }))));
+      });
     }
   }]);
 
@@ -47072,7 +47076,6 @@ function (_React$Component) {
   }, {
     key: "handledropdown",
     value: function handledropdown(e) {
-      // e.preventDefault();
       this.state.dropdownvalue = e.target.innerText;
       dropdown.innerText = this.state.dropdownvalue;
     }
@@ -47140,12 +47143,16 @@ function (_React$Component) {
         onClick: this.handledropdown
       }, " ", "New Born"))), _react.default.createElement("span", {
         ref: this.state.dropdownvalue
-      })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("br", null)), _react.default.createElement("input", {
+      })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("br", null)), _react.default.createElement("span", {
+        className: "colorWhite"
+      }, "Event Start Date:"), _react.default.createElement("input", {
         className: "form-control",
         type: "date",
         placeholder: "Start",
         id: "startdate"
-      }), _react.default.createElement("br", null), _react.default.createElement("input", {
+      }), _react.default.createElement("br", null), _react.default.createElement("span", {
+        className: "colorWhite"
+      }, "Event End Date:"), _react.default.createElement("input", {
         className: "form-control",
         type: "date",
         placeholder: "End",
@@ -47271,6 +47278,7 @@ function (_React$Component) {
   _createClass(HomeComponent, [{
     key: "checklogin",
     value: function checklogin(flag) {
+      console.log("login flag from checklogin() : ", flag);
       var addeventlink = "/AddEvent/" + this.state.userid;
       var isLoggedIn = this.state.loginFlag;
 
@@ -59421,6 +59429,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -59429,9 +59445,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -59458,13 +59474,55 @@ function (_React$Component) {
       loginFlag: true,
       userid: 0,
       username: "Majde",
-      age: 10
-    };
+      age: 10,
+      events: [{
+        id: 1,
+        name: "Mustafa",
+        avatar: "images/avatar.jpg",
+        startdate: "2019-01-01",
+        enddate: "2019-01-01",
+        description: "Marhaba, I love Avatars...",
+        lastUpdateTime: new Date().toLocaleString("he-IL"),
+        callercomp: "ShowUserWishes"
+      }, {
+        id: "2",
+        name: "Suhir",
+        avatar: "images/avatar.jpg",
+        startdate: "2019-01-01",
+        enddate: "2019-01-01",
+        description: "Hello, I love Avatars...",
+        lastUpdateTime: new Date().toLocaleString("he-IL"),
+        callercomp: "ShowUserWishes"
+      }, {
+        id: 3,
+        name: "Shahar",
+        avatar: "images/avatar2.png",
+        startdate: "2019-01-01",
+        enddate: "2019-01-01",
+        description: "Shalom, I love Avatars...",
+        lastUpdateTime: new Date().toLocaleString("he-IL"),
+        callercomp: "ShowUserWishes"
+      }]
+    }; //state
+
+    _this.addADate = _this.addADate.bind(_assertThisInitialized(_this));
     return _this;
   } //constructor
 
 
   _createClass(MyProvider, [{
+    key: "addADate",
+    value: function addADate(obj) {
+      if (obj != null) {
+        // if(obj.eventid>0 &&   ){}//if
+        this.setState({
+          events: [].concat(_toConsumableArray(events), [obj])
+        });
+      } //if
+
+    } //addadate()
+
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -59476,7 +59534,8 @@ function (_React$Component) {
             return _this2.setState({
               age: _this2.state.age + 1
             });
-          }
+          },
+          addADate: this.addADate
         }
       }, this.props.children);
     }
@@ -59585,7 +59644,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64478" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49196" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
