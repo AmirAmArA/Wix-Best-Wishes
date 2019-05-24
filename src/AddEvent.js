@@ -66,7 +66,7 @@ export default class AddEvent extends React.Component {
     // const user = this.state.users.find(user => user.id === userId);
 
     this.setState({
-      events: [this.state.events, ...eventsarr]
+      events: [...this.state.events, ...eventsarr]
         //  .push(wish => {
         //     if(user.id === userId){
         //         return {
@@ -94,7 +94,7 @@ export default class AddEvent extends React.Component {
     console.log(eventtitle.value, where.value, enddate.value, startdate.value);
 
       if(this.state.dropdownvalue==""){
-        categoryspan.innerText = "Please Choose Category";
+        this.refs.categoryspan.innerText = "Please Choose Category";
       }//if  
       if(this.state.dropdownvalue!=""){
         categoryspan.innerText = "";
@@ -214,7 +214,7 @@ export default class AddEvent extends React.Component {
                         </div>
                         <br/>
                         <div>
-                        <span id="categoryspan"> 
+                        <span ref="categoryspan" id="categoryspan"> 
                         
                         </span> 
                         </div>

@@ -93,6 +93,11 @@ body {
   min-width: 140px;
   outline: none !important;
 }
+
+.btn-outline-info:focus, .btn-outline-info.focus {
+  box-shadow: none !important;
+}
+
 .signup-form .row div:first-child {
   padding-right: 10px;
 }
