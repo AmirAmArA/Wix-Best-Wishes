@@ -30454,7 +30454,7 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(NavComponent).call(this));
     localStorage.clear();
     _this.state = {
-      loginFlag: false,
+      loginFlag: true,
       username: "Majde",
       userid: 22
     }; // console.log(localStorage.getItem("loginflag"));
@@ -47365,6 +47365,8 @@ var _EventCard = _interopRequireDefault(require("./EventCard"));
 
 var _reactRouterDom = require("react-router-dom");
 
+var _reactBootstrap = require("react-bootstrap");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -47426,7 +47428,7 @@ function (_React$Component) {
         name: "event3",
         avatar: "images/avatar2.png",
         score: 11,
-        description: "Shalom, I love Avatars.................................................................................................................................................................................................................................................................",
+        description: "Shalom, I love Avatars",
         lastUpdateTime: new Date().toLocaleString("he-IL")
       }, {
         id: 4,
@@ -47464,49 +47466,25 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", null, _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("br", null), _react.default.createElement("br", null)), _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-md-1"
-      }, " "), _react.default.createElement("div", {
-        className: "col-md-10"
+      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_reactBootstrap.Container, null, _react.default.createElement(_reactBootstrap.Row, null, _react.default.createElement("br", null), _react.default.createElement("br", null)), _react.default.createElement(_reactBootstrap.Row, null, _react.default.createElement(_reactBootstrap.Col, {
+        md: 1
+      }), _react.default.createElement(_reactBootstrap.Col, {
+        md: 10
       }, _react.default.createElement("h3", {
         className: "colorWhite"
-      }, "Event List:")), _react.default.createElement("div", {
-        className: "col-md-1"
-      })), _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-md-1"
-      }), _react.default.createElement("div", {
-        className: "col-md-10 colorWhite"
-      }, _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-md-4"
-      })), _react.default.createElement("div", {
-        className: "row"
-      }, this.state.events.map(function (event) {
+      }, "Event List:")), _react.default.createElement(_reactBootstrap.Col, {
+        md: 1
+      })), _react.default.createElement(_reactBootstrap.Row, null, _react.default.createElement(_reactBootstrap.Col, {
+        md: 1
+      }), _react.default.createElement(_reactBootstrap.Col, {
+        md: 10
+      }, _react.default.createElement(_reactBootstrap.Row, null, this.state.events.map(function (event) {
         return _react.default.createElement(_EventCard.default, _extends({
           key: event.id
         }, event));
-      })), _react.default.createElement("div", {
-        className: "row"
-      }))), _react.default.createElement("div", {
-        className: "col-md-1"
-      })), _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("br", null), _react.default.createElement("br", null)), _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-md-4"
-      }), _react.default.createElement("div", {
-        className: "col-md-4"
-      }), _react.default.createElement("div", {
-        className: "col-md-4"
-      })));
+      })))), _react.default.createElement(_reactBootstrap.Col, {
+        md: 1
+      })), _react.default.createElement(_reactBootstrap.Row, null, _react.default.createElement("br", null), _react.default.createElement("br", null)));
     }
   }]);
 
@@ -47514,7 +47492,7 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.default = MyWishes;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./EventCard":"src/EventCard.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"src/Login.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./EventCard":"src/EventCard.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap":"node_modules/react-bootstrap/es/index.js"}],"src/Login.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -59533,7 +59511,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54648" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53275" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
