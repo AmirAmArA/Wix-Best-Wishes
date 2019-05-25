@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import { NavLink } from 'react-router-dom'
-
+import { Row, Col, Container ,Card} from "react-bootstrap";
 import "./general.css";
 import logo from "../assets/logo.PNG";
 import WishCard from './WishCard';
@@ -73,30 +73,29 @@ updateWishes(wishesarr){
     
     // console.log("calling components is" ,this.state.callercomp)
     return <>
-        <div>
-      <div className="row"><br /><br /></div>
-
-      <div className="row">
-        <div className="col-md-3">
-          <div className="card border-info mb-3 wishcard" >
-            <div className="card-header border-info colorwhite" >
+        <Container>
+      <Row><br/><br/></Row>
+      <Row>
+      <Col md={3}>
+          <Card  border="info" className="mb-3 wishcard" >
+            <Card.Header  >
               My Wishes
-            </div>
+            </Card.Header>
             
-          </div>
+          </Card>
+        </Col>
+        <Col md={9}  >
           
-        </div>
-        <div className="col-md-9 overyscrol " >
-          
-          <div className="row">
+          <Row>
           {this.state.wishes.map(wish => <WishCard  {...wish  }    />) }
           
           
-          </div>
+          </Row>
           
-        </div>
-      </div>
-    </div>
+        </Col>
+      </Row>
+    </Container>
+
 
 
     </>;
