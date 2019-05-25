@@ -46484,6 +46484,8 @@ var _WishCard = _interopRequireDefault(require("./WishCard"));
 
 var _reactRouterDom = require("react-router-dom");
 
+var _reactBootstrap = require("react-bootstrap");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -46621,58 +46623,25 @@ function (_React$Component) {
 
       var linktosend = "/AddAWish/" + this.props.match.params.eventid; // console.log(this.props.eventid)
 
-      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", null, _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("br", null), _react.default.createElement("br", null)), _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-md-3"
-      }, _react.default.createElement("div", {
-        className: "card border-info mb-3 wishcard"
-      }, _react.default.createElement("div", {
-        className: "card-header border-info colorwhite"
-      }, "Event Info"), _react.default.createElement("div", {
-        className: "card-body text-light"
-      }, _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-md-6"
-      }, _react.default.createElement("span", null, "ID : ", eventid, " ", _react.default.createElement("br", null), "Name:", eventname)), _react.default.createElement("div", {
-        className: "col-md-6"
-      })), _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-md-6"
-      }, _react.default.createElement("span", null, "When: ", startdate)), _react.default.createElement("div", {
-        className: "col-md-6"
-      })), _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-md-6"
-      }, _react.default.createElement("span", null, "Where: ", where)), _react.default.createElement("div", {
-        className: "col-md-6"
-      })))), _react.default.createElement("div", {
-        className: "row"
-      }, _react.default.createElement("div", {
-        className: "col-md-12"
-      }, _react.default.createElement("button", {
+      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_reactBootstrap.Container, null, _react.default.createElement(_reactBootstrap.Row, null, _react.default.createElement("br", null), _react.default.createElement("br", null)), _react.default.createElement(_reactBootstrap.Row, null, _react.default.createElement(_reactBootstrap.Col, {
+        md: 3
+      }, _react.default.createElement(_reactBootstrap.Card, {
+        border: "info",
+        className: " mb-3 wishcard"
+      }, _react.default.createElement(_reactBootstrap.Card.Header, {
+        className: " border-info colorwhite"
+      }, "Event Info"), _react.default.createElement(_reactBootstrap.Card.Body, null, _react.default.createElement(_reactBootstrap.Row, null, _react.default.createElement(_reactBootstrap.Col, null, _react.default.createElement("span", null, "ID : ", eventid))), _react.default.createElement(_reactBootstrap.Row, null, _react.default.createElement(_reactBootstrap.Col, null, _react.default.createElement("span", null, "Name:", eventname))), _react.default.createElement(_reactBootstrap.Row, null, _react.default.createElement(_reactBootstrap.Col, null, _react.default.createElement("span", null, "When: ", startdate))), _react.default.createElement(_reactBootstrap.Row, null, _react.default.createElement(_reactBootstrap.Col, null, _react.default.createElement("span", null, "Where: ", where))))), _react.default.createElement(_reactBootstrap.Row, null, _react.default.createElement(_reactBootstrap.Col, null, _react.default.createElement("button", {
         type: "button",
         className: "btn btn-outline-warning"
       }, _react.default.createElement(_reactRouterDom.NavLink, {
         to: linktosend
-      }, "Add a Best Wish !!"))))), _react.default.createElement("div", {
-        className: "col-md-9 overyscrol "
-      }, _react.default.createElement("div", {
-        className: "row"
-      }), _react.default.createElement("div", {
-        className: "row"
-      }, this.state.wishes.map(function (wish) {
+      }, "Add a Best Wish !!"))))), _react.default.createElement(_reactBootstrap.Col, {
+        md: 9
+      }, _react.default.createElement(_reactBootstrap.Row, null), _react.default.createElement(_reactBootstrap.Row, null, this.state.wishes.map(function (wish) {
         return _react.default.createElement(_WishCard.default, _extends({}, wish, {
           key: wish.id
         }));
-      })), _react.default.createElement("div", {
-        className: "row"
-      })))));
+      }))))));
     }
   }]);
 
@@ -46680,7 +46649,7 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.default = MyWishes;
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./WishCard":"src/WishCard.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"src/EventCardToView.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","bootstrap/dist/css/bootstrap.css":"node_modules/bootstrap/dist/css/bootstrap.css","./general.css":"src/general.css","../assets/logo.PNG":"assets/logo.PNG","./WishCard":"src/WishCard.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap":"node_modules/react-bootstrap/es/index.js"}],"src/EventCardToView.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
