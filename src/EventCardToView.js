@@ -2,7 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import PropTypes from "prop-types";
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
+import { Card , Button, Container, Row, Col } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import App from "./App";
 
@@ -43,8 +44,37 @@ export default class EventCardToView extends React.Component {
     // localStorage.setItem("eventname", this.props.name);
     return (
       <>
-        <div className="col-md-4">
-          <div className="card-body text-center  eventcards">
+       <Card  className="card-body text-center  eventcards  col-md-4">
+          <Card.Img
+            className=" img-fluid img"
+            src={
+              "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+              
+            }
+            alt="card image"
+          />
+          <Card.Body className="card-body text-center  eventcards ">
+            <Card.Title>
+              <h4>
+                {this.props.name} <br />
+                {this.props.lastUpdateTime}
+              </h4>
+            </Card.Title>
+            <Card.Text className="colorgreen">
+              <p className="card-text ">{this.props.description}</p>
+            </Card.Text>
+            <Button
+             id="searchEventbtn"
+              type="button"
+              className="btn btn-outline-info"
+            >
+              <NavLink to={reference}>Add A Wish</NavLink>
+            </Button>    
+          
+          </Card.Body>
+        </Card> 
+        
+          {/* <div className="card-body text-center  eventcards col-md-4">
             <p>
               <img
                 className=" img-fluid"
@@ -65,14 +95,11 @@ export default class EventCardToView extends React.Component {
               className="btn btn-outline-info"
               //  onClick={() =>this.props.click}
             >
-              {/* Add A Wish */}
-                  {/* <Router> */}
-              {/* <NavLink to={reference}>Add A Wish</NavLink> */}
-                  {/* </Router> */}
+             
                <a href={reference}>Add A Wish</a> 
             </button>
-          </div>
-        </div>
+          </div> */}
+        
       </>
     );
   }
