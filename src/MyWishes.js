@@ -5,6 +5,7 @@ import "./general.css";
 import logo from "../assets/logo.PNG";
 import WishCard from "./WishCard";
 import { NavLink } from 'react-router-dom'
+import { Container, Row, Card, Col } from "react-bootstrap";
 
 
 export default class MyWishes extends React.Component {
@@ -93,12 +94,12 @@ export default class MyWishes extends React.Component {
   }
 
   render() {
-    let eventid=this.props.match.params.eventid;
-    let eventname ="";
+    let eventid = this.props.match.params.eventid;
+    let eventname = "";
     let where = "Location";
     let startdate = "";
     this.state.events.map(event => {
-      if(event.id== eventid){
+      if (event.id == eventid) {
         eventname = event.name
         // where = event.where
         startdate = event.startdate;
@@ -109,59 +110,61 @@ export default class MyWishes extends React.Component {
     // eventname= localStorage.getItem('eventname');
     // console.log(this.props.name)
     console.log(this.props.match.params.eventid);//here we recieve the eventid
-    let linktosend ="/AddAWish/" + this.props.match.params.eventid;
+    let linktosend = "/AddAWish/" + this.props.match.params.eventid;
     // console.log(this.props.eventid)
     return (
       <>
-        <div>
-          <div className="row">
-            <br />
-            <br />
-          </div>
+        <Container>
+          <Row>
+            <br /><br />
+          </Row>
 
-          <div className="row">
-            <div className="col-md-3">
-              <div className="card border-info mb-3 wishcard">
-                <div className="card-header border-info colorwhite">
+          <Row>
+            <Col md={3}>
+              <Card border="info" className=" mb-3 wishcard">
+                <Card.Header className=" border-info colorwhite">
                   Event Info
-                </div>
-                <div className="card-body text-light">
-                  <div className="row">
-                    <div className="col-md-6">
+                </Card.Header>
+                <Card.Body >
+                  <Row>
+                    <Col >
                       <span>
-                        ID : {eventid} <br/>
-                         Name:{eventname}
+                        ID : {eventid}
                       </span>
-                    </div>
-                    <div className="col-md-6" />
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <span>
+                        Name:{eventname}
+                      </span>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col >
                       <span>When: {startdate}</span>
-                    </div>
-                    <div className="col-md-6" />
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col >
                       <span>Where: {where}</span>
-                    </div>
-                    <div className="col-md-6" />
-                  </div>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-md-12">
+                    </Col>
+                  </Row>
+                </Card.Body>
+              </Card>
+              <Row>
+                <Col >
                   <button type="button" className="btn btn-outline-warning">
-                   
-            <NavLink to={linktosend}>Add a Best Wish !!</NavLink>
-                   
+
+                    <NavLink to={linktosend}>Add a Best Wish !!</NavLink>
+
                     {/* <a className="coloryellow" href="/AddAWish"></a> */}
                   </button>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-9 overyscrol ">
-              <div className="row">
+                </Col>
+              </Row>
+            </Col>
+            <Col md={9}>
+              <Row>
                 {/* <div className="col-md-4">
                   <div className="card border-light mb-3 maxwidth18">
                     <div className="card-header">Wish1</div>
@@ -174,20 +177,16 @@ export default class MyWishes extends React.Component {
                     </div>
                   </div>
                 </div> */}
-              </div>
-              <div className="row">
+              </Row>
+              <Row>
                 {this.state.wishes.map(wish => (
                   <WishCard {...wish} key={wish.id} />
                 ))}
-              </div>
-              <div className="row">
-                {/* <WishCard />
-          <WishCard />
-          <WishCard /> */}
-              </div>
-            </div>
-          </div>
-        </div>
+              </Row>
+
+            </Col>
+          </Row>
+        </Container>
       </>
     );
   }
