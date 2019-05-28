@@ -26,7 +26,7 @@ export default class EventCard extends React.Component {
           />
           <Card.Body className="card-body text-center  eventcards ">
             <Card.Title>
-              <h4>npm
+              <h4>
                 {this.props.name} <br />
                 {this.props.lastUpdateTime}
               </h4>

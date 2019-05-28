@@ -34,8 +34,13 @@ export class NavComponent extends React.Component {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
+
+
+                      
+            <NavLink className="nav-link" to="/">  Home</NavLink>
+            <NavLink className="nav-link" to="/MyEvents">  MyEvents</NavLink>
+            <NavLink className="nav-link" to="/ShowUserWishes">  MyWishes</NavLink>
+            <NavLink className="nav-link" to="/about">  About</NavLink>
           </Nav>
           <Form inline>
             {username ? (
