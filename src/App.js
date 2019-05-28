@@ -71,7 +71,7 @@ export class App extends React.Component {
             <Route path="/" exact component={HomeComponent} />
             <Route path="/about" component={About} />
             <Route path="/addawish/:eventid" component={AddAWish} />
-            <Route path="/AddEvent/:userid" component={AddEvent} />
+            <Route path="/AddEvent" component={AddEvent} />
             <Route path="/EventCard" component={EventCard} />
             <Route path="/Login" component={Login} />
             {/*  */}
@@ -80,9 +80,9 @@ export class App extends React.Component {
             <Route path="/MyWishes/:eventid" component={MyWishes} />
             <Route path="/Register" component={Register} />
             <Route path="/WishCard" component={WishCard} />
-            <Route path="/MyEvents/:userid" component={MyEvents} />
+            <Route path="/MyEvents" component={MyEvents} />
             <Route path="/SearchEvent" component={SearchEvent} />
-            <Route path="/ShowUserWishes/:userid" component={ShowUserWishes} />
+            <Route path="/ShowUserWishes" component={ShowUserWishes} />
             <Route path="/EditEvent/:eventid" component={EditEvent} />
             <Route path="/EventCardToView" component={EventCardToView} />
           </Switch>
