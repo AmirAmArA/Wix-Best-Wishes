@@ -5,9 +5,9 @@ import { NavLink } from "react-router-dom";
 
 import "./general.css";
 import logo from "../assets/logo.PNG";
-import { App, MyContext, MyProvider } from "./App";
+import App from "./App";
 
-import { Dropdown, DropdownItem } from "react-bootstrap";
+import { Dropdown,Button, Row, Card ,Col, Form} from "react-bootstrap";
 
 export default class AddEvent extends React.Component {
   constructor() {
@@ -66,7 +66,7 @@ export default class AddEvent extends React.Component {
     // const user = this.state.users.find(user => user.id === userId);
 
     this.setState({
-      events: [...this.state.events, ...eventsarr]
+      events: [this.state.events, ...eventsarr]
         //  .push(wish => {
         //     if(user.id === userId){
         //         return {
@@ -94,7 +94,7 @@ export default class AddEvent extends React.Component {
     console.log(eventtitle.value, where.value, enddate.value, startdate.value);
 
       if(this.state.dropdownvalue==""){
-        this.refs.categoryspan.innerText = "Please Choose Category";
+        categoryspan.innerText = "Please Choose Category";
       }//if  
       if(this.state.dropdownvalue!=""){
         categoryspan.innerText = "";
@@ -170,29 +170,26 @@ export default class AddEvent extends React.Component {
     let spanlocation = document.getElementById("#spanlocation");
 
     return (
-      
-      <MyContext.Consumer>  
-          {context => (
-            <> 
-        <div className="row">
+      <>
+        <Row>
           <br />
           <br />
-        </div>
+        </Row>
 
-        <div className="row">
-          <div className="col-md-1"> </div>
-          <div className="col-md-10">
-            <div className="card mb-3  background-20060b4b">
-              <div className="card-body">
-                <div className="row">
-                  <div className="col-md-4"> </div>
-                  <div className="col-md-4">
-                    <div className="row">
-                      <div className="col-md-4">
+        <Row>
+        <Col md={1} />
+        <Col md={10} >
+            <Card className=" mb-3  background-20060b4b">
+              <Card.Body>
+                <Row>
+                <Col md={4} />
+                <Col md={4} >
+                    <Row>
+                    <Col md={4} >
                         <span className="colorWhite">Category</span>
-                      </div>
-                      <div className="col-md-8">
-                        <div className="btn-group  btn-group-md ">
+                      </Col>
+                      <Col md={8} >
+                       
                           <Dropdown>
                             <Dropdown.Toggle variant="secondary" id="dropdown">
                               Choose A Category
@@ -211,29 +208,28 @@ export default class AddEvent extends React.Component {
                             </Dropdown.Menu>
                           </Dropdown>
                           <span ref={this.state.dropdownvalue} />
-                        </div>
+                       
                         <br/>
                         <div>
-                        <span ref="categoryspan" id="categoryspan"> 
-                        
+                        <span id="categoryspan"> 
                         </span> 
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-4" />
-                </div>
+                      </Col>
+                    </Row>
+                  </Col>
+                  <Col md={4} />
+                </Row>
 
-                <div className="row">
-                  <div className="col-md-4" />
-                  <div className="col-md-4">
+                <Row>
+                <Col md={4} />
+                <Col md={4} >
                     <br />
-                    <div className="row">
-                      <div className="col-md-4">
+                    <Row>
+                    <Col md={4} >
                         <span className="colorWhite">Title</span>
-                      </div>
-                      <div className="col-md-8">
-                        <div className="form-group">
+                      </Col>
+                      <Col md={8} >
+                        <Form.Group>
                           <input
                             className="form-control"
                             type="text"
@@ -244,45 +240,45 @@ export default class AddEvent extends React.Component {
                           <div>
                             <span id="spantitle" />
                           </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-4" />
-                </div>
-                <div className="row">
-                  <div className="col-md-4" />
-                  <div className="col-md-4">
-                    <div className="row">
-                      <div className="col-md-4">
+                        </Form.Group>
+                      </Col>
+                    </Row>
+                  </Col>
+                  <Col md={4} />
+                </Row>
+                <Row>
+                <Col md={4} />
+                <Col md={4} >
+                    <Row>
+                    <Col md={4} >
                         <span className="colorWhite">Start Date </span>
-                      </div>
-                      <div className="col-md-8">
+                      </Col>
+                      <Col md={8} >
                         <input
                           className="form-control"
                           type="date"
                           name="date"
                           id="startdate"
                         />
-                          <br/>
-                        <div className="row">
+
+                        <Row>
                           <span id="spanstartdate">
                           
                           </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-4" />
-                </div>
-                <div className="row">
-                  <div className="col-md-4" />
-                  <div className="col-md-4">
-                    <div className="row">
-                      <div className="col-md-4">
+                        </Row>
+                      </Col>
+                    </Row>
+                  </Col>
+                  <Col md={4} />
+                </Row>
+                <Row>
+                <Col md={4} />
+                <Col md={4} >
+                    <Row>
+                    <Col md={4} >
                         <span className="colorWhite">End Date </span>
-                      </div>
-                      <div className="col-md-8">
+                      </Col>
+                      <Col md={8} >
                         <input
                           className="form-control"
                           type="date"
@@ -295,20 +291,20 @@ export default class AddEvent extends React.Component {
                           </span>
                         </div>
                         <br />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-4" />
-                </div>
+                      </Col>
+                    </Row>
+                  </Col>
+                  <Col md={4} />
+                </Row>
 
-                <div className="row">
-                  <div className="col-md-4" />
-                  <div className="col-md-4">
-                    <div className="row">
-                      <div className="col-md-4">
+                <Row>
+                <Col md={4} />
+                <Col md={4} >
+                    <Row>
+                    <Col md={4} >
                         <span className="colorWhite">Where </span>
-                      </div>
-                      <div className="col-md-8">
+                      </Col>
+                      <Col md={8} >
                         <input
                           className="form-control"
                           type="text"
@@ -320,23 +316,23 @@ export default class AddEvent extends React.Component {
                           
                           </span>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-4" />
-                </div>
+                      </Col>
+                    </Row>
+                  </Col>
+                  <Col md={4} />
+                </Row>
 
-                <div className="row">
-                  <div className="col-md-4" />
-                  <div className="col-md-4">
-                    <div className="row">
-                      <div className="col-md-7" />
-                      <div className="col-md-5">
+                <Row>
+                <Col md={4} />
+                <Col md={4} >
+                    <Row>
+                    <Col md={7} />
+                    <Col md={5} >
                         <br />
-                        <button
+                        <Button
                           id="searchEventbtn"
                           type="button"
-                          className="btn btn-outline-info"
+                          variant="outline-info"
                           onClick={this.createnewevent}
                         >
                           {/* <a href={this.state.navigatefroma}>Create event box</a> */}
@@ -345,21 +341,18 @@ export default class AddEvent extends React.Component {
                           <NavLink to={createventref}>
                           Create New Event{" "}
                           </NavLink>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-4" />
-                </div>
-              </div>
-            </div>
-            <div className="col-md-1" />
-          </div>
-        </div>
-        </>
-        )}
-        </MyContext.Consumer>
-      
+                        </Button>
+                      </Col>
+                    </Row>
+                  </Col>
+                  <Col md={4} />
+                </Row>
+              </Card.Body>
+            </Card>
+            <Col md={1} />
+          </Col>
+        </Row>
+      </>
     );
   }
 }
