@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import PropTypes from "prop-types";
 import { NavLink } from 'react-router-dom'
+import { Card , Button, Container, Row, Col } from "react-bootstrap";
 
 
 import "./general.css";
@@ -14,27 +15,51 @@ export default class EventCard extends React.Component {
     let editnav = "/EditEvent/"+this.props.id
     let wishesnav = "/MyWishes/"+this.props.id;
     return <>
-        <div className="col-md-4" >
-                    <div className="card-body text-center  eventcards" >
-                            <p><img className=" img-fluid" src={"https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_03.png"} alt="card image"/></p>
-                            <h4 className="card-title">{this.props.name} <br/>{this.props.lastUpdateTime}</h4>
-                            <p className="card-text">{this.props.description}</p>
-                            <button  id="searchEventbtn" type="button" className="btn btn-outline-info">Delete</button>
-        
-                            <button  id="searchEventbtn" type="button" className="btn btn-outline-info"> 
-                            {/* <a href="/EditEvent"> Edit </a> */}
-                           <NavLink to={editnav}>Edit</NavLink>
-                            
-                            </button>
-                            <button  id="searchEventbtn" type="button" className="btn btn-outline-info">
-                             {/* <a href="/MyWishes"> View Wishes </a> */}
-                           <NavLink to={wishesnav}>View Wishes</NavLink>
-                            
-                            </button>
-        
-        
-                        </div>
-            </div>
+        <Card  className="card-body text-center  eventcards  col-md-4">
+          <Card.Img
+            className=" img-fluid img"
+            src={
+              "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+              
+            }
+            alt="card image"
+          />
+          <Card.Body className="card-body text-center  eventcards ">
+            <Card.Title>
+              <h4>npm
+                {this.props.name} <br />
+                {this.props.lastUpdateTime}
+              </h4>
+            </Card.Title>
+            <Card.Text className="colorgreen">
+              <p className="card-text ">{this.props.description}</p>
+            </Card.Text>
+            <Button
+              variant="outline-danger"
+              id="searchEventbtn"
+              type="button"
+              className="btn btn-outline-info"
+            >
+              Delete
+            </Button>
+            <Button
+              variant="outline-primary"
+              id="searchEventbtn"
+              type="button"
+              className="btn btn-outline-info"
+            >
+              <NavLink to={editnav}>Edit</NavLink>
+            </Button>
+            <Button
+              variant="outline-primary"
+              id="searchEventbtn"
+              type="button"
+              className="btn btn-outline-info"
+            >
+              <NavLink to={wishesnav}>View Wishes</NavLink>
+            </Button>
+          </Card.Body>
+        </Card> 
 
     </>;
   }
