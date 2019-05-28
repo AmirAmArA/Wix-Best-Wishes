@@ -161,7 +161,7 @@ export default class AddEvent extends React.Component {
     let enddate = document.getElementById("#enddate");
     let where = document.getElementById("#where");
 
-    let createventref = this.state.continueflag ? "/MyEvents/" + this.state.userid :"/AddEvent/" + this.state.userid ;
+    let createventref = this.state.continueflag ? "/MyEvents"  :"/AddEvent" ;
 
     let categoryspan =document.getElementById("#categoryspan"); 
     let spantitle = document.getElementById("#spantitle");
