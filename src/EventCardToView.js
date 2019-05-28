@@ -37,13 +37,11 @@ export default class EventCardToView extends React.Component {
     console.log(this.props);
     console.log(reference);
 
-    // console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-
     const aa = { ...this.props };
     
     // localStorage.setItem("eventname", this.props.name);
     return (
-      <>
+      <Router> 
        <Card  className="card-body text-center  eventcards  col-md-4">
           <Card.Img
             className=" img-fluid img"
@@ -68,7 +66,8 @@ export default class EventCardToView extends React.Component {
               type="button"
               className="btn btn-outline-info"
             >
-              <NavLink to={reference}>Add A Wish</NavLink>
+            <a href ={reference}> Add A Wish</a>
+              {/* <NavLink to={reference}>Add A Wish</NavLink> */}
             </Button>    
           
           </Card.Body>
@@ -100,7 +99,7 @@ export default class EventCardToView extends React.Component {
             </button>
           </div> */}
         
-      </>
+          </Router>
     );
   }
 }//class
