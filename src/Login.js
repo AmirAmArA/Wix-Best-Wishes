@@ -7,35 +7,44 @@ import PropTypes from 'prop-types';
 import "./general.css";
 import logo from "../assets/logo.PNG";
 
+import WishContext from './WishContext';
+
 export default class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      username: "",
-      password: "",
-      fieldsvalidated: false ,
-      email :""
+      email :"",
+      password: ""
     };
+
+    this.validate = this.validate.bind(this);
     this.submit = this.submit.bind(this);
   }
 
-  submit() {
-    var re = /^(([^<>()[]\.,;:s@"]+(.[^<>()[]\.,;:s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/gim;
-    if (exampleInputEmail1.val() == "" || !re.test(exampleInputEmail1.val())) {
-      alert("Please enter a valid email address.");
-      // return false;
-    }
-    if (exampleInputPassword1.value == "") {
-      alert("Please enter a valid password .");
-    }
-  } //submit()
+  validate(e){
+    const { name, value } = e.target;
+    // if(name === "email"){
+    //   var re = /^(([^<>()[]\.,;:s@"]+(.[^<>()[]\.,;:s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/gim;
+    //   if (value == "" || !re.test(value)) {
+    //     alert("Please enter a valid email address.");
+    //     return;
+    //   }
+    // }else if (name === "password") {
+    //   alert("Please enter a valid password .");
+    //   return;
+    // }
+    this.setState({
+      [name]: value
+    });
+  }
+  submit(e) {
+    e.preventDefault();
+    this.context.login(this.state.email, this.state.password);
+  }
+
+
 
   render() {
-    let exampleInputEmail1 = document.getElementById("#exampleInputEmail1");
-    let exampleInputPassword1 = document.getElementById(
-      "#exampleInputPassword1"
-    );
-
     return (
       <>
         <div className="row">
@@ -49,11 +58,13 @@ export default class Login extends React.Component {
                     <label htmlFor="exampleInputEmail1">Email address</label>
                     <input
                       type="email"
+                      name="email"
                       className="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
                       placeholder="Enter email"
                       defaultValue={this.state.email}
+                      onBlur={this.validate}
                     />
                     <small id="emailHelp" className="form-text text-muted">
                       We'll never share your email with anyone else.
@@ -63,6 +74,7 @@ export default class Login extends React.Component {
                     <label htmlFor="exampleInputPassword1">Password</label>
                     <input
                       type="password"
+                      name="password"
                       className="form-control"
                       id="exampleInputPassword1"
                       placeholder="Password"
@@ -75,7 +87,7 @@ export default class Login extends React.Component {
                     className="btn btn-outline-info"
                     onClick={this.submit}
                   >
-                    Submit
+                    Log In
                   </button>
                 </form>
               </div>
@@ -88,3 +100,4 @@ export default class Login extends React.Component {
   }
 } //class
 
+Login.contextType = WishContext;

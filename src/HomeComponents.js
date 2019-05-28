@@ -90,14 +90,8 @@ export default class HomeComponent extends React.Component {
 
   render() {
     return (
-      <MyContext.Consumer>
-        {(context) => <>{this.checklogin(context.state.loginFlag)}</>}
-      </MyContext.Consumer>
+        this.checklogin(this.state.loginFlag)
     );
   } //render
 } //class
 
-HomeComponent.propTypes = {
-  loginFlag: PropTypes.boolean,
-  username: PropTypes.string
-};
