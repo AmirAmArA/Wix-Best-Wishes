@@ -14,6 +14,15 @@ import WishContext from "./WishContext";
 export class NavComponent extends React.Component {
   constructor() {
     super();
+    localStorage.clear();
+    this.state = {
+      loginFlag: false,
+      username: "Majde",
+      userid: 22
+    };
+    // console.log(localStorage.getItem("loginflag"));
+    localStorage.setItem("loginflag", this.state.loginFlag);
+    // this.checkIfLogedIn = this.checkIfLogedIn.bind(this);
   }
 
   render() {
