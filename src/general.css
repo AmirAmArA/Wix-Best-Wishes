@@ -34,7 +34,7 @@ li > a {
   background-color: #7c3b4700;
 }
 .colorWhite {
-  color: white;
+  color: black;
 }
 
 body {
@@ -150,4 +150,8 @@ background-color: #8d304104;
 }
 .colorgreen{
   color: green;
+}
+.whiteto{
+  color: white;
+
 }

@@ -3,11 +3,11 @@ import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
+import { Button, Col, Row } from "react-bootstrap";
 
 import "./general.css";
 
 export default class AddAWish extends React.Component {
-
   constructor() {
     super();
     this.state = {
@@ -40,19 +40,18 @@ export default class AddAWish extends React.Component {
     e.preventDefault();
     console.log(this.is_url(imageurl.value));
 
-    if (this.is_url(imageurl.value) == false || imageurl.value=="" ) {
+    if (this.is_url(imageurl.value) == false || imageurl.value == "") {
       this.setState({
         urlerror: "u should add image link",
         ...this.state
       });
       urlspan.innerText = "u should add  Image Url";
     } //if
-    if(this.is_url(imageurl.value) == true || imageurl.value==""){
+    if (this.is_url(imageurl.value) == true || imageurl.value == "") {
       urlspan.innerText = "";
+    } //if
 
-    }//if
-
-    if (fromname.value==""  ) {
+    if (fromname.value == "") {
       this.setState({
         from: fromname.value,
         wishu: wishbody.value,
@@ -66,9 +65,8 @@ export default class AddAWish extends React.Component {
 
       fromspan.innerText = "u should add  your name!!!";
     } //if
-    if(fromname.value!=""  ){
+    if (fromname.value != "") {
       fromspan.innerText = "";
-
     }
     if (wishbody.value == "") {
       this.setState({
@@ -83,10 +81,9 @@ export default class AddAWish extends React.Component {
       });
       wishuspan.innerText = "u should add  Wish Body!!!";
     } //if
-    if(wishbody.value != ""){
+    if (wishbody.value != "") {
       wishuspan.innerText = "";
     }
-
 
     if (
       this.is_url(imageurl.value) &&
@@ -121,24 +118,24 @@ export default class AddAWish extends React.Component {
     let fromname = document.getElementById("#fromname");
     let myanchor = document.getElementById("#myanchor");
     let linktosend = "/MyWishes/" + this.props.match.params.eventid;
-    let linktosend2=  "/AddAWish/" + this.props.match.params.eventid
-
+    let linktosend2 = "/AddAWish/" + this.props.match.params.eventid;
 
     let fromspan = document.getElementById("#fromspan");
     let urlspan = document.getElementById("#urlspan");
     let wishuspan = document.getElementById("#wishuspan");
 
-
     return (
       <>
-        <div className="row">
-          <div className="col-md-4" />
-          <div className="col-md-4">
-            <div className="row">
-              <div className="col-md-3">
-                <span className="colorWhite">From </span>
-              </div>
-              <div className="col-md-9">
+        <Row>
+        
+          <Col md={4} />
+          <Col md={4}>
+            <Row>
+              <Col md={3}>
+                <span className="whiteto">From </span>
+              </Col>
+
+              <Col md={9}>
                 <input
                   className="form-control"
                   type="text"
@@ -146,24 +143,25 @@ export default class AddAWish extends React.Component {
                   id="fromname"
                   // defaultValue={this.state.from}
                 />
-              </div>
-            </div>
-          </div>
-          <div className="col-md-4" />
-        </div>
-        <div className="row">
-          <div className="col-md-5" />
+              </Col>
+            </Row>
+          </Col>
+          <Col md={4} />
+          </Row>
+        <Row>
+          <Col md={5} />
+
           <span id="fromspan">{/* {this.state.usernameerror} */}</span>
-        </div>
-        <div className="row">
-          <div className="col-md-4" />
-          <div className="col-md-4">
+        </Row>
+        <Row>
+          <Col md={4} />
+          <Col md={4}>
             <br />
-            <div className="row">
-              <div className="col-md-3">
-                <span className="colorWhite">Wish you </span>
-              </div>
-              <div className="col-md-9">
+            <Row>
+              <Col md={3}>
+                <span className="whiteto">Wish you </span>
+              </Col>
+              <Col md={9}>
                 <div className="form-group">
                   <textarea
                     className="form-control"
@@ -173,25 +171,25 @@ export default class AddAWish extends React.Component {
                     id="wishbody"
                     // defaultValue={this.state.wishu}
                   />
-                  <br/>
-                  <span id="wishuspan"></span>
-                  
-              
+                  <br />
+                  <span id="wishuspan" />
                 </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-4" />
-        </div>
+              </Col>
+            </Row>
+          </Col>
+          <Col md={4} />
+        </Row>
 
-        <div className="row">
-          <div className="col-md-4" />
-          <div className="col-md-4">
-            <div className="row">
-              <div className="col-md-3">
-                <span className="colorWhite">Image </span>
-              </div>
-              <div className="col-md-9">
+<Row>
+        
+          <Col md={4} />
+
+          <Col md={4}>
+            <Row>
+              <Col md={3}>
+                <span className="whiteto">Image </span>
+              </Col>
+              <Col md={9}>
                 <input
                   className="form-control"
                   type="text"
@@ -199,32 +197,31 @@ export default class AddAWish extends React.Component {
                   id="imageurl"
                   // defaultValue={this.state.imageurl}
                 />
-              </div>
-            </div>
-          </div>
-          <div className="col-md-4" />
-        </div>
+              </Col>
+            </Row>
+          </Col>
+          <Col md={4} />
+          </Row>
+        <Row>
+          <Col md={4} />
 
-        <div className="row">
-          <div className="col-md-4">
-            
-          </div>
-          <div className="col-md-4" >
-          <span id="urlspan"></span>
-          </div>
-          <div className="col-md-4">
-            <button
+          <Col md={4}>
+            <span id="urlspan" />
+          </Col>
+          <Col md={4}>
+            <Button
               id="searchEventbtn"
               type="button"
               className="btn btn-outline-warning"
               onClick={this.validatefields}
             >
-            
               {/* <a id="myanchor">Add a wish</a> */}
-              <NavLink to={this.state.validafields ?  linktosend :linktosend2   }>Add a wish</NavLink>
-            </button>
-          </div>
-        </div>
+              <NavLink to={this.state.validafields ? linktosend : linktosend2}>
+                Add a wish
+              </NavLink>
+            </Button>
+          </Col>
+        </Row>
       </>
     );
   }
