@@ -143,7 +143,6 @@ export default class SearchEvent extends React.Component {
   } //showevents()
 
   handledropdown(e) {
-    // e.preventDefault();
     this.state.dropdownvalue = e.target.innerText;
     dropdown.innerText = this.state.dropdownvalue;
   }
@@ -236,6 +235,7 @@ export default class SearchEvent extends React.Component {
                 <div>
                   <br />
                 </div>
+                <span className="colorWhite">Event Start Date:</span>
                 <input
                   className="form-control"
                   type="date"
@@ -243,6 +243,8 @@ export default class SearchEvent extends React.Component {
                   id="startdate"
                 />
                 <br />
+                <span className="colorWhite">Event End Date:</span>
+
                 <input
                   className="form-control"
                   type="date"
