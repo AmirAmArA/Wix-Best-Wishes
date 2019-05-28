@@ -19,7 +19,7 @@ export class NavComponent extends React.Component {
     super();
     localStorage.clear();
     this.state = {
-      loginFlag: true,
+      loginFlag: false,
       username: "Majde",
       userid: 22
     };
