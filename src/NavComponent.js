@@ -21,7 +21,7 @@ export class NavComponent extends React.Component {
     this.state = {
       loginFlag: true,
       username: "Majde",
-      userid:""
+      userid: 22
     };
     // console.log(localStorage.getItem("loginflag"));
     localStorage.setItem("loginflag", this.state.loginFlag);
@@ -33,7 +33,8 @@ export class NavComponent extends React.Component {
     localStorage.setItem("loginflag", this.state.loginFlag);
     const style = this.state.loginFlag ? { display: "none" } : {};
     const style1 = this.state.loginFlag ? {} : { display: "none" };
-
+    let myeventslink= "/MyEvents/"+this.state.userid;
+    let ShowUserWishes="/ShowUserWishes/"+this.state.userid;
     // const isLoggedIn = localStorage.getItem("loginflag");
     if (this.state.loginFlag) {
       console.log("user is logged in");
@@ -71,14 +72,16 @@ export class NavComponent extends React.Component {
                 </li>
                 <li className="nav-item">
                 
-                  <NavLink className="nav-link" to="/MyEvents">
+                {/* /MyEvents */}
+                  <NavLink className="nav-link" to={myeventslink}>
                     MyEvents
                   </NavLink>
 
                   {/* <a className="nav-link" href="/MyEvents"></a> */}
                 </li>
                 <li className="nav-item ">
-                  <NavLink className="nav-link" to="/ShowUserWishes">
+                {/* /ShowUserWishes */}
+                  <NavLink className="nav-link" to={ShowUserWishes}>
                     MyWishes
                   </NavLink>
 
@@ -109,7 +112,7 @@ export class NavComponent extends React.Component {
     } else {
       console.log("user is not logged in");
       return (
-        <Router>
+        // <Router>
           <nav className="navbar navbar-expand-lg navbar-dark navStyle">
             <a className="navbar-brand">
               <img src={logo} className="logo" />
@@ -137,12 +140,12 @@ export class NavComponent extends React.Component {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/MyEvents">
+                  <NavLink className="nav-link" to="/Register">
                     MyEvents
                   </NavLink>
                 </li>
                 <li className="nav-item ">
-                  <NavLink className="nav-link" to="/ShowUserWishes">
+                  <NavLink className="nav-link" to="/Register">
                     MyWishes
                   </NavLink>
                 </li>
@@ -184,7 +187,7 @@ export class NavComponent extends React.Component {
               </form>
             </div>
           </nav>
-        </Router>
+        // </Router>
       );
     } //else
     // this.checkIfLogedIn(isLoggedIn);
