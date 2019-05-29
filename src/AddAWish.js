@@ -36,7 +36,7 @@ export default class AddAWish extends React.Component {
 
   validatefields(e) {
     // let linktosend = "/MyWishes/" + this.props.match.params.eventid
-    console.log("hello from validate fields");
+    // console.log("hello from validate fields");
     e.preventDefault();
     console.log(this.is_url(imageurl.value));
 
@@ -151,7 +151,7 @@ export default class AddAWish extends React.Component {
         <Row>
           <Col md={5} />
 
-          <span id="fromspan">{/* {this.state.usernameerror} */}</span>
+          <span id="fromspan" className="whiteto">{/* {this.state.usernameerror} */}</span>
         </Row>
         <Row>
           <Col md={4} />
@@ -172,7 +172,7 @@ export default class AddAWish extends React.Component {
                     // defaultValue={this.state.wishu}
                   />
                   <br />
-                  <span id="wishuspan" />
+                  <span  id="wishuspan" className="whiteto"/>
                 </div>
               </Col>
             </Row>
@@ -206,7 +206,7 @@ export default class AddAWish extends React.Component {
           <Col md={4} />
 
           <Col md={4}>
-            <span id="urlspan" />
+            <span id="urlspan" className="whiteto"/>
           </Col>
           <Col md={4}>
             <Button

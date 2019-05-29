@@ -82,15 +82,13 @@ export default class SearchEvent extends React.Component {
     console.log(where.value);
     console.log(enddate.value);
     console.log(startdate.value);
-    this.state.myEvent = getMyEvents(eventid.value);
-    this.state.eventsToShow.push(getMyEvents(eventid.value));
     console.log("the events to show", this.state.eventsToShow);
 
     console.log("my event is ", this.state.myEvent);
     this.state.events.map(event => {
       // console.log("the event id is ", event.id);
 
-      if (eventid.value == "" || eventid.value < 0) {
+      if (eventid.value == "" || eventid.value < 0 || (!eventid.value) ) {
         //-------------------------------------------------------
         console.log("eventid should be bigger  than 0 and not empty");
         eventidspan.innerText =
@@ -101,7 +99,11 @@ export default class SearchEvent extends React.Component {
         // e.preventDefault();
       } //if
       else {
+        // this.state.eventsToShow.push(event);
         this.state.continueSearchFlag = true;
+    this.state.myEvent = getMyEvents(eventid.value);
+
+
       }
       if (where.value == "") {
         console.log("you should add event location ");
@@ -127,19 +129,25 @@ export default class SearchEvent extends React.Component {
             event.enddate == enddate.value &&
             event.where == where.value
           ) {
-            // this.state.eventsToShow.push(event);
           } //if
         } //else
       } //if continue flag
-      console.log(this.state.eventsToShow);
+      console.log(this.state.myEvent);
+      
     });
+      if(this.state.myEvent.id){
+        ReactDOM.render(
 
-    ReactDOM.render(
-      this.state.eventsToShow.map(event1 => (
-        <EventCardToView {...event1} key={event1.id} />
-      )),
-      document.querySelector("#showeventcardsdiv")
-    );
+    
+    
+          // this.state.myEvent
+            <EventCardToView {...this.state.myEvent} key={this.state.myEvent.id} />
+          ,
+          document.querySelector("#showeventcardsdiv")
+        );
+
+      }
+    
   } //showevents()
 
   handledropdown(e) {

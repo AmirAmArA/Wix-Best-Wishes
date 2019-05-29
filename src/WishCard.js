@@ -75,11 +75,11 @@ export default class WishCard extends React.Component {
   
 }//class
 
-WishCard.propTypes = {
-  key: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  lastUpdateTime: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  gender: PropTypes.oneOf(["Male", "Female", "Other"]).isRequired,
-  courses: PropTypes.arrayOf(PropTypes.string)
-};
+// WishCard.propTypes = {
+//   key: PropTypes.string.isRequired,
+//   name: PropTypes.string.isRequired,
+//   lastUpdateTime: PropTypes.string.isRequired,
+//   description: PropTypes.string.isRequired,
+//   gender: PropTypes.oneOf(["Male", "Female", "Other"]).isRequired,
+//   courses: PropTypes.arrayOf(PropTypes.string)
+// };
