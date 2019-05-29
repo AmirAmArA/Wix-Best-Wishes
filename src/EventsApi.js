@@ -50,6 +50,9 @@ const events = [
     }
   ];
 
+  export function  userevents(){
+    return events;
+  }
 
 
  let exsistsEvent;
@@ -113,3 +116,35 @@ export function getMyWishes(eventID){
 /* Add A function to add a wish to wishes array --- depending on which event and userid :/ */
 
 /** Add A function to add a event depending on user id */
+
+export function addevent({userid,eventid , category , startdate , enddate,location}){
+
+  if(userid >0 && eventid>0 && category && category !="" && startdate && startdate!="" && enddate && enddate!="" && location !="" && location  ){
+    events.push({eventid , category , startdate , enddate,location});
+    return true
+  }//if
+  else{
+    return false
+  }
+}//function
+
+export function addwish({userid,eventid , from , wishu , imgurl}){
+
+  if(userid>0 && eventid>0){
+    if(from !="" && wishu !="" && imgurl !=""){
+      wishes.push({eventid , from , wishu , imgurl});
+      return true
+    }//if
+    
+
+  }//if
+  if(userid<= 0 && eventid >0){//here we know that its a visitor who adding a wish
+    if(from !="" && wishu !="" && imgurl !=""){
+      wishes.push({eventid , from , wishu , imgurl});
+      return true
+    }//if
+  }//if
+
+    return false
+
+}//function

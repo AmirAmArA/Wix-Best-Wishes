@@ -2,6 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import { NavLink } from "react-router-dom";
+import {addevent} from './EventsApi'
+import WishContext from './WishContext';
+
 
 import "./general.css";
 import logo from "../assets/logo.PNG";
@@ -141,6 +144,18 @@ export default class AddEvent extends React.Component {
       this.state.continueflag = true;
       this.setState([(this.state.navigatefroma = "/MyEvents"), this.state]);
       console.log(this.state.continueflag);
+
+      const title =eventtitle.value
+      const category =this.state.dropdownvalue;
+      const start = startdate.value; 
+      const end = enddate.value; 
+      const location = where.value;
+      // userid=  WishContext.state.userid;
+       const userid=  2;
+       const eventid = 10;
+
+      // console.log(this.WishContext.state);
+      console.log(addevent({ userid ,eventid ,category,start, end , location }));
     }///if
   } //createnewevent()
 
@@ -170,7 +185,9 @@ export default class AddEvent extends React.Component {
     let spanlocation = document.getElementById("#spanlocation");
 
     return (
-      <>
+      <WishContext.Provider>
+
+      
         <Row>
           <br />
           <br />
@@ -352,7 +369,7 @@ export default class AddEvent extends React.Component {
             <Col md={1} />
           </Col>
         </Row>
-      </>
+        </WishContext.Provider>
     );
   }
 }
