@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 import EventCardToView from "./EventCardToView";
 import { getMyEvents } from "./EventsApi";
-import { Dropdown, DropdownItem } from "react-bootstrap";
+import { Dropdown, DropdownItem, Form, Row, FormLabel,FormControl, Button } from "react-bootstrap";
 import MyWishes from "./MyWishes";
 export default class SearchEvent extends React.Component {
   constructor() {
@@ -171,7 +171,7 @@ export default class SearchEvent extends React.Component {
 
     return (
       <>
-        <div className="row" id="mainrowdiv">
+            <div className="row" id="mainrowdiv">
           <div className="col-md-3">
             <div className="card text-left cardBackground width18rem ">
               <div className="card-body">
@@ -179,37 +179,39 @@ export default class SearchEvent extends React.Component {
                   className="btn-group btn-group-toggle"
                   data-toggle="buttons"
                 >
+                <Form.Group as={Row}>
                   <label className="btn btn-outline-secondary  colorwhite">
                     {/* active */}
-                    <input
+                    <Form.Check
                       type="radio"
                       name="eventid"
                       id="option1"
                       autoComplete="off"
                       // checked
-                    />{" "}
+                    >{" "} </Form.Check>
                     Event ID
                   </label>
                   <label className="btn btn-outline-secondary ">
-                    <input
+                  <Form.Check
                       type="radio"
                       name="options"
                       id="option2"
                       autoComplete="off"
-                    />{" "}
-                    Others
+                    >{" "}
+                    Others </Form.Check>
                   </label>
+                  </Form.Group>
                 </div>
                 <div>
                   <br />
                 </div>
-
-                <input
-                  className="form-control"
+                
+                
+                <Form.Control  className="form-control "
                   type="text"
                   placeholder="Enter Event ID"
-                  id="eventid"
-                />
+                  id="eventid" ></Form.Control>
+                   
                 <div>
                   <span id="eventidspan" />
                 </div>
@@ -243,37 +245,39 @@ export default class SearchEvent extends React.Component {
                 <div>
                   <br />
                 </div>
-                <span className="colorWhite">Event Start Date:</span>
-                <input
-                  className="form-control"
+               
+
+<FormLabel className="colorWhite">Event Start Date:</FormLabel>
+<FormControl className="form-control"
                   type="date"
                   placeholder="Start"
-                  id="startdate"
-                />
+                  id="startdate"></FormControl>
                 <br />
-                <span className="colorWhite">Event End Date:</span>
 
-                <input
-                  className="form-control"
+
+              
+
+<FormLabel className="colorWhite">Event End Date:</FormLabel>
+<FormControl className="form-control"
                   type="date"
                   placeholder="End"
-                  id="enddate"
-                />
+                  id="enddate"></FormControl>
                 <br />
-                <input
-                  className="form-control"
+
+                <FormLabel className="colorWhite">Where</FormLabel>
+                <Form.Control className="form-control"
                   type="text"
                   placeholder="Event Location"
-                  id="where"
-                />
+                  id="where" ></Form.Control>
+                
                 <br />
-                <button
+                <Button
                   type="button"
-                  className="btn btn-outline-warning"
+                  className="btn "
                   onClick={this.showEvents}
                 >
                   Search Event
-                </button>
+                </Button>
               </div>
             </div>
           </div>
@@ -286,7 +290,7 @@ export default class SearchEvent extends React.Component {
               <div className="row">
                 <div className="col-md-1"> </div>
                 <div className="col-md-10">
-                  <h3 className="colorWhite">Event List:</h3>
+                  <h3 className="colorgreen">Event List:</h3>
                 </div>
                 <div className="col-md-1" />
               </div>
@@ -319,7 +323,10 @@ export default class SearchEvent extends React.Component {
               <br />
             </div>
           </div>
+
+
         </div>
+
       </>
     );
   }
