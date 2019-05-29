@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Row, Col, Container, Card } from "react-bootstrap";
 import "./general.css";
 import WishCard from "./WishCard";
-
+import WishContext from './WishContext';
 export default class ShowUserWishes extends React.Component {
   constructor() {
     super();
@@ -39,6 +39,7 @@ export default class ShowUserWishes extends React.Component {
       ]
     };
     this.updateWishes = this.updateWishes.bind(this);
+// console.log("context" ,WishContext._currentValue.userId)
   }
 
   updateWishes(wishesarr) {
