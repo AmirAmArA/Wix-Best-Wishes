@@ -85,6 +85,7 @@ export class App extends React.Component {
     logout: this.logout
 
     };
+    console.log("context" ,WishContext._currentValue  );
   }
 
   login(username, password) {

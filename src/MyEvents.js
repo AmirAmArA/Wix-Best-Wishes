@@ -7,7 +7,7 @@ import EventCard from "./EventCard";
 import { NavLink } from 'react-router-dom'
 import { Row, Col, Container } from "react-bootstrap";
 import { userevents } from "./EventsApi";
-
+import WishContext from './WishContext';
 
 export default class MyWishes extends React.Component {
   constructor() {
@@ -17,6 +17,8 @@ export default class MyWishes extends React.Component {
       events: userevents()
     };
     this.updateEvents = this.updateEvents.bind(this);
+
+    console.log("contetx" , WishContext._currentValue.userId)
   }
 
   updateEvents(eventsarr) {
