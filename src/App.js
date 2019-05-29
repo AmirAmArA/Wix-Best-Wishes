@@ -33,6 +33,7 @@ export class App extends React.Component {
     this.state = {
       userId: -1,
       username: '',
+      events : [] ,
       login: this.login,
     logout: this.logout
 
