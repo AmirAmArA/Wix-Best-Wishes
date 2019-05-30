@@ -56,12 +56,16 @@ export function userevents() {
   });
 }
 
-
-export function Login(username , password) {
+export function userwishes() {
   return new Promise((resolve, reject) => {
-    setTimeout(() => resolve(events), 1500);
+    setTimeout(() => resolve(wishes), 1500);
   });
 }
+// export function Login(username , password) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => resolve(events), 1500);
+//   });
+// }
 
 
 

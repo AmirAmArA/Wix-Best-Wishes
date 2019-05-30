@@ -155,3 +155,11 @@ background-color: #8d304104;
   color: white;
 
 }
+
+.scrollable{
+
+  width: 150px;
+  height: 150px;
+  margin: auto;
+  overflow: auto;
+ }

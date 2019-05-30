@@ -60,7 +60,7 @@ export default class WishCard extends React.Component {
               </Card.Header>
               <Card.Body>
                 <img src={logo} className="card-img-top wishcard" />
-                <Card.Text>
+                <Card.Text className="scrollable">
                   {/* Some quick example text to build on the card title and make
                   up the bulk of the card's content. */}
                   {this.props.description} <br />

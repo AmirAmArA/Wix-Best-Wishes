@@ -1,42 +1,17 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import { Row, Col, Container, Card } from "react-bootstrap";
+import { Row, Col, Container, Card ,Alert } from "react-bootstrap";
 import "./general.css";
 import WishCard from "./WishCard";
 import WishContext from './WishContext';
+import { userwishes } from './EventsApi'
 export default class ShowUserWishes extends React.Component {
   constructor() {
     super();
     this.state = {
-      wishes: [
-        {
-          id: 1,
-          name: "Mustafa",
-          avatar: "images/avatar.jpg",
-          score: 24,
-          description: "Marhaba, I love Avatars...",
-          lastUpdateTime: new Date().toLocaleString("he-IL"),
-          callercomp: "ShowUserWishes"
-        },
-        {
-          id: 2,
-          name: "Suhir",
-          avatar: "images/avatar.jpg",
-          score: 19,
-          description: "Hello, I love Avatars...",
-          lastUpdateTime: new Date().toLocaleString("he-IL"),
-          callercomp: "ShowUserWishes"
-        },
-        {
-          id: 3,
-          name: "Shahar",
-          avatar: "images/avatar2.png",
-          score: 11,
-          description: "Shalom, I love Avatars...",
-          lastUpdateTime: new Date().toLocaleString("he-IL"),
-          callercomp: "ShowUserWishes"
-        }
-      ]
+      wishes: [] ,
+      isLoading: false
+
     };
     this.updateWishes = this.updateWishes.bind(this);
 // console.log("context" ,WishContext._currentValue.userId)
@@ -48,7 +23,11 @@ export default class ShowUserWishes extends React.Component {
         .sort((wish1, wish2) => wish2.lastUpdateTime - wish1.lastUpdateTime)
     });
   }
-
+  componentDidMount(){
+    this.setState({isLoading:true});
+    userwishes()
+    .then(wishes => this.setState({isLoading: false, wishes}));
+  }
   render() {
     return (
       <>
@@ -64,6 +43,8 @@ export default class ShowUserWishes extends React.Component {
               </Card>
             </Col>
             <Col md={9}>
+            {this.state.isLoading && <Alert variant="primary" className="text-center">Loading...</Alert>}
+
               <Row>
                 {this.state.wishes.map(wish => (
                   <WishCard {...wish} />

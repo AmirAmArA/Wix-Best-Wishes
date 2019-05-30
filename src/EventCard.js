@@ -31,7 +31,7 @@ export default class EventCard extends React.Component {
                 {this.props.lastUpdateTime}
               </h4>
             </Card.Title>
-            <Card.Text className="colorgreen">
+            <Card.Text className="colorgreen scrollable">
               <p className="card-text ">{this.props.description}</p>
             </Card.Text>
             <Button
