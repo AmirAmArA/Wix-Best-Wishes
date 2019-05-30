@@ -5,6 +5,9 @@ import PropTypes from "prop-types";
 
 import { NavLink } from "react-router-dom";
 
+import WishContext from "./WishContext";
+
+
 import "./general.css";
 import logo from "../assets/logo.PNG";
 import { App, MyContext, MyProvider } from "./App";
@@ -68,7 +71,7 @@ export default class HomeComponent extends React.Component {
 
                   <div className="col-md-4">
                     <button className="btn btn-outline-info my-2 my-sm-0">
-                      <NavLink to="/Register">Create event Box</NavLink>
+                      <NavLink to="/Login">Create event Box</NavLink>
 
                       {/* <a href="/Register">Create event Box</a> */}
                     </button>
@@ -90,7 +93,7 @@ export default class HomeComponent extends React.Component {
 
   render() {
     return (
-        this.checklogin(this.state.loginFlag)
+        this.checklogin(this.context.username? true : false)
     );
   } //render
 } //class

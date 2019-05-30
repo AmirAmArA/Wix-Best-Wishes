@@ -21,7 +21,7 @@ export class NavComponent extends React.Component {
       userid: 22
     };
     // console.log(localStorage.getItem("loginflag"));
-    localStorage.setItem("loginflag", this.state.loginFlag);
+    // localStorage.setItem("loginflag", this.state.loginFlag);
     // this.checkIfLogedIn = this.checkIfLogedIn.bind(this);
   }
 
@@ -56,7 +56,7 @@ export class NavComponent extends React.Component {
                   aria-current="page"
                   className="nav-link active"
                   href=""
-                  onClick={() => logout()}
+                  onClick={() => this.context.logout()}
                 >
                   Logout
                 </a>
