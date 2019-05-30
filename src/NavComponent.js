@@ -27,7 +27,12 @@ export class NavComponent extends React.Component {
 
   render() {
     const { username, logout } = this.context;
-
+    let loginpath = ""
+    if(!this.context.username){
+      loginpath = "/Login";
+      
+    }
+    
     return (
       <Navbar bg="light" expand="lg">
         <Navbar.Brand href="#home">Best Wishes</Navbar.Brand>
@@ -38,8 +43,9 @@ export class NavComponent extends React.Component {
 
                       
             <NavLink className="nav-link" to="/">  Home</NavLink>
-            <NavLink className="nav-link" to="/MyEvents">  MyEvents</NavLink>
-            <NavLink className="nav-link" to="/ShowUserWishes">  MyWishes</NavLink>
+            
+            <NavLink className="nav-link" to={this.context.username? "/MyEvents" : loginpath}>  MyEvents</NavLink>
+            <NavLink className="nav-link" to={this.context.username? "/ShowUserWishes" : loginpath}>  MyWishes</NavLink>
             <NavLink className="nav-link" to="/about">  About</NavLink>
           </Nav>
           <Form inline>
