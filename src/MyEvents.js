@@ -5,7 +5,7 @@ import "./general.css";
 import logo from "../assets/logo.PNG";
 import EventCard from "./EventCard";
 import { NavLink } from 'react-router-dom'
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Alert } from "react-bootstrap";
 import { userevents } from "./EventsApi";
 import WishContext from './WishContext';
 
@@ -13,8 +13,8 @@ export default class MyWishes extends React.Component {
   constructor() {
     super();
     this.state = {
-
-      events: userevents()
+      isLoading: false,
+      events: []
     };
     this.updateEvents = this.updateEvents.bind(this);
 
@@ -41,6 +41,12 @@ export default class MyWishes extends React.Component {
     );
   }
 
+  componentDidMount(){
+    this.setState({isLoading:true});
+    userevents()
+    .then(events => this.setState({isLoading: false, events}));
+  }
+
   render() {
     return (
       <>
@@ -58,6 +64,7 @@ export default class MyWishes extends React.Component {
           <Row>
             <Col md={1} />
             <Col md={10}>
+                {this.state.isLoading && <Alert variant="primary" className="text-center">Loading...</Alert>}
               <Row>
                 {this.state.events.map(event => <EventCard key={event.id}{...event} />)}
 

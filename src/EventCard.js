@@ -15,7 +15,7 @@ export default class EventCard extends React.Component {
     let editnav = "/EditEvent/"+this.props.id
     let wishesnav = "/MyWishes/"+this.props.id;
     return <>
-        <Card  className="card-body text-center  eventcards  col-md-4">
+        <Card  className="card-body text-center  eventcards  col-md-4 ">
           <Card.Img
             className=" img-fluid img"
             src={
