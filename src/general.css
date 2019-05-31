@@ -15,8 +15,8 @@ li > a {
 
 .bg-gra-01 {
   background: -moz-linear-gradient(to bottom right, #000000 0%, #030303 100%);
-  background: -o-linear-gradient(to bottom right, #181717 0%, #3d0303 100%);
-  background: linear-gradient(to top right, #000000 20%, #580909 100%);
+  background: -o-linear-gradient(to bottom right, #af6666 0%, #3d0303 100%);
+  background: linear-gradient(to top right, #b5eff7 10%, #ebb4a4 90%);
 }
 
 .p-b-100 {
