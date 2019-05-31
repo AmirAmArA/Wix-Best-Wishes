@@ -12,7 +12,7 @@ export default class About extends React.Component {
               <div className="col-md-4"> </div>
               <div className="col-md-4">
                   <div className="card mb-3 cardBackground">
-                      <img src="logo.PNG" className="card-img-top" />
+                      <img src="logo" className="card-img-top" />
                       <div className="card-body">  
                          <p>
                           One word to describe us: Passion. We're passionate about making awesome websites <br/> We believe that websites can be more than 5-minute stress reliefs - it can make your life better. 
