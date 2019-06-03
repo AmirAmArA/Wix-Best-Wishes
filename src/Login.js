@@ -2,12 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import PropTypes from 'prop-types';
+import axois from 'axios'
 
+// import {login} from './EventsApi'
+import {login} from './Api'
 
 import "./general.css";
 import logo from "../assets/logo.PNG";
 
 import WishContext from './WishContext';
+
 
 export default class Login extends React.Component {
   constructor() {
@@ -23,24 +27,38 @@ export default class Login extends React.Component {
 
   validate(e){
     const { name, value } = e.target;
-    // if(name === "email"){
-    //   var re = /^(([^<>()[]\.,;:s@"]+(.[^<>()[]\.,;:s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/gim;
-    //   if (value == "" || !re.test(value)) {
-    //     alert("Please enter a valid email address.");
-    //     return;
-    //   }
-    // }else if (name === "password") {
-    //   alert("Please enter a valid password .");
-    //   return;
-    // }
+    if(name === "email"){
+      var re = /^(([^<>()[]\.,;:s@"]+(.[^<>()[]\.,;:s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/gim;
+      if (value == "" || !re.test(value)) {
+        alert("Please enter a valid email address.");
+        return;
+      }
+      }
+      
+    else if (name === "password") {
+      // alert("Please enter a valid password .");
+      if(value==""){
+        return;
+      }
+      
+    }
+   
     this.setState({
       [name]: value
     });
   }
-  submit(e) {
-    e.preventDefault();
-    this.context.login(this.state.email, this.state.password);
-  }
+  
+  // submit(e) {
+  //   e.preventDefault();
+  //   this.context.login(this.state.email, this.state.password);
+  // }
+  async submit(event) {
+    event.preventDefault();
+    const {email,password}=this.state
+    const result= await login(this.state.email, this.state.password);
+
+   console.log(result.userId);
+}
 
 
 
@@ -100,4 +118,4 @@ export default class Login extends React.Component {
   }
 } //class
 
-Login.contextType = WishContext;
+// Login.contextType = WishContext;

@@ -4,7 +4,11 @@ import { Row, Col, Container, Card ,Alert } from "react-bootstrap";
 import "./general.css";
 import WishCard from "./WishCard";
 import WishContext from './WishContext';
-import { userwishes } from './EventsApi'
+import axios from 'axios';
+// import { userwishes } from './EventsApi'
+
+
+
 export default class ShowUserWishes extends React.Component {
   constructor() {
     super();

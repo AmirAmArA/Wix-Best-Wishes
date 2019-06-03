@@ -22,12 +22,16 @@ import EventCardToView from "./EventCardToView";
 import WishContext from './WishContext';
 //then we also need a provider to the context
 
+
+import {login} from './WishContext'
+
 export class App extends React.Component {
   constructor() {
     super();
 
     this.logout = this.logout.bind(this);
-    this.login = this.login.bind(this);
+    this.login = WishContext.login; 
+    // this.login.bind(this);
 
 
     this.state = {
@@ -88,11 +92,14 @@ export class App extends React.Component {
     console.log("context" ,WishContext._currentValue  );
   }
 
-  login(username, password) {
-    this.setState({
-      username
-    });
-  }
+  // login(username, password) {
+  //   this.setState({
+  //     username
+  //   });
+  // }
+
+
+
 
   logout(){
 
