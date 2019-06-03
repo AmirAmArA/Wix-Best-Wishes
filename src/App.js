@@ -19,97 +19,33 @@ import EditEvent from "./EditEvent";
 import EventCardToView from "./EventCardToView";
 
 //the context we R going to use
-import WishContext from './WishContext';
+import WishContext from "./WishContext";
 //then we also need a provider to the context
 
-
-import {login} from './WishContext'
+import { login } from "./Api";
 
 export class App extends React.Component {
   constructor() {
     super();
 
     this.logout = this.logout.bind(this);
-    this.login = WishContext.login; 
+    this.login = login;
     // this.login.bind(this);
 
-
     this.state = {
-      userId: -1,
-      username: '',
-      events : [{
-        id: 1,
-        name: "event1",
-        avatar: "images/avatar.jpg",
-        score: 24,
-        description: "Marhaba, I love Avatars Marhaba, I love Avatars Marhaba, I love Avatars Marhaba, I love AvatarsMarhaba, I love AvatarsMarhaba, I love Avatars",
-        lastUpdateTime: new Date().toLocaleString("he-IL")
-      },
-      {
-        id: 2,
-        name: "event2",
-        avatar: "images/avatar.jpg",
-        score: 19,
-        description: "Hello, I love Avatars...",
-        lastUpdateTime: new Date().toLocaleString("he-IL")
-      },
-      {
-        id: 3,
-        name: "event3",
-        avatar: "images/avatar2.png",
-        score: 11,
-        description: "Shalom, I love Avatars",
-        lastUpdateTime: new Date().toLocaleString("he-IL")
-      },
-      {
-        id: 4,
-        name: "event4",
-        avatar: "images/avatar2.png",
-        score: 10,
-        description: "Ahalan, I love Avatars...",
-        lastUpdateTime: new Date().toLocaleString("he-IL")
-      },
-      {
-        id: 5,
-        name: "event5",
-        avatar: "images/avatar2.png",
-        score: 10,
-        description: "Ahalan, I love Avatars...",
-        lastUpdateTime: new Date().toLocaleString("he-IL")
-      },
-      {
-        id: 6,
-        name: "event6",
-        avatar: "images/avatar2.png",
-        score: 11,
-        description: "Ahalan, I love Avatars...",
-        lastUpdateTime: new Date().toLocaleString("he-IL")
-      }] ,
-      login: this.login,
-    logout: this.logout
-
+      login: login,
+      logout: this.logout
     };
-    console.log("context" ,WishContext._currentValue  );
+    console.log("context", WishContext._currentValue);
   }
 
-  // login(username, password) {
-  //   this.setState({
-  //     username
-  //   });
-  // }
-
-
-
-
-  logout(){
-
+  logout() {
     this.setState({
-      username:''
+      username: ""
     });
 
     // return <Redirect to="/"/>
-    this.props.history.push('/');
-
+    this.props.history.push("/");
   }
 
   render() {
@@ -117,7 +53,7 @@ export class App extends React.Component {
       <WishContext.Provider value={this.state}>
         <Router>
           <NavComponent />
-          
+
           {/* <Route 
           path='/'
           render={ props => <MyComponent {...props} />}
