@@ -44,12 +44,12 @@ export class NavComponent extends React.Component {
                       
             <NavLink className="nav-link" to="/">  Home</NavLink>
             
-            <NavLink className="nav-link" to={this.context.username? "/MyEvents" : loginpath}>  MyEvents</NavLink>
-            <NavLink className="nav-link" to={this.context.username? "/ShowUserWishes" : loginpath}>  MyWishes</NavLink>
+            <NavLink className="nav-link" to={this.context.userId? "/MyEvents" : loginpath}>  MyEvents</NavLink>
+            <NavLink className="nav-link" to={this.context.userId? "/ShowUserWishes" : loginpath}>  MyWishes</NavLink>
             <NavLink className="nav-link" to="/about">  About</NavLink>
           </Nav>
           <Form inline>
-            {username ? (
+            {this.context.userId ? (
               <>
                 Hi {username}!
                 <a

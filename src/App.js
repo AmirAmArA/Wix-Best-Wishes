@@ -33,6 +33,7 @@ export class App extends React.Component {
     // this.login.bind(this);
 
     this.state = {
+      userId: "",
       login: login,
       logout: this.logout
     };
@@ -41,13 +42,27 @@ export class App extends React.Component {
 
   logout() {
     this.setState({
-      username: ""
+      userId: -1
     });
+    this.context.userId = -1;
+    localStorage.clear();
 
     // return <Redirect to="/"/>
     this.props.history.push("/");
   }
 
+  componentDidMount() {
+    if (localStorage.getItem("userId")) {
+      this.setState({
+        userId: localStorage.getItem("userId")
+      });
+    } //if
+    else {
+      this.setState({
+        userId: -1
+      });
+    }
+  }
   render() {
     return (
       <WishContext.Provider value={this.state}>

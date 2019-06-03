@@ -28,14 +28,15 @@ export default class Login extends React.Component {
   validate(e){
     const { name, value } = e.target;
     if(name === "email"){
-      var re = /^(([^<>()[]\.,;:s@"]+(.[^<>()[]\.,;:s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/gim;
-      if (value == "" || !re.test(value)) {
+      // var re = /^(([^<>()[]\.,;:s@"]+(.[^<>()[]\.,;:s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/gim;
+      if (value == "" ) {
+        // || !re.test(value)
         alert("Please enter a valid email address.");
         return;
       }
       }
       
-    else if (name === "password") {
+    else if (name == "password") {
       // alert("Please enter a valid password .");
       if(value==""){
         return;
@@ -54,10 +55,17 @@ export default class Login extends React.Component {
   // }
   async submit(event) {
     event.preventDefault();
-    const {email,password}=this.state
-    const result= await login(this.state.email, this.state.password);
-
+    // const {email,password}=this.state;
+    const email = this.state.email;
+    const password = this.state.password;
+    console.log(email);
+    console.log("username and password" ,email , password )
+    if(email != "" && password !="" ){
+    const result= await login(email, password);
+    
    console.log(result.userId);
+   localStorage.setItem('userId', result.userId);
+  }//if
 }
 
 
@@ -97,6 +105,7 @@ export default class Login extends React.Component {
                       id="exampleInputPassword1"
                       placeholder="Password"
                       defaultValue={this.state.password}
+                      onBlur={this.validate}
 
                     />
                   </div>

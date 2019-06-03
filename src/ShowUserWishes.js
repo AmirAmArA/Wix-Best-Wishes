@@ -5,8 +5,8 @@ import "./general.css";
 import WishCard from "./WishCard";
 import WishContext from './WishContext';
 import axios from 'axios';
-// import { userwishes } from './EventsApi'
-
+import { userwishes } from './EventsApi'
+// import {getWishes} from './api'
 
 
 export default class ShowUserWishes extends React.Component {
@@ -29,6 +29,7 @@ export default class ShowUserWishes extends React.Component {
   }
   componentDidMount(){
     this.setState({isLoading:true});
+    // this.context.userId
     userwishes()
     .then(wishes => this.setState({isLoading: false, wishes}));
   }
