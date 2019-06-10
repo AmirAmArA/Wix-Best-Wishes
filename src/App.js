@@ -29,11 +29,12 @@ export class App extends React.Component {
     super();
 
     this.logout = this.logout.bind(this);
-    this.login = login;
+    // this.login = login;
     // this.login.bind(this);
 
     this.state = {
-      userId: "",
+      userId: 5,
+      username: 'Majde',
       login: login,
       logout: this.logout
     };
@@ -42,9 +43,11 @@ export class App extends React.Component {
 
   logout() {
     this.setState({
-      userId: -1
+      username: "" ,
+      userId : -1
     });
     this.context.userId = -1;
+    localStorage.setItem(username , "");
     localStorage.clear();
 
     // return <Redirect to="/"/>

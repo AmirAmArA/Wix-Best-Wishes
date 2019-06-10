@@ -53,7 +53,8 @@ export default class Login extends React.Component {
   //   e.preventDefault();
   //   this.context.login(this.state.email, this.state.password);
   // }
-  async submit(event) {
+  // async
+   submit(event) {
     event.preventDefault();
     // const {email,password}=this.state;
     const email = this.state.email;
@@ -61,8 +62,8 @@ export default class Login extends React.Component {
     console.log(email);
     console.log("username and password" ,email , password )
     if(email != "" && password !="" ){
-    const result= await login(email, password);
-    
+    const result=  login(email, password);
+    // await
    console.log(result.userId);
    localStorage.setItem('userId', result.userId);
   }//if

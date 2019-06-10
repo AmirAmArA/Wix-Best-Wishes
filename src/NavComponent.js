@@ -17,8 +17,7 @@ export class NavComponent extends React.Component {
     localStorage.clear();
     this.state = {
       loginFlag: false,
-      username: "Majde",
-      userid: 22
+      username: "Majde"
     };
     // console.log(localStorage.getItem("loginflag"));
     // localStorage.setItem("loginflag", this.state.loginFlag);
@@ -26,40 +25,52 @@ export class NavComponent extends React.Component {
   }
 
   render() {
+    console.log(this.context.userId, "userid is");
     const { username, logout } = this.context;
-    let loginpath = ""
-    if(!this.context.username){
-      loginpath = "/Login";
-      
-    }
-    
+    console.log("username from localstorage", localStorage.getItem("username"));
+
     return (
       <Navbar bg="light" expand="lg">
         <Navbar.Brand href="#home">Best Wishes</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
+            <NavLink className="nav-link" to="/">
+              {" "}
+              Home
+            </NavLink>
 
-
-                      
-            <NavLink className="nav-link" to="/">  Home</NavLink>
-            
-            <NavLink className="nav-link" to={this.context.userId? "/MyEvents" : loginpath}>  MyEvents</NavLink>
-            <NavLink className="nav-link" to={this.context.userId? "/ShowUserWishes" : loginpath}>  MyWishes</NavLink>
-            <NavLink className="nav-link" to="/about">  About</NavLink>
+            <NavLink
+              className="nav-link"
+              to={username ? "/MyEvents" : "/Login"}
+            >
+              {" "}
+              MyEvents
+            </NavLink>
+            <NavLink
+              className="nav-link"
+              to={username ? "/ShowUserWishes" : "/Login"}
+            >
+              {" "}
+              MyWishes
+            </NavLink>
+            <NavLink className="nav-link" to="/about">
+              {" "}
+              About
+            </NavLink>
           </Nav>
           <Form inline>
-            {this.context.userId ? (
+              {/* this.context.userId */}
+            { username ? (
+            
               <>
-                Hi {username}!
-                <a
-                  aria-current="page"
-                  className="nav-link active"
-                  href=""
-                  onClick={() => this.context.logout()}
-                >
-                  Logout
-                </a>
+                Hi {username}
+                <button className="btn btn-outline-info my-2 my-sm-0" onClick={ this.context.logout}>
+                      <NavLink to="/">Logout</NavLink>
+
+                      {/* <a href="/Register">Create event Box</a> */}
+                    </button>
+                
               </>
             ) : (
               <>

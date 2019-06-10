@@ -295,40 +295,42 @@ const checkUser = (userName, password) => {
         }, 1000);
     })
 }
-const login = async (email, password) => {
-try {
-        const result =await  axios.post(URL + '/login', {
-            email,
-            password
-        });
-        const { data } = result;
-        if (data.status.code == 200) {
-            return { userId: data.userId }
-        } else {
-            return { erorr: data.error }
-        }
-    } catch (error) {
-    console.dir("login error:"+error)
-    return {error}
-    }
-}
-const myEvents= async()=>{
-    try{
-        const result= await axios.get(URL+'/events',{
-            headers:{
+const login = ()=>{};//to delete this line later
+// const login = async (email, password) => {
+// try {
+//         const result =await  axios.post(URL + '/login', {
+//             email,
+//             password
+//         });
+//         const { data } = result;
+//         if (data.status.code == 200) {
+//             return { userId: data.userId }
+//         } else {
+//             return { erorr: data.error }
+//         }
+//     } catch (error) {
+//     console.dir("login error:"+error)
+//     return {error}
+//     }
+// }
+const myEvents=()=>{};//delete this line later
+// const myEvents= async()=>{
+//     try{
+//         const result= await axios.get(URL+'/events',{
+//             headers:{
                 
-                Authorization: 'Bearer userId:a3c66333-9016-42a9-a5d2-fa432bda0519'
-            }
-        });
-        const{data}=result;
-            return data;
-    }catch(error){
-        console.dir(error);
-        return { error };
-    }
+//                 Authorization: 'Bearer userId:a3c66333-9016-42a9-a5d2-fa432bda0519'
+//             }
+//         });
+//         const{data}=result;
+//             return data;
+//     }catch(error){
+//         console.dir(error);
+//         return { error };
+//     }
 
 
-}
+// }
 
 export {
     getUsers,
