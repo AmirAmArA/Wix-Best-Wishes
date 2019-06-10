@@ -64,10 +64,10 @@ export default class EventCardToView extends React.Component {
             <Button
              id="searchEventbtn"
               type="button"
-              className=" btn btn-outline-primary"
+              className=" btn btn-outline-primary whiteto"
             >
-            <a href ={reference}> Add A Wish</a>
-              {/* <NavLink to={reference}>Add A Wish</NavLink> */}
+            <a href ={reference} className="whiteto"> Add A Wish</a>
+              {/* <NavLink  to={reference}>Add A Wish</NavLink> */}
             </Button>    
           
           </Card.Body>

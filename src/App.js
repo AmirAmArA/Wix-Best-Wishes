@@ -47,8 +47,8 @@ export class App extends React.Component {
       userId : -1
     });
     this.context.userId = -1;
-    localStorage.setItem(username , "");
-    localStorage.clear();
+    localStorage.setItem(username , "aaaa");
+    // localStorage.clear();
 
     // return <Redirect to="/"/>
     this.props.history.push("/");

@@ -5,7 +5,7 @@ import "./general.css";
 import logo from "../assets/logo.PNG";
 import WishCard from "./WishCard";
 import { NavLink } from "react-router-dom";
-import { Container, Row, Card, Col ,Button} from "react-bootstrap";
+import { Container, Row, Card, Col, Button } from "react-bootstrap";
 import { getMyWishes } from "./EventsApi";
 
 export default class MyWishes extends React.Component {
@@ -73,10 +73,13 @@ export default class MyWishes extends React.Component {
               </Card>
               <Row>
                 <Col>
-                  <Button type="button" className="btn btn-outline-warning">
-                    <NavLink to={linktosend}>Add a Best Wish !!</NavLink>
-
-                    {/* <a className="coloryellow" href="/AddAWish"></a> */}
+                  <Button
+                    type="button"
+                    className="btn btn-outline-primary whiteto"
+                  >
+                    <NavLink className="whiteto" to={linktosend}>
+                      Add a Best Wish !!
+                    </NavLink>
                   </Button>
                 </Col>
               </Row>

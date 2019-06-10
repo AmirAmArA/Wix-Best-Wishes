@@ -133,7 +133,7 @@ export default class App extends Component {
                         </InputGroup.Prepend>
                         <Form.Control
                           name="name"
-                          placeholder="Enter your display Name"
+                          placeholder="Enter your Name"
                           aria-label="Name"
                           defaultValue={this.state.name.value}
                           onBlur={this.onInputChange}

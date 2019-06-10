@@ -212,11 +212,10 @@ export default class AddAWish extends React.Component {
             <Button
               id="searchEventbtn"
               type="button"
-              className="btn btn-outline-warning"
+              className="btn btn-outline-primary whiteto"
               onClick={this.validatefields}
             >
-              {/* <a id="myanchor">Add a wish</a> */}
-              <NavLink to={this.state.validafields ? linktosend : linktosend2}>
+              <NavLink className="whiteto" to={this.state.validafields ? linktosend : linktosend2}>
                 Add a wish
               </NavLink>
             </Button>
