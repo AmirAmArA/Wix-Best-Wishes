@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
+import axios from 'axios'
 import "./general.css";
 import logo from "../assets/logo.PNG";
 import EventCard from "./EventCard";
@@ -9,6 +10,8 @@ import { Row, Col, Container, Alert } from "react-bootstrap";
 import { userevents } from "./EventsApi";
 import WishContext from './WishContext';
 import { myEvents } from "./Api";
+import {getUserEventsByUserID} from './Api';
+import Axios from "axios";
 
 export default class MyWishes extends React.Component {
   constructor() {
@@ -42,10 +45,23 @@ export default class MyWishes extends React.Component {
     );
   }
 
-  componentDidMount(){
+  async componentDidMount(){
+    let uevents=[];
+    const result = await getUserEventsByUserID(localStorage.getItem("userId"));
+    const {userEvents}=result;
+    
     this.setState({isLoading:true});
     userevents()
-    .then(events => this.setState({isLoading: false, events}));
+    .then(userEvents => this.setState({isLoading: false, userEvents}));
+
+    // let events1 =  getUserEventsByUserID(localStorage.getItem('userId'))
+    // events1.then(events =>{console.log(events);
+    //   uevents.push(events)
+    // })
+    
+    
+    console.log("events from server : " , userEvents[0]);
+    this.setState({events : userEvents });
   }
 
   render() {

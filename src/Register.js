@@ -12,6 +12,7 @@ import {
 
 import validator, { field } from "./RegisterVaildator";
 import * as api from "./RegisterApi";
+import { register } from "./Api";
 import "./general.css";
 export default class App extends Component {
   constructor() {
@@ -34,6 +35,22 @@ export default class App extends Component {
     this.emailExists = false;
     this.onInputChange = this.onInputChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.register1 = this.register1.bind(this);
+  } //constructor
+
+  async register1(username, email, password) {
+    const result = await register(username, email, password);
+    if (result.error) {
+      alert(result.error);
+      return;
+    }
+    console.log(result.userId);
+    const user = { name: username, userID: result.userId };
+    // this.setState(user);
+    // localStorageManager.login(user);
+    // this.state.history.push("/AlertDismissible");
+    localStorage.setItem("userId", result.userId);
+    localStorage.setItem("username", username);
   }
 
   componentDidMount() {
@@ -64,7 +81,8 @@ export default class App extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-
+    //print e and figure how to pull name,email,pss
+    console.log(e);
     const user = Object.assign({}, this.state);
     let counter = 0;
     for (let key in user) {
@@ -84,18 +102,26 @@ export default class App extends Component {
     //Send data to somewhere
     //...
     const { name, email, password } = this.state;
-    const result = api.registerUser(name, email, password);
-    if (counter == 0) {
-      if (result.userId) {
-        this.successRegister = true;
-        this.emailExists = false;
-      } else if (result.error) {
-        this.successRegister = false;
-        this.emailExists = true;
-        this.registerErr = result.error.msg;
-        console.log(`this is error account ${this.registerErr}`);
-      }
+
+    console.log(this.register1(name, email, password));
+    if (this.register1(name, email, password)) {
+      console.log("REgistered successfully");
+      this.props.history.push("/Login");
+    } else {
+      console.log("not registered");
     }
+    // const result = api.registerUser(name, email, password);
+    // if (counter == 0) {
+    //   if (result.userId) {
+    //     this.successRegister = true;
+    //     this.emailExists = false;
+    //   } else if (result.error) {
+    //     this.successRegister = false;
+    //     this.emailExists = true;
+    //     this.registerErr = result.error.msg;
+    //     console.log(`this is error account ${this.registerErr}`);
+    //   }
+    // }
   }
 
   render() {

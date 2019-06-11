@@ -238,15 +238,22 @@ const getUserWishesByUserID = (userId) => {
         }, 500);
     })
 }
-const getUserEventsByUserID = (userId) => {
-    return new Promise(resolve => {
-        setTimeout(() => {
-            const events = Users.filter(user => (user.userId == userId))[0].events;
-            resolve(events);
-            console.log(events)
-        }, 500);
-    })
-
+const getUserEventsByUserID = async (userId) => {
+    try {
+        const token = "userId:" + userId;
+        const result = await axios.get(URL + '/user/my-events', { headers: { Authorization: `Bearer ${token}` } });
+        const { data } = result;
+        return { userEvents: data.filter(event => event.userId == userId) }
+        /*  if (data.status.code == 401) {
+              return { error: data.status.message };
+          } else {
+              return { id: data.id }
+          }*/
+    }
+    catch (error) {
+        console.dir(error);
+        return { error };
+    }
 }
 
 const getEvents = () => {
@@ -331,6 +338,23 @@ const myEvents= async()=>{
 
 
 }
+const register = async (username, email, password) => {
+    try {
+        const result = await axios.post(URL + '/register', {
+            username, email, password
+        });
+        const { data } = result;
+        if (data.status.code == 200) {
+            return { userId: data.userId };
+        } else {
+            return { error: data.error };
+        }
+    }
+    catch (error) {
+        console.dir(error);
+        return { error };
+    }
+}
 
 export {
     getUsers,
@@ -341,6 +365,7 @@ export {
     getUserEventsByUserID,
     getUserWishesByUserID,
     checkUser,
-    login
+    login,
+    register
 };
 
