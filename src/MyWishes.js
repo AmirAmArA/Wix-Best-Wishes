@@ -7,16 +7,28 @@ import WishCard from "./WishCard";
 import { NavLink } from "react-router-dom";
 import { Container, Row, Card, Col, Button } from "react-bootstrap";
 import { getMyWishes } from "./EventsApi";
-
+import {getWishes} from './Api'
 export default class MyWishes extends React.Component {
   constructor() {
     super();
+     
+
     this.state = {
-      eventDetails: [this.props]
+      eventDetails: [this.props] ,
+      wishes :[]
     };
     this.updateWishes = this.updateWishes.bind(this);
-  }
+    // this.getwishes2=this.
+  }//constructor
 
+  // this.setState({wishes : [...a]})
+// 
+// getwishes2=()=>{
+//   getWishes().then(function(result){
+//     console.log(result)
+//     return result;
+//   })
+//  }
   updateWishes(wishesarr) {
     this.setState({
       wishes: [this.state.wishes, ...wishesarr].sort(
@@ -24,13 +36,15 @@ export default class MyWishes extends React.Component {
       )
     });
   }
-
+  
+  componentDidMount(){
+    
+    console.log(this.state.wishes);
+  }
   render() {
     let eventid = this.props.match.params.eventid;
-    let eventname = "";
-    let where = "Location";
-    let startdate = "";
-
+   
+    let properties = localStorage.getItem('eventInfo');
     console.log(this.props.match.params.eventid); //here we recieve the eventid
     let linktosend = "/AddAWish/" + this.props.match.params.eventid;
     let wishes = getMyWishes(eventid);
@@ -56,17 +70,17 @@ export default class MyWishes extends React.Component {
                   </Row>
                   <Row>
                     <Col>
-                      <span>Name:{eventname}</span>
+                      <span>Name:{localStorage.getItem('title')}</span>
                     </Col>
                   </Row>
                   <Row>
                     <Col>
-                      <span>When: {startdate}</span>
+                      <span>When: {localStorage.getItem('startDate')}</span>
                     </Col>
                   </Row>
                   <Row>
                     <Col>
-                      <span>Where: {where}</span>
+                      <span>Where: {localStorage.getItem('location')}</span>
                     </Col>
                   </Row>
                 </Card.Body>
@@ -87,8 +101,8 @@ export default class MyWishes extends React.Component {
             <Col md={9}>
               <Row />
               <Row>
-                {wishes.map(wish => (
-                  <WishCard {...wish} key={wish.id} />
+                {this.state.wishes.map(wish => (
+                  <WishCard {...wish} key={wish.id} callercomp={"aaa"} />
                 ))}
               </Row>
             </Col>

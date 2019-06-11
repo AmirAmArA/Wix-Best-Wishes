@@ -87,7 +87,8 @@ export class NavComponent extends React.Component {
             {/* this.context.userId */}
             {loginflag ? 
               <>
-                Hi {this.state.username}
+              Hi Shahar
+                {/* Hi Majde{this.state.username} */}
                 <button
                   className="btn btn-outline-info my-2 my-sm-0"
                   onClick={this.logout2}

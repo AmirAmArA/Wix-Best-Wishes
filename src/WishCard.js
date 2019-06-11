@@ -23,7 +23,7 @@ export default class WishCard extends React.Component {
   }
 
   render() {
-    let editbtnref="/AddAWish/"+this.props.id
+    let editbtnref="/AddAWish/"+this.props.ID
     if (!this.state.deleted) {
       if (this.props.callercomp == "ShowUserWishes") {
         // console.log("calling components is" ,this.props.callercomp)
@@ -32,17 +32,17 @@ export default class WishCard extends React.Component {
           <Col md={4} name={this.props.key}>
             <Card className=" border-light mb-3  maxwidth18 colorblack">
               <Card.Header>
-                {this.props.name} {this.props.lastUpdateTime}
+                {this.props.from} 
               </Card.Header>
               <Card.Body>
-                <img src={logo} className="card-img-top wishcard" />
+                <img src={this.props.imageURL} className="card-img-top wishcard" />
                 <Card.Text>
                   {/* Some quick example text to build on the card title and make
                     up the bulk of the card's content. */}
-                  {this.props.description} <br />
+                  {this.props.wishContent} <br />
                   <button>
-
-                    <a href={editbtnref}> edit </a>
+                  <NavLink to={editbtnref}>Edit</NavLink>
+                    {/* <a href={editbtnref}> edit </a> */}
                   </button>
                   <button onClick={this.deleteWish}> delete</button>
                 </Card.Text>
@@ -59,11 +59,11 @@ export default class WishCard extends React.Component {
                 {this.props.name} {this.props.lastUpdateTime}
               </Card.Header>
               <Card.Body>
-                <img src={logo} className="card-img-top wishcard" />
+                <img src={this.props.imageURL} className="card-img-top wishcard" />
                 <Card.Text className="scrollable">
                   {/* Some quick example text to build on the card title and make
                   up the bulk of the card's content. */}
-                  {this.props.description} <br />
+                  {this.props.wishContent} <br />
                 </Card.Text>
               </Card.Body>
             </Card>

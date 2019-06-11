@@ -47,21 +47,22 @@ export default class MyWishes extends React.Component {
 
   async componentDidMount(){
     let uevents=[];
+    this.setState({isLoading:true});
+
     const result = await getUserEventsByUserID(localStorage.getItem("userId"));
     const {userEvents}=result;
     
-    this.setState({isLoading:true});
-    userevents()
-    .then(userEvents => this.setState({isLoading: false, userEvents}));
+    
+    // userevents().then(userEvents => this.setState({isLoading: false, userEvents}));
+    this.setState({
+      isLoading:false,
+      events : [...userEvents]
+    })
 
-    // let events1 =  getUserEventsByUserID(localStorage.getItem('userId'))
-    // events1.then(events =>{console.log(events);
-    //   uevents.push(events)
-    // })
-    
-    
-    console.log("events from server : " , userEvents[0]);
-    this.setState({events : userEvents });
+    console.log("events in the state : " , this.state.events);
+
+    // console.log("events from server : " , userEvents);
+    // this.setState({events : userEvents });
   }
 
   render() {

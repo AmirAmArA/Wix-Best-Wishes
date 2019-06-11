@@ -171,6 +171,29 @@ const wishes = [
         "eventID": "4"
     }
 ]
+const wishes2= [
+    {
+      "id": "ae993d0a-0bd5-4925-9af3-dbf6a00d08b0",
+      "userId": "a3c66333-9016-42a9-a5d2-fa432bda0519",
+      "from": "Mundo",
+      "body": "Hi!! Happy whatever.",
+      "image": "https://media.giphy.com/media/xT0BKqhdlKCxCNsVTq/giphy.gif"
+    },
+    {
+      "id": "a0117a9d-d070-4e7b-b6a9-7d2a806ee852",
+      "userId": "a3c66333-9016-42a9-a5d2-fa432bda0519",
+      "from": "Lala",
+      "body": "YEEAAA Happy whatever.",
+      "image": "https://media.giphy.com/media/xT0BKqhdlKCxCNsVTq/giphy.gif"
+    },
+    {
+      "id": "4b4bd09b-cd3f-46b4-b9b9-497d576d276d",
+      "userId": "a3c66333-9016-42a9-a5d2-fa432bda0519",
+      "from": "Lala",
+      "body": "YEEAAA Happy whatever.",
+      "image": "https://media.giphy.com/media/xT0BKqhdlKCxCNsVTq/giphy.gif"
+    }
+  ]
 const Users = [
     {
         userId: 1,
@@ -355,6 +378,18 @@ const register = async (username, email, password) => {
         return { error };
     }
 }
+
+
+   const  getit=()=>{
+      
+        getWishes().then(function(result){
+          console.log(result)
+        //   a=result;
+           return result;
+        })
+        // this.setState({wishes : a})
+      
+       }
 
 export {
     getUsers,

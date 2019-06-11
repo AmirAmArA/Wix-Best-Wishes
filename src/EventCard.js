@@ -14,6 +14,13 @@ export default class EventCard extends React.Component {
   render() {
     let editnav = "/EditEvent/"+this.props.id
     let wishesnav = "/MyWishes/"+this.props.id;
+
+    localStorage.setItem('from' , this.props.from);
+    localStorage.setItem('title' , this.props.title);
+    localStorage.setItem('startDate' , this.props.startDate);
+    localStorage.setItem('endDate' , this.props.endDate);
+    localStorage.setItem('location' , this.props.location);
+
     return <>
         <Card  className="card-body text-center  eventcards  col-md-4 ">
           <Card.Img
@@ -28,11 +35,17 @@ export default class EventCard extends React.Component {
             <Card.Title>
               <h4>
                 {this.props.title} <br />
-                {this.props.lastUpdateTime}
+               
               </h4>
+              
             </Card.Title>
             <Card.Text className="colorgreen scrollable">
-              <p className="card-text ">{this.props.description}</p>
+            <h6>
+              startDate :  {this.props.startDate} <br/>
+               EndDate :  {this.props.endDate}<br/>
+               location : {this.props.location}<br/>
+              </h6>
+              {/* <p className="card-text ">{this.props.description}</p> */}
             </Card.Text>
             <Button
               variant="outline-danger"
