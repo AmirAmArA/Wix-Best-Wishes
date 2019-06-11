@@ -24,7 +24,6 @@ export default class HomeComponent extends React.Component {
   }
 
   checklogin(flag) {
-    console.log("login flag from checklogin() : "  ,flag)
     let addeventlink = "/AddEvent/" + this.state.userid;
     const isLoggedIn = this.state.loginFlag;
     if (flag == true) {

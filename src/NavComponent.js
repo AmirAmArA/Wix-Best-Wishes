@@ -12,20 +12,44 @@ import ShowUserWishes from "./ShowUserWishes";
 import WishContext from "./WishContext";
 
 export class NavComponent extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     localStorage.clear();
+    this.logout2 = this.logout2.bind(this);
     this.state = {
       loginFlag: false,
-      username: "Majde"
+      username: localStorage.getItem("username"),
+      userid: this.props.userid || localStorage.getItem("userId")
     };
     // console.log(localStorage.getItem("loginflag"));
     // localStorage.setItem("loginflag", this.state.loginFlag);
     // this.checkIfLogedIn = this.checkIfLogedIn.bind(this);
+    console.log(props);
   }
 
+  componentDidMount() {
+    let uid = localStorage.getItem("userId");
+    if (uid) this.context.setuserid(uid);
+    console.log(this.state);
+  }
+  logout2() {
+    this.context.logout();
+    this.setState({
+      username: ""
+    });
+  }
   render() {
-    console.log(this.context.userId, "userid is");
+    let loginflag = false;
+    if(this.context.userId!=0 && this.context.userId!=-1 && this.context.userId){
+      loginflag = true
+    }
+    let uid = localStorage.getItem("userId") ? true : false;
+    // if(uid)
+    // this.context.setuserid(uid);
+    console.log("userid in the context =", this.context.userId);
+
+    // console.log("from nav componet user id at localstorage = " ,localStorage.getItem("userId"));
+    // console.log(this.context.userId, "userid is");
     const { username, logout } = this.context;
     console.log("username from localstorage", localStorage.getItem("username"));
 
@@ -60,19 +84,20 @@ export class NavComponent extends React.Component {
             </NavLink>
           </Nav>
           <Form inline>
-              {/* this.context.userId */}
-            { username ? (
-            
+            {/* this.context.userId */}
+            {loginflag ? 
               <>
-                Hi {username}
-                <button className="btn btn-outline-info my-2 my-sm-0" onClick={ this.context.logout}>
-                      <NavLink to="/">Logout</NavLink>
+                "Hi" {this.state.username}
+                <button
+                  className="btn btn-outline-info my-2 my-sm-0"
+                  onClick={this.logout2}
+                >
+                  <NavLink to="/">Logout</NavLink>
 
-                      {/* <a href="/Register">Create event Box</a> */}
-                    </button>
-                
+                  {/* <a href="/Register">Create event Box</a> */}
+                </button>
               </>
-            ) : (
+             : 
               <>
                 <NavLink className="nav-link" to="/Login">
                   Sign In
@@ -81,7 +106,7 @@ export class NavComponent extends React.Component {
                   Register
                 </NavLink>
               </>
-            )}
+            }
           </Form>
         </Navbar.Collapse>
       </Navbar>

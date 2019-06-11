@@ -50,11 +50,10 @@ export default class Login extends React.Component {
   }
   
   // submit(e) {
-  //   e.preventDefault();
+    // e.preventDefault();
   //   this.context.login(this.state.email, this.state.password);
   // }
-  // async
-   submit(event) {
+  async submit(event) {
     event.preventDefault();
     // const {email,password}=this.state;
     const email = this.state.email;
@@ -62,10 +61,19 @@ export default class Login extends React.Component {
     console.log(email);
     console.log("username and password" ,email , password )
     if(email != "" && password !="" ){
-    const result=  login(email, password);
-    // await
-   console.log(result.userId);
+    const result=  await login(email, password);
+    if (result.error) {
+      alert(result.error);
+      return;
+  }
+  //  console.log(result.userId);
    localStorage.setItem('userId', result.userId);
+   localStorage.setItem('username', "Majde");
+   this.context.setuserid(result.userId);
+   this.context.setusername("Majde");
+   console.log("userid was set to local storage and equals :" ,result.userId );
+   this.props.history.push("/");
+  
   }//if
 }
 
@@ -128,4 +136,4 @@ export default class Login extends React.Component {
   }
 } //class
 
-// Login.contextType = WishContext;
+Login.contextType = WishContext;
