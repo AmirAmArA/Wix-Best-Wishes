@@ -66,14 +66,14 @@ export class NavComponent extends React.Component {
 
             <NavLink
               className="nav-link"
-              to={username ? "/MyEvents" : "/Login"}
+              to={loginflag ? "/MyEvents" : "/Login"}
             >
               {" "}
               MyEvents
             </NavLink>
             <NavLink
               className="nav-link"
-              to={username ? "/ShowUserWishes" : "/Login"}
+              to={loginflag ? "/ShowUserWishes" : "/Login"}
             >
               {" "}
               MyWishes
@@ -87,7 +87,7 @@ export class NavComponent extends React.Component {
             {/* this.context.userId */}
             {loginflag ? 
               <>
-                "Hi" {this.state.username}
+                Hi {this.state.username}
                 <button
                   className="btn btn-outline-info my-2 my-sm-0"
                   onClick={this.logout2}

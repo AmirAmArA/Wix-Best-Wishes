@@ -8,6 +8,7 @@ import { NavLink } from 'react-router-dom'
 import { Row, Col, Container, Alert } from "react-bootstrap";
 import { userevents } from "./EventsApi";
 import WishContext from './WishContext';
+import { myEvents } from "./Api";
 
 export default class MyWishes extends React.Component {
   constructor() {
@@ -48,6 +49,9 @@ export default class MyWishes extends React.Component {
   }
 
   render() {
+    // localStorage.getItem
+    console.log(localStorage.getItem('userId'));
+    console.log(localStorage.getItem('username'));
     return (
       <>
         <Container>
@@ -92,3 +96,4 @@ export default class MyWishes extends React.Component {
     );
   }
 }
+myEvents.contextType = WishContext;

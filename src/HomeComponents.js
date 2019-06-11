@@ -24,9 +24,17 @@ export default class HomeComponent extends React.Component {
   }
 
   checklogin(flag) {
-    let addeventlink = "/AddEvent/" + this.state.userid;
+    let addeventlink = "/AddEvent";
+    
+let loginflag2 = false;
+if(this.context.userId!=0 && this.context.userId!=-1 && this.context.userId){
+  
+  loginflag2=true
+}else{
+  addeventlink = "/Login"
+}
     const isLoggedIn = this.state.loginFlag;
-    if (flag == true) {
+    if (loginflag2 == true) {
       return (
         <div className="row">
           <div className="col-md-4"> </div>
@@ -75,7 +83,7 @@ export default class HomeComponent extends React.Component {
                       {/* <a href="/Register">Create event Box</a> */}
                     </button>
                     <button className="btn btn-outline-info my-2 my-sm-0">
-                      <NavLink to="/SearchEvent">Add a best wish!!</NavLink>
+                      <NavLink to={addeventlink}>Add a best wish!!</NavLink>
                     </button>
                   </div>
                   <div className="col-md-4" />
@@ -96,4 +104,7 @@ export default class HomeComponent extends React.Component {
     );
   } //render
 } //class
+
+
+HomeComponent.contextType = WishContext;
 
