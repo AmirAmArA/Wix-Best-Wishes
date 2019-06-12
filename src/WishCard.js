@@ -36,10 +36,13 @@ export default class WishCard extends React.Component {
               </Card.Header>
               <Card.Body>
                 <img src={this.props.imageURL} className="card-img-top wishcard" />
-                <Card.Text>
+                <Card.Text >
                   {/* Some quick example text to build on the card title and make
                     up the bulk of the card's content. */}
-                  {this.props.wishContent} <br />
+                    <p className="scrollable">
+                    {this.props.wishContent}
+                    </p>
+                   <br />
                   <button>
                   <NavLink to={editbtnref}>Edit</NavLink>
                     {/* <a href={editbtnref}> edit </a> */}
@@ -56,7 +59,7 @@ export default class WishCard extends React.Component {
           <Col md={4}>
             <Card className=" border-light mb-3  maxwidth18 colorblack">
               <Card.Header>
-                {this.props.name} {this.props.lastUpdateTime}
+                {this.props.from}
               </Card.Header>
               <Card.Body>
                 <img src={this.props.imageURL} className="card-img-top wishcard" />

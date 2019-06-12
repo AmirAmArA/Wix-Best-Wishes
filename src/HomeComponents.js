@@ -83,7 +83,7 @@ if(this.context.userId!=0 && this.context.userId!=-1 && this.context.userId){
                       {/* <a href="/Register">Create event Box</a> */}
                     </button>
                     <button className="btn btn-outline-info my-2 my-sm-0">
-                      <NavLink to={addeventlink}>Add a best wish!!</NavLink>
+                      <NavLink to="/SearchEvent">Add a best wish!!</NavLink>
                     </button>
                   </div>
                   <div className="col-md-4" />

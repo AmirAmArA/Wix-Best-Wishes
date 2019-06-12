@@ -15,7 +15,22 @@ export default class MyWishes extends React.Component {
 
     this.state = {
       eventDetails: [this.props] ,
-      wishes :[]
+      wishes :[{
+        "userID": "1",
+        "ID": "1",
+        "from": "Majde",
+        "wishContent": "Happy birthday wish you all the best",
+        "imageURL": "https://blog.serenataflowers.com/pollennation/wp-content/uploads/2016/05/original-happy-birthday-messages-FT.gif",
+        "eventID": "1"
+    },
+    {
+        "userID": "2",
+        "ID": "2",
+        "from": "Sally",
+        "wishContent": "I wish that your birthday brings a new year as sweet, peppy and fiery as you my dear. Happy birthday.",
+        "imageURL": "https://blog.serenataflowers.com/pollennation/wp-content/uploads/2016/05/original-happy-birthday-messages-FT.gif",
+        "eventID": "1"
+    }]
     };
     this.updateWishes = this.updateWishes.bind(this);
     // this.getwishes2=this.
